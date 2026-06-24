@@ -68,3 +68,9 @@ LƯU Ý : Những điểm bạn cần chú ý khi viết theo mục lục này:
 . Bạn cần trình bày rõ kiến trúc cụ thể khi chèn CBAM vào TickNets của mình ở vị trí nào để đạt hiệu quả tối ưu nhất.
 Các bộ dữ liệu: Nếu bạn dùng lại Fashion-MNIST và CIFAR-10 như tác giả
 , bạn có thể giữ nguyên cấu trúc mô tả tập dữ liệu. Nếu bạn dùng tập dữ liệu khác, hãy cập nhật lại ở mục 3.3.1.2.
+
+NeuroNetwork_TickNets_2023_revised_with_marked.pdf : đây là tài liệu về ticknets
+
+https://www.kaggle.com/code/farzadnekouei/cifar-10-image-classification-with-cnn : nguồn dataset cifar-10
+
+https://www.kaggle.com/code/gpreda/cnn-with-tensorflow-keras-for-fashion-mnist : nguồn dataset fashion-mnist
