@@ -36,3 +36,7 @@ NeuroNetwork_TickNets_2023_revised_with_marked.pdf : đây là tài liệu về 
 https://www.kaggle.com/code/farzadnekouei/cifar-10-image-classification-with-cnn : nguồn dataset cifar-10
 
 https://www.kaggle.com/code/gpreda/cnn-with-tensorflow-keras-for-fashion-mnist : nguồn dataset fashion-mnist
+
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia : nguồn dataset chest-xray-pneumonia
+
+https://www.kaggle.com/datasets/abdallahalidev/plantvillage-dataset : nguồn dataset plantvillage
