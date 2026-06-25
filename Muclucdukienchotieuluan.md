@@ -45,15 +45,17 @@
   3.2.1. Môi trường phần cứng và phần mềm (PyTorch, GPU Kaggle, Mixed Precision)  
   3.2.2. Các bộ dữ liệu thực nghiệm đa kích thước  
     3.2.2.1. Bộ dữ liệu ảnh cỡ nhỏ: CIFAR-10 và Fashion-MNIST (32x32)  
-    3.2.2.2. Bộ dữ liệu ảnh độ phân giải cao: PlantVillage (224x224)  
+    3.2.2.2. Bộ dữ liệu nông nghiệp: PlantVillage (224x224)  
+    3.2.2.3. Bộ dữ liệu y tế thực tế: Chest X-Ray (Pneumonia) (224x224)  
 3.3. Quy trình huấn luyện và các độ đo đánh giá  
   3.3.1. Chiến lược huấn luyện (SGD, Cosine Annealing learning rate)  
   3.3.2. Các độ đo đánh giá (Accuracy, Precision, Recall, F1-Score, Confusion Matrix)  
 3.4. Kết quả thực nghiệm và thảo luận  
   3.4.1. Kết quả thực nghiệm trên ảnh kích thước nhỏ (CIFAR-10 & Fashion-MNIST)  
-  3.4.2. Kết quả thực nghiệm trên ảnh kích thước lớn (PlantVillage)  
-  3.4.3. Phân tích tác động của kích thước không gian (Spatial Resolution) đến hiệu quả của Spatial Attention  
-  3.4.4. Trực quan hóa vùng chú ý bằng kỹ thuật Grad-CAM (So sánh SE vs CBAM)  
+  3.4.2. Kết quả thực nghiệm trên ảnh nông nghiệp (PlantVillage)  
+  3.4.3. Kết quả thực nghiệm trên ảnh y tế (Chest X-Ray)  
+  3.4.4. Phân tích tác động của kích thước không gian (Spatial Resolution) đến hiệu quả của Spatial Attention  
+  3.4.5. Trực quan hóa vùng chú ý bằng kỹ thuật Grad-CAM (So sánh SE vs CBAM)  
 
 ### CHƯƠNG 4: KẾT LUẬN VÀ KIẾN NGHỊ
 4.1. Những kết quả đạt được của đề tài  
