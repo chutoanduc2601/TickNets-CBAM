@@ -18,10 +18,6 @@
 ---
 
 ### CHƯƠNG 1: TỔNG QUAN ĐỀ TÀI
-* **1.1. Bối cảnh lĩnh vực phân loại hình ảnh và sự phát triển của học sâu (Deep Learning)**
-* **1.2. Thách thức về tài nguyên tính toán và sự cần thiết của mạng nơ-ron siêu nhẹ (Light-weight CNNs)**
-* **1.3. Các nghiên cứu liên quan về cơ chế chú ý (Attention Mechanisms) trong thị giác máy tính**
-* **1.4. Phát biểu bài toán, giới hạn nghiên cứu và giải pháp đề xuất cải tiến của tiểu luận**
 
 ---
 
