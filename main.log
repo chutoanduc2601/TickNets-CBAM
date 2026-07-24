@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  17 JUL 2026 14:13
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  24 JUL 2026 15:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1245,40 +1245,37 @@ Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;
 Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no  in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no  in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no  in font [lmroman10-regular]:mapping=tex-text;!
 [27]
 File: ./media/image17.jpeg Graphic file (type bmp)
 <./media/image17.jpeg>
 
-Overfull \hbox (65.05199pt too wide) in paragraph at lines 1262--1263
+Overfull \hbox (65.05199pt too wide) in paragraph at lines 1251--1252
 [][] 
  []
 
-[28]
+[28] [29]
 File: ./media/image34.png Graphic file (type bmp)
 <./media/image34.png>
- [29] [30]
+ [30] [31]
 File: ./media/image38.jpeg Graphic file (type bmp)
 <./media/image38.jpeg>
 
-Overfull \hbox (79.19319pt too wide) in paragraph at lines 1525--1526
+Overfull \hbox (79.19319pt too wide) in paragraph at lines 1515--1516
 [][] 
  []
 
 File: ./media/image39.jpeg Graphic file (type bmp)
 <./media/image39.jpeg>
 
-Overfull \hbox (22.06667pt too wide) in paragraph at lines 1528--1529
+Overfull \hbox (22.06667pt too wide) in paragraph at lines 1518--1519
 [][] 
  []
 
-[31] [32]
+[32]
 File: ./media/image40.png Graphic file (type bmp)
 <./media/image40.png>
 
-Overfull \hbox (55.05782pt too wide) in paragraph at lines 1601--1602
+Overfull \hbox (55.05782pt too wide) in paragraph at lines 1591--1592
 [][] 
  []
 
@@ -1290,7 +1287,7 @@ Overfull \vbox (10.53546pt too high) has occurred while \output is active []
 File: ./media/image41.png Graphic file (type bmp)
 <./media/image41.png>
 
-Overfull \hbox (40.37276pt too wide) in paragraph at lines 1605--1606
+Overfull \hbox (40.37276pt too wide) in paragraph at lines 1595--1596
 [][] 
  []
 
@@ -1307,7 +1304,7 @@ Missing character: There is no 𝟏 in font [lmroman10-regular]:mapping=tex-text
 File: ./media/image43.png Graphic file (type bmp)
 <./media/image43.png>
 
-Overfull \hbox (62.60356pt too wide) in paragraph at lines 1749--1750
+Overfull \hbox (62.60356pt too wide) in paragraph at lines 1739--1740
 [][] 
  []
 
@@ -1315,72 +1312,72 @@ Overfull \hbox (62.60356pt too wide) in paragraph at lines 1749--1750
 File: ./media/image44.jpeg Graphic file (type bmp)
 <./media/image44.jpeg>
 
-Overfull \hbox (81.29688pt too wide) in paragraph at lines 1760--1761
+Overfull \hbox (81.29688pt too wide) in paragraph at lines 1750--1751
 [][] 
  []
 
 [40]
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1792--1793
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 1782--1783
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1792--1793
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 1782--1783
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1796--1797
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 1786--1787
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1796--1797
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 1786--1787
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1800--1801
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 1790--1791
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1800--1801
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 1790--1791
 \TU/lmr/bx/n/10 Recall  
  []
 
 
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1835--1836
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 1825--1826
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1835--1836
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 1825--1826
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1839--1840
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 1829--1830
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1839--1840
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 1829--1830
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1843--1844
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 1833--1834
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1843--1844
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 1833--1834
 \TU/lmr/bx/n/10 Recall  
  []
 
 [41] [42]
-Underfull \hbox (badness 1270) in paragraph at lines 1960--1964
+Underfull \hbox (badness 1270) in paragraph at lines 1950--1954
 \TU/lmr/m/n/10 convolutional neural network architectures.” arXiv preprint arXi
 v:
  []
@@ -1399,15 +1396,11 @@ Missing character: There is no ụ in font ectt1000!
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  ) 
 Here is how much of TeX's memory you used:
  18888 strings out of 402986
- 341561 string characters out of 5452850
- 938550 words of memory out of 5000000
+ 341542 string characters out of 5452850
+ 938529 words of memory out of 5000000
  47362 multiletter control sequences out of 15000+600000
  631563 words of font info for 72 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191

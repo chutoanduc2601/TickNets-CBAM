@@ -317,7 +317,7 @@ CHƯƠNG 2: CƠ SỞ LÝ THUYẾT
     Mô-đun chú ý khối tích chập CBAM hoạt động tuần tự (CAM + SAM)
   \end{enumerate}
 \item
-  PHƯƠNG PHÁP NGHIÊN CỨU LÝ THUYẾT VÀ THỰC NGHIỆM
+  PHƯƠNG PHÁP NGHIÊN CỨU
 \end{enumerate}
 
 \begin{quote}
@@ -348,7 +348,7 @@ CHƯƠNG 3: BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI TIẾN PH
     \begin{enumerate}
     \def\labelenumiii{3.3.1.\arabic{enumiii}.}
     \item
-      Môi trường thực nghiệm (Môi trường Google Colab, GPU T4, TensorFlow và Keras)
+      Môi trường thực nghiệm (Nền tảng Kaggle, GPU T4, TensorFlow và Keras)
     \item
       Mô tả 4 bộ dữ liệu thực nghiệm
       \begin{enumerate}
@@ -1220,24 +1220,13 @@ tác vụ như phát hiện đối tượng, trong đó cả hai loại tính n�
 trọng để xác định chính xác đối tượng. {[}9{]}{[}10{]}{[}11{]}
 \end{quote}
 
-\subsection{2.3. PHƯƠNG PHÁP NGHIÊN CỨU LÝ THUYẾT VÀ THỰC NGHIỆM}\label{phux1b0ux1a1ng-phuxe1p-nghiuxean-cux1ee9u}
+\subsection{2.3. PHƯƠNG PHÁP NGHIÊN CỨU}\label{phuong-phap-nghien-cuu}
 
-\begin{itemize}
-\item
-  Phương pháp lý thuyết: Dựa trên các tài liệu về mạng CNN và cơ chế
-  Attention trong bài toán phân loại hình ảnh.
-\item
-  Phương pháp thực nghiệm: Xây dựng các mô hình áp dụng cơ chế Attention
-  và không áp dụng trên ngôn ngữ lập trình Python sử dụng các thư viện
-  như TensorFlow, Pytorch, Numpy, Scikit-learn, \ldots. Quá trình bao
-  gồm các bước:
-\end{itemize}
+Đề tài được triển khai dựa trên sự kết hợp giữa phương pháp nghiên cứu lý thuyết và phương pháp nghiên cứu thực nghiệm.
 
-\begin{quote}
-1. Thu thập dữ liệu và Tiền xử lý dữ liệu.  2. Xây dựng các mô hình. 
-3. Huấn luyện mô hình.  4. Đánh giá hiệu suất, so sánh các mô hình và
-đưa ra kết luận.
-\end{quote}
+\textbf{Về phương pháp lý thuyết,} nghiên cứu tiến hành khảo cứu hệ thống các công trình khoa học liên quan bao gồm bài báo gốc về kiến trúc TickNets, cơ chế chú ý CBAM (Woo et al., 2018) và cơ chế Squeeze-and-Excitation (Hu et al., 2018). Trên cơ sở đó, đề tài phân tích cấu trúc luồng đặc trưng trong khối FR-PDP, vai trò của các phép tích chập tối giản Depthwise và Pointwise, cũng như cơ chế hoạt động tuần tự của CBAM. Từ kết quả phân tích lý thuyết, nghiên cứu xây dựng các giả thuyết khoa học về mối quan hệ giữa vị trí chèn cơ chế chú ý và hiệu năng mô hình, đặc biệt là hiện tượng chồng chéo đặc trưng không gian khi đặt Spatial Attention Module cùng mức cục bộ với Depthwise Convolution bên trong khối FR-PDP.
+
+\textbf{Về phương pháp thực nghiệm,} nghiên cứu áp dụng phương pháp thiết kế thí nghiệm đối chứng với 3 mô hình (SE Baseline, CBAM-Local và CBAM-Hook) được huấn luyện trên cùng điều kiện để kiểm chứng các giả thuyết đã đặt ra. Bốn bộ dữ liệu được lựa chọn đại diện cho hai nhóm bài toán: nhóm chuẩn học thuật (Fashion-MNIST, CIFAR-10) và nhóm ứng dụng thực tiễn (PlantVillage, Chest-Xray-Pneumonia). Hiệu năng của các mô hình được đánh giá thông qua bộ độ đo chuẩn mực gồm Accuracy, Precision, Recall, F1-Score và ma trận nhầm lẫn (Confusion Matrix), kết hợp với trực quan hóa bản đồ nhiệt Grad-CAM để giải thích vùng chú ý của mô hình. Toàn bộ quá trình thực nghiệm được triển khai trên nền tảng Kaggle Notebooks sử dụng ngôn ngữ Python với framework TensorFlow/Keras. Chi tiết về môi trường, dữ liệu, cấu hình huấn luyện và kết quả thực nghiệm được trình bày đầy đủ tại Chương 3.
 
 \section{CHƯƠNG 3: BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI TIẾN PHÂN CẤP}\label{chux1b0ux1a1ng-3}
 
@@ -1345,15 +1334,16 @@ Quá trình xây dựng mô hình và huấn luyện bao gồm các giai đoạn
 \emph{Hình 3.3 Quá trình xây dựng và huấn luyện mô hình}
 \end{quote}
 
-\paragraph{3.3.1.1. Môi trường thực nghiệm (Môi trường Google Colab, GPU T4, TensorFlow và Keras)}\label{3-3-1-1-environment}
+\paragraph{3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU NVIDIA T4/P100, TensorFlow và Keras)}\label{3-3-1-1-environment}
 \begin{quote}
 Ngôn ngữ lập trình để thực hiện quá trình thực nghiệm là Python với các
 thư viện hỗ trợ như Keras, TensorFlow, Pytorch, Numpy,
 Scikit-learn\ldots{}
 
-Quá trình xây dựng và huấn luyện mô hình được thực hiện được thực hiện
-trên môi trường Google Collab với hệ điều hành Linux, dung lượng ổ đĩa
-là 78.2 GB ,17GB RAM hệ thống và 15GB GPU.
+Quá trình xây dựng và huấn luyện mô hình được thực hiện trên nền tảng điện
+toán đám mây Kaggle Notebooks chạy hệ điều hành Linux, với dung lượng ổ
+đĩa khả dụng khoảng 73.0 GB, 13GB--30GB RAM hệ thống và bộ tăng tốc card
+đồ họa GPU NVIDIA T4 (15GB VRAM) hoặc GPU P100 (16GB VRAM).
 \end{quote}
 
 \paragraph{3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:}\label{3-3-1-2-datasets}

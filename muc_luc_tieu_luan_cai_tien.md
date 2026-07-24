@@ -33,7 +33,7 @@
   * **2.2.2. Mô-đun chú ý theo kênh (Channel Attention Module - CAM) của CBAM**
   * **2.2.3. Mô-đun chú ý theo không gian (Spatial Attention Module - SAM) của CBAM**
   * **2.2.4. Mô-đun chú ý khối tích chập CBAM hoạt động tuần tự (CAM + SAM)**
-* **2.3. PHƯƠNG PHÁP NGHIÊN CỨU LÝ THUYẾT VÀ THỰC NGHIỆM**
+* **2.3. PHƯƠNG PHÁP NGHIÊN CỨU**
 
 ---
 
@@ -45,7 +45,7 @@
   * **3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)**
 * **3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:**
   * **3.3.1. Môi trường thực nghiệm và xây dựng mô hình:**
-    * *3.3.1.1. Môi trường thực nghiệm (Môi trường Google Colab, GPU T4, TensorFlow và Keras)*
+    * *3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU T4, TensorFlow và Keras)*
     * *3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:*
       * 3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10
       * 3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)
