@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  24 JUL 2026 15:47
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  25 JUL 2026 11:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1082,7 +1082,7 @@ File: ./media/image3.jpeg Graphic file (type bmp)
 File: ./media/image4.jpeg Graphic file (type bmp)
 <./media/image4.jpeg>
 
-Overfull \hbox (77.79785pt too wide) in paragraph at lines 682--683
+Overfull \hbox (77.79785pt too wide) in paragraph at lines 688--689
 [][] 
  []
 
@@ -1093,7 +1093,7 @@ Missing character: There is no α in font [lmroman10-regular]:mapping=tex-text;!
 File: ./media/image5.jpeg Graphic file (type bmp)
 <./media/image5.jpeg>
 
-Overfull \hbox (23.57983pt too wide) in paragraph at lines 758--759
+Overfull \hbox (23.57983pt too wide) in paragraph at lines 764--765
 [][] 
  []
 
@@ -1103,7 +1103,7 @@ File: ./media/image6.png Graphic file (type bmp)
 File: ./media/image7.jpeg Graphic file (type bmp)
 <./media/image7.jpeg>
 
-Overfull \hbox (8.4746pt too wide) in paragraph at lines 798--799
+Overfull \hbox (8.4746pt too wide) in paragraph at lines 804--805
 [][] 
  []
 
@@ -1111,7 +1111,7 @@ Overfull \hbox (8.4746pt too wide) in paragraph at lines 798--799
 File: ./media/image8.jpeg Graphic file (type bmp)
 <./media/image8.jpeg>
 
-Overfull \hbox (68.60313pt too wide) in paragraph at lines 825--826
+Overfull \hbox (68.60313pt too wide) in paragraph at lines 831--832
 [][] 
  []
 
@@ -1122,14 +1122,14 @@ File: ./media/image10.jpeg Graphic file (type bmp)
 File: ./media/image11.jpeg Graphic file (type bmp)
 <./media/image11.jpeg>
 
-Overfull \hbox (33.72362pt too wide) in paragraph at lines 904--905
+Overfull \hbox (33.72362pt too wide) in paragraph at lines 910--911
 [][] 
  []
 
 File: ./media/image12.jpeg Graphic file (type bmp)
 <./media/image12.jpeg>
 
-Overfull \hbox (95.08237pt too wide) in paragraph at lines 916--917
+Overfull \hbox (95.08237pt too wide) in paragraph at lines 922--923
 [][] 
  []
 
@@ -1139,27 +1139,27 @@ File: ./media/image13.jpeg Graphic file (type bmp)
  [20]
 Missing character: There is no 𝑥 in font [lmroman10-regular]:mapping=tex-text;!
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 956.
+(Font)              scaled to size 7.0pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 956.
+(Font)              scaled to size 5.0pt on input line 962.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 9
-56.
+62.
 (C:\Program Files\MiKTeX\tex/latex/lm\omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.00092pt on input line 956.
+(Font)              scaled to size 10.00092pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.00064pt on input line 956.
+(Font)              scaled to size 7.00064pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 956.
+(Font)              scaled to size 5.00046pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 956.
+(Font)              scaled to size 9.99893pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 956.
+(Font)              scaled to size 6.99925pt on input line 962.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 956.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 956
+(Font)              scaled to size 4.99947pt on input line 962.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 962
 .
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsa.fd
@@ -1168,7 +1168,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (C:\Program Files\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 956
+LaTeX Font Info:    Trying to load font information for U+msb on input line 962
 .
 
 (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
@@ -1205,7 +1205,7 @@ Missing character: There is no 𝑏 in font [lmroman10-regular]:mapping=tex-text
 File: ./media/image14.png Graphic file (type bmp)
 <./media/image14.png>
 
-Overfull \hbox (31.0948pt too wide) in paragraph at lines 1102--1103
+Overfull \hbox (31.0948pt too wide) in paragraph at lines 1108--1109
 [][] 
  []
 
@@ -1224,7 +1224,7 @@ Missing character: There is no σ in font [lmroman10-regular]:mapping=tex-text;!
 File: ./media/image15.jpeg Graphic file (type bmp)
 <./media/image15.jpeg>
 
-Overfull \hbox (114.21147pt too wide) in paragraph at lines 1153--1154
+Overfull \hbox (114.21147pt too wide) in paragraph at lines 1159--1160
 [][] 
  []
 
@@ -1235,7 +1235,7 @@ Missing character: There is no σ in font [lmroman10-regular]:mapping=tex-text;!
 File: ./media/image16.jpeg Graphic file (type bmp)
 <./media/image16.jpeg>
 
-Overfull \hbox (68.8752pt too wide) in paragraph at lines 1192--1193
+Overfull \hbox (68.8752pt too wide) in paragraph at lines 1198--1199
 [][] 
  []
 
@@ -1246,138 +1246,142 @@ Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;
 Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⊗ in font [lmroman10-regular]:mapping=tex-text;!
 [27]
-File: ./media/image17.jpeg Graphic file (type bmp)
-<./media/image17.jpeg>
-
-Overfull \hbox (65.05199pt too wide) in paragraph at lines 1251--1252
-[][] 
- []
-
-[28] [29]
+File: ./media/image_classification_overview.png Graphic file (type bmp)
+<./media/image_classification_overview.png>
+File: ./media/image_representation.png Graphic file (type bmp)
+<./media/image_representation.png>
+ [28] [29] [30]
+File: ./media/classification_challenges.png Graphic file (type bmp)
+<./media/classification_challenges.png>
+ [31]
+File: ./media/classification_applications.png Graphic file (type bmp)
+<./media/classification_applications.png>
+ [32] [33] [34] [35]
 File: ./media/image34.png Graphic file (type bmp)
 <./media/image34.png>
- [30] [31]
+ [36]
+ignored error: Infinite glue shrinkage found in box being split [37]
 File: ./media/image38.jpeg Graphic file (type bmp)
 <./media/image38.jpeg>
 
-Overfull \hbox (79.19319pt too wide) in paragraph at lines 1515--1516
+Overfull \hbox (79.19319pt too wide) in paragraph at lines 1607--1608
 [][] 
  []
 
 File: ./media/image39.jpeg Graphic file (type bmp)
 <./media/image39.jpeg>
 
-Overfull \hbox (22.06667pt too wide) in paragraph at lines 1518--1519
+Overfull \hbox (22.06667pt too wide) in paragraph at lines 1610--1611
 [][] 
  []
 
-[32]
+[38]
 File: ./media/image40.png Graphic file (type bmp)
 <./media/image40.png>
 
-Overfull \hbox (55.05782pt too wide) in paragraph at lines 1591--1592
+Overfull \hbox (55.05782pt too wide) in paragraph at lines 1683--1684
 [][] 
  []
 
-[33]
+[39]
 Overfull \vbox (10.53546pt too high) has occurred while \output is active []
 
 
-[34]
+[40]
 File: ./media/image41.png Graphic file (type bmp)
 <./media/image41.png>
 
-Overfull \hbox (40.37276pt too wide) in paragraph at lines 1595--1596
+Overfull \hbox (40.37276pt too wide) in paragraph at lines 1687--1688
 [][] 
  []
 
-[35]
+[41]
 Overfull \vbox (35.82957pt too high) has occurred while \output is active []
 
 
-[36] [37]
+[42] [43]
 File: ./media/image42.jpeg Graphic file (type bmp)
 <./media/image42.jpeg>
- [38]
+ [44]
 Missing character: There is no 𝟎 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝟏 in font [lmroman10-regular]:mapping=tex-text;!
 File: ./media/image43.png Graphic file (type bmp)
 <./media/image43.png>
 
-Overfull \hbox (62.60356pt too wide) in paragraph at lines 1739--1740
+Overfull \hbox (62.60356pt too wide) in paragraph at lines 1831--1832
 [][] 
  []
 
-[39]
+[45]
 File: ./media/image44.jpeg Graphic file (type bmp)
 <./media/image44.jpeg>
 
-Overfull \hbox (81.29688pt too wide) in paragraph at lines 1750--1751
+Overfull \hbox (81.29688pt too wide) in paragraph at lines 1842--1843
 [][] 
  []
 
-[40]
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1782--1783
+[46]
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 1874--1875
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1782--1783
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 1874--1875
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1786--1787
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 1878--1879
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1786--1787
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 1878--1879
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1790--1791
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 1882--1883
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1790--1791
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 1882--1883
 \TU/lmr/bx/n/10 Recall  
  []
 
 
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1825--1826
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 1917--1918
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1825--1826
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 1917--1918
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1829--1830
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 1921--1922
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1829--1830
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 1921--1922
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1833--1834
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 1925--1926
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1833--1834
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 1925--1926
 \TU/lmr/bx/n/10 Recall  
  []
 
-[41] [42]
-Underfull \hbox (badness 1270) in paragraph at lines 1950--1954
+[47] [48]
+Underfull \hbox (badness 1270) in paragraph at lines 2042--2046
 \TU/lmr/m/n/10 convolutional neural network architectures.” arXiv preprint arXi
 v:
  []
@@ -1388,22 +1392,26 @@ Missing character: There is no ấ in font ectt1000!
 Missing character: There is no ấ in font ectt1000!
 Missing character: There is no ạ in font ectt1000!
 Missing character: There is no ạ in font ectt1000!
-[43]
+[49]
 Missing character: There is no ụ in font ectt1000!
 Missing character: There is no ụ in font ectt1000!
-[44] (main.aux)
+[50] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 18888 strings out of 402986
- 341542 string characters out of 5452850
+ 18941 strings out of 402986
+ 343376 string characters out of 5452850
  938529 words of memory out of 5000000
- 47362 multiletter control sequences out of 15000+600000
- 631563 words of font info for 72 fonts, out of 8000000 for 9000
+ 47406 multiletter control sequences out of 15000+600000
+ 631587 words of font info for 75 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,9n,114p,1003b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (44 pages).
+Output written on main.pdf (50 pages).
