@@ -1348,71 +1348,234 @@ Chính từ bối cảnh trên, tiểu luận này đặt ra câu hỏi nghiên 
 
 \subsection{3.2. ĐỀ XUẤT MÔ HÌNH TICKNETS KẾT HỢP CƠ CHẾ CHÚ Ý PHÂN CẤP (HIERARCHICAL ATTENTION):}\label{3-2-proposed-model}
 
+Từ bối cảnh phân tích bài toán phân loại ảnh ở mục 3.1 và nền tảng lý thuyết về kiến trúc TickNets cùng cơ chế chú ý CBAM đã trình bày tại Chương 2, mục này đề xuất một kiến trúc cải tiến mang tên \textbf{TickNet-small CBAM-Hook}. Ý tưởng cốt lõi của đề xuất là thiết lập một \textbf{hệ thống chú ý phân cấp hai tầng} (hierarchical dual-level attention): giữ nguyên cơ chế chú ý kênh SE ở cấp độ cục bộ bên trong mỗi khối FR-PDP, đồng thời chèn mô-đun chú ý hỗn hợp CBAM ở cấp độ toàn cục tại các \textit{điểm nối chiến lược} (hooking points) giữa hai nhánh xương sống và trước lớp Global Average Pooling cuối mạng.
+
 \subsubsection{3.2.1. Thiết kế kiến trúc đề xuất TickNet-small CBAM-Hook}\label{3-2-1-arch-design}
 
-\begin{quote}
-Theo các nghiên cứu thì các phương pháp học sâu (DL) đã được chứng minh
-là có thể mang lại hiệu quả cao cho việc giải quyết về bài toán phân
-loại hình ảnh. Trong đó mô hình CNN là mô hình phổ biến nhất và có ảnh
-hưởng nhất.
+\paragraph{Động lực thiết kế.}
 
-Mặc dù CNN đã đạt được nhiều thành công trong các bài toán thị giác máy
-tính, nhưng nó vẫn tồn tại một số hạn chế như thiếu khả năng tập trung
-vào các vùng quan trọng vì các lớp convolution xử lý toàn bộ ảnh một
-cách đồng đều dẫn đến việc mô hình có thể bỏ qua những vùng quan trọng
-trong ảnh. Vì vậy, cơ chế chú ý (Attention Mechanism) được nghiên cứu và
-đưa vào mô hình nhằm khắc phục những vấn đề mà mạng CNN gặp phải. Có
-nhiều cơ chế chú ý có thể được áp dụng vào mô hình CNN, nhưng trong bài
-nghiên cứu này sẽ sử dụng cơ chế chú ý CBAM. CBAM (Convolutional Block
-Attention Module) thường được thêm vào sau các lớp convolution trong mô
-hình CNN để tăng cường khả năng chú ý của mạng đối với các đặc trưng
-quan trọng. Cụ thể, CBAM thường được chèn vào sau mỗi lớp convolutional
-block hoặc sau các lớp cụ thể nơi cần cải thiện khả năng chú ý. Các vị
-trí phổ biến để thêm CBAM:
-\end{quote}
+Như đã phân tích tại mục 1.2 và 1.4, kiến trúc TickNet-small nguyên bản sử dụng cấu trúc xương sống co giãn kênh hình dấu tích (Tick-shape Backbone) với các khối FR-PDP, trong đó mỗi khối tích hợp sẵn cơ chế chú ý kênh Squeeze-and-Excitation (SE) để tái hiệu chỉnh trọng số các kênh đặc trưng ở mức cục bộ. Tuy nhiên, mô hình gốc \textbf{hoàn toàn thiếu vắng cơ chế lọc đặc trưng theo không gian} --- tức khả năng xác định \textit{vùng nào} trên bản đồ đặc trưng chứa thông tin quan trọng nhất cho việc phân loại. Đây là một hạn chế đáng kể, đặc biệt khi xử lý các bộ dữ liệu thực tế có nền phức tạp như ảnh X-quang phổi (Chest-Xray-Pneumonia) hay ảnh bệnh lá cây (PlantVillage), nơi vùng bệnh lý thường chỉ chiếm một phần nhỏ của tổng diện tích ảnh và dễ bị lẫn trong nền.
+
+Câu hỏi đặt ra là: \textit{Nên chèn cơ chế chú ý không gian CBAM vào vị trí nào trong kiến trúc TickNets để đạt hiệu quả tối ưu?} Nghiên cứu này xem xét và so sánh hai chiến lược chèn CBAM khác nhau:
 
 \begin{itemize}
-\item
-  \textbf{Sau Các Lớp Convolution}: Thêm CBAM ngay sau mỗi lớp
-  convolution để mạng học cách tập trung vào các kênh và vùng không gian
-  quan trọng ngay sau khi các đặc trưng được trích xuất.
-\item
-  \textbf{Sau Mỗi Convolutional Block:} Thêm CBAM sau mỗi block của các
-  lớp convolution (thường là một nhóm các lớp convolution, BatchNorm, và
-  ReLU) để tổng hợp các đặc trưng ở mức cao hơn và cải thiện chú ý.
-\item
-  \textbf{Trước Các Lớp Kết Nối Đầy Đủ (Fully Connected Layers):} Thêm
-  CBAM trước khi dữ liệu được đưa vào các lớp fully connected để tối ưu
-  hóa các đặc trưng quan trọng trước khi thực hiện phân loại cuối cùng.
+\item \textbf{Chiến lược chèn cục bộ (CBAM-Local):} Thay thế trực tiếp mô-đun SE bên trong mỗi khối FR-PDP bằng mô-đun CBAM. Đây là cách tiếp cận trực quan nhất, tương tự như cách CBAM được áp dụng trong các mạng CNN truyền thống (ví dụ: chèn sau mỗi convolutional block trong ResNet). Tuy nhiên, chiến lược này tiềm ẩn \textbf{xung đột kiến trúc} nghiêm trọng khi áp dụng vào các mạng siêu nhẹ sử dụng phép tích chập tách biệt chiều sâu, như sẽ được phân tích chi tiết tại mục 3.2.3.
+
+\item \textbf{Chiến lược chèn phân cấp tại điểm nối (CBAM-Hook --- đề xuất cải tiến):} Giữ nguyên mô-đun SE cục bộ bên trong từng khối FR-PDP, đồng thời chèn CBAM ở \textit{bên ngoài} các khối tại những vị trí chiến lược dọc theo kiến trúc mạng. Chiến lược này tạo ra một hệ thống chú ý phân cấp hai tầng, trong đó mỗi tầng đảm nhận một vai trò khác biệt và bổ sung cho nhau.
 \end{itemize}
 
-\emph{Hình 3.2 Mô hình CNN kết hợp CBAM}
+\paragraph{Nguyên lý thiết kế kiến trúc CBAM-Hook.}
 
-\begin{quote}
-Input
+Kiến trúc TickNet-small CBAM-Hook được xây dựng dựa trên ba nguyên lý thiết kế cốt lõi:
 
-Conv
+\begin{enumerate}
+\item \textbf{Nguyên lý phân tách chức năng (Separation of Concerns):} Cơ chế chú ý kênh SE ở mức cục bộ (nội khối) chịu trách nhiệm \textit{lọc kênh nào quan trọng} trong phạm vi một khối FR-PDP đơn lẻ. Cơ chế chú ý hỗn hợp CBAM ở mức toàn cục (ngoại khối) chịu trách nhiệm \textit{lọc vùng không gian nào quan trọng} trên toàn bộ bản đồ đặc trưng đã được tích lũy qua nhiều khối xử lý.
 
-CBAM
+\item \textbf{Nguyên lý tránh chồng chéo đặc trưng (Feature Redundancy Avoidance):} Mô-đun SAM của CBAM sử dụng phép gộp toàn cục theo kênh (channel-wise pooling) để tạo bản đồ chú ý không gian 2D. Khi đặt SAM cùng mức cục bộ với phép tích chập chiều sâu (Depthwise Convolution) bên trong khối FR-PDP, hai phép toán này cùng hoạt động trên \textbf{cùng miền không gian cục bộ} với vùng tiếp nhận (receptive field) tương đồng, dẫn đến hiện tượng \textit{dư thừa thông tin không gian} (spatial information redundancy). Chi tiết phân tích toán học được trình bày tại mục 3.2.3.
 
-Pooling
+\item \textbf{Nguyên lý chèn tại điểm nối chuyển pha (Phase Transition Hooking):} Kiến trúc Tick-shape Backbone của TickNets bao gồm hai pha rõ rệt: pha mở rộng kênh (expanding phase) và pha thu hẹp kênh (contracting phase). Điểm chuyển tiếp giữa hai pha chính là nơi đặc trưng đạt mức trừu tượng cao nhất với số kênh lớn nhất. Đây là vị trí lý tưởng để CBAM thực hiện việc \textit{tinh lọc toàn cục} --- chọn lọc cả kênh lẫn vùng không gian quan trọng nhất trước khi đặc trưng bước vào pha nén kênh.
+\end{enumerate}
 
-Flatten
+\paragraph{Kiến trúc chi tiết TickNet-small CBAM-Hook.}
 
-FC
+Dựa trên ba nguyên lý trên, kiến trúc TickNet-small CBAM-Hook được thiết kế với ba điểm chèn CBAM chiến lược (hooking points), minh họa trong Hình \ref{fig:ticknet-cbam-hook-arch}:
 
-Output
-\end{quote}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{./media/ticknet_cbam_hook_architecture.png}
+\caption{Kiến trúc tổng thể mô hình đề xuất TickNet-small CBAM-Hook: các mô-đun CBAM được chèn tại ba điểm nối chiến lược (hooking points) dọc theo kiến trúc xương sống hình dấu tích}
+\label{fig:ticknet-cbam-hook-arch}
+\end{figure}
 
+Cụ thể, ba vị trí chèn CBAM được xác định như sau:
+
+\begin{itemize}
+\item \textbf{Hooking Point 1 --- Điểm nối chuyển pha (giữa Expanding và Contracting Backbone):} Đây là vị trí mà số kênh đặc trưng đạt giá trị cực đại trong kiến trúc Tick-shape. Tại đây, đặc trưng đã đạt mức trừu tượng cao nhất sau khi đi qua toàn bộ pha mở rộng. CBAM tại vị trí này thực hiện hai chức năng quan trọng: (i) \textit{tái hiệu chỉnh kênh} thông qua Channel Attention Module (CAM) để chọn lọc những kênh đặc trưng giàu thông tin nhất trước khi bước vào pha nén, và (ii) \textit{lọc không gian} thông qua Spatial Attention Module (SAM) để loại bỏ nhiễu nền và tập trung vào vùng đối tượng chính.
+
+\item \textbf{Hooking Point 2 --- Điểm nối cuối pha thu hẹp:} Sau khi đặc trưng đi qua toàn bộ pha thu hẹp kênh, số kênh giảm về mức nhỏ nhất. CBAM tại vị trí này đóng vai trò ``cổng kiểm soát cuối cùng'' (final gate), tinh chỉnh lại cả kênh lẫn không gian của bản đồ đặc trưng đã được nén trước khi truyền tới lớp phân loại.
+
+\item \textbf{Hooking Point 3 --- Trước Global Average Pooling (GAP):} Đây là vị trí cuối cùng trước khi bản đồ đặc trưng 3D ($H \times W \times C$) bị nén thành vector 1D ($1 \times 1 \times C$) bởi phép GAP. CBAM tại đây thực hiện lần lọc không gian cuối cùng, đảm bảo rằng phép GAP chỉ tính trung bình trên các vùng không gian thực sự chứa đối tượng, không bị pha loãng bởi các vùng nền không liên quan.
+\end{itemize}
+
+Bảng \ref{tab:architecture-comparison} tóm tắt sự khác biệt kiến trúc giữa ba mô hình thực nghiệm.
+
+\begin{table}[htbp]
+\centering
+\caption{So sánh kiến trúc ba mô hình thực nghiệm}
+\label{tab:architecture-comparison}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Thành phần kiến trúc} & \textbf{SE Baseline} & \textbf{CBAM-Local} & \textbf{CBAM-Hook} \\
+\hline
+Attention nội khối FR-PDP & SE & CBAM & SE (giữ nguyên) \\
+\hline
+Attention tại Hooking Point 1 & Không & Không & CBAM \\
+\hline
+Attention tại Hooking Point 2 & Không & Không & CBAM \\
+\hline
+Attention trước GAP & Không & Không & CBAM \\
+\hline
+Lọc kênh cục bộ & Có (SE) & Có (CAM) & Có (SE) \\
+\hline
+Lọc không gian cục bộ & Không & Có (SAM) & Không \\
+\hline
+Lọc không gian toàn cục & Không & Không & Có (SAM) \\
+\hline
+\end{tabular}
+\end{table}
+
+%%% ===== 3.2.2 =====
 \subsubsection{3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)}\label{3-2-2-hierarchical-attention}
-\begin{quote}
-\emph{[Nội dung phần này đang được cập nhật/viết tiếp...]}
-\end{quote}
 
+\paragraph{Khái niệm chú ý phân cấp.}
+
+Thuật ngữ ``chú ý phân cấp'' (hierarchical attention) trong nghiên cứu này đề cập đến việc tổ chức các cơ chế chú ý theo \textbf{nhiều cấp độ trừu tượng} dọc theo chiều sâu của mạng, trong đó mỗi cấp độ đảm nhận một chức năng lọc đặc trưng khác biệt. Cụ thể, hệ thống phân cấp gồm hai tầng:
+
+\begin{itemize}
+\item \textbf{Tầng 1 --- Chú ý cục bộ nội khối (Intra-block Local Attention):} Cơ chế SE hoạt động \textit{bên trong} mỗi khối FR-PDP, thực hiện việc tái hiệu chỉnh trọng số kênh đặc trưng ở phạm vi cục bộ. SE nhận bản đồ đặc trưng đầu ra của phép tích chập trong khối, nén thông tin không gian qua Global Average Pooling thành vector $1 \times 1 \times C$, sau đó học hàm kích thích (excitation function) qua hai lớp fully connected để sinh ra vector trọng số kênh. Trọng số này được nhân ngược lại với bản đồ đặc trưng ban đầu, giúp khuếch đại các kênh chứa thông tin quan trọng và giảm thiểu các kênh nhiễu.
+
+\item \textbf{Tầng 2 --- Chú ý toàn cục ngoại khối (Inter-block Global Attention):} Cơ chế CBAM hoạt động \textit{bên ngoài} các khối FR-PDP, tại các điểm nối chiến lược (hooking points). Khác với SE chỉ lọc theo kênh, CBAM thực hiện lọc tuần tự theo cả \textit{kênh} (qua CAM) và \textit{không gian} (qua SAM). Tại mỗi hooking point, CBAM nhận bản đồ đặc trưng đã được tích lũy và tinh lọc qua nhiều khối FR-PDP liên tiếp, từ đó thực hiện việc lọc ở \textbf{mức trừu tượng cao hơn} so với SE cục bộ.
+\end{itemize}
+
+\paragraph{Tại sao giữ nguyên SE nội khối thay vì thay thế bằng CBAM?}
+
+Quyết định giữ nguyên SE bên trong khối FR-PDP thay vì thay thế bằng CBAM dựa trên ba luận cứ khoa học sau:
+
+\textbf{Luận cứ 1 --- Tương thích kiến trúc với phép tích chập tách biệt:} Khối FR-PDP sử dụng chuỗi phép tính Pointwise Conv $\rightarrow$ Depthwise Conv $\rightarrow$ Pointwise Conv. Phép Depthwise Convolution (DWConv) xử lý mỗi kênh đặc trưng một cách \textit{độc lập} trên miền không gian cục bộ với kernel $k \times k$. Cơ chế SE chỉ hoạt động trên chiều kênh (channel-only) nên \textbf{hoàn toàn bổ sung} cho DWConv mà không có sự chồng chéo chức năng. Ngược lại, nếu thay SE bằng CBAM, thành phần SAM của CBAM sẽ cũng xử lý trên miền không gian cục bộ, tạo ra sự \textit{dư thừa chức năng} (functional redundancy) với DWConv (phân tích chi tiết tại mục 3.2.3).
+
+\textbf{Luận cứ 2 --- Hiệu quả tham số:} Mô-đun SE cực kỳ nhẹ, chỉ bổ sung một lượng rất nhỏ tham số (hai lớp FC với tỉ lệ nén $r$). Trong khi đó, CBAM bổ sung thêm cả lớp convolution $7 \times 7$ cho SAM. Trong một kiến trúc siêu nhẹ như TickNets --- nơi tổng số tham số là yếu tố thiết kế quan trọng hàng đầu --- việc giữ SE trong mỗi khối giúp duy trì tính tối giản của mạng.
+
+\textbf{Luận cứ 3 --- Phân chia tối ưu vai trò lọc đặc trưng:} Trong hệ thống phân cấp đề xuất, SE ở tầng cục bộ đóng vai trò ``bộ lọc kênh nhanh'' (fast channel filter) giúp mỗi khối FR-PDP tập trung vào các kênh đặc trưng quan trọng ngay trong quá trình xử lý nội bộ. CBAM ở tầng toàn cục đóng vai trò ``bộ lọc tổng hợp'' (aggregate filter) --- vừa tinh chỉnh kênh, vừa lọc không gian --- trên bản đồ đặc trưng đã trải qua nhiều bước xử lý, do đó mang tính tổng quát và có ý nghĩa ngữ nghĩa cao hơn.
+
+\paragraph{Luồng xử lý đặc trưng qua kiến trúc phân cấp.}
+
+Hình \ref{fig:three-model-comparison} minh họa sự khác biệt giữa ba chiến lược chèn cơ chế chú ý. Luồng xử lý đặc trưng trong kiến trúc CBAM-Hook đề xuất diễn ra như sau:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{./media/hierarchical_attention_comparison.png}
+\caption{So sánh ba chiến lược tích hợp cơ chế chú ý: (a) SE Baseline --- chỉ có SE nội khối, (b) CBAM-Local --- thay SE bằng CBAM trong khối, gây xung đột đặc trưng, (c) CBAM-Hook --- giữ SE nội khối, chèn CBAM phân cấp tại các điểm nối}
+\label{fig:three-model-comparison}
+\end{figure}
+
+\textbf{Bước 1.} Ảnh đầu vào $\mathbf{X}_0 \in \mathbb{R}^{H \times W \times 3}$ đi qua lớp tích chập khởi tạo (stem convolution) để tạo bản đồ đặc trưng ban đầu.
+
+\textbf{Bước 2.} Đặc trưng lần lượt đi qua các khối FR-PDP trong pha mở rộng kênh (Expanding Backbone). Trong mỗi khối, phép tính tuần tự PW $\rightarrow$ DW $\rightarrow$ PW được thực hiện kèm cơ chế SE nội khối và kết nối tắt toàn phần (full-residual skip connection). Gọi đầu ra sau khối thứ $i$ là $\mathbf{F}_i$:
+\begin{equation}
+\mathbf{F}_i = \text{FR-PDP}_i(\mathbf{F}_{i-1}) = \mathbf{F}_{i-1} + \text{SE}\big(\text{PW}_2(\text{DW}(\text{PW}_1(\mathbf{F}_{i-1})))\big)
+\end{equation}
+
+\textbf{Bước 3.} Tại Hooking Point 1 (sau khối cuối cùng của pha mở rộng), CBAM toàn cục được áp dụng:
+\begin{equation}
+\mathbf{F}'_{\text{hook1}} = \text{CBAM}(\mathbf{F}_N) = M_s\big(M_c(\mathbf{F}_N) \otimes \mathbf{F}_N\big) \otimes \big(M_c(\mathbf{F}_N) \otimes \mathbf{F}_N\big)
+\end{equation}
+trong đó $N$ là số khối của pha mở rộng, $M_c$ là bản đồ chú ý kênh, $M_s$ là bản đồ chú ý không gian, $\otimes$ là phép nhân theo phần tử.
+
+\textbf{Bước 4.} Đặc trưng $\mathbf{F}'_{\text{hook1}}$ tiếp tục đi qua các khối FR-PDP trong pha thu hẹp kênh (Contracting Backbone), trải qua lọc SE cục bộ tương tự.
+
+\textbf{Bước 5.} Tại Hooking Point 2 (sau khối cuối cùng của pha thu hẹp), CBAM toàn cục thứ hai được áp dụng tương tự.
+
+\textbf{Bước 6.} Tại Hooking Point 3 (trước GAP), CBAM cuối cùng thực hiện lần lọc không gian quyết định, đảm bảo phép Global Average Pooling chỉ tổng hợp thông tin từ các vùng không gian mang tính phân biệt cao.
+
+\textbf{Bước 7.} Lớp Global Average Pooling nén bản đồ đặc trưng 3D thành vector 1D, sau đó lớp Dense kết hợp hàm kích hoạt Softmax đưa ra phân phối xác suất trên các lớp đầu ra.
+
+\paragraph{Ưu thế kỳ vọng của kiến trúc phân cấp.}
+
+So với chiến lược SE Baseline (thiếu lọc không gian) và CBAM-Local (chồng chéo đặc trưng), kiến trúc CBAM-Hook đề xuất kỳ vọng mang lại các ưu thế sau:
+
+\begin{itemize}
+\item \textbf{Khả năng loại bỏ nhiễu nền vượt trội:} Nhờ ba lớp lọc không gian CBAM ở các điểm nối, mô hình có thể dần dần loại bỏ vùng nền không liên quan qua từng pha xử lý, đặc biệt hiệu quả trên các bộ dữ liệu thực tế có nền phức tạp.
+
+\item \textbf{Khắc phục suy giảm hiệu năng trên ảnh nhỏ:} Trên các ảnh kích thước nhỏ (ví dụ: $28 \times 28$ của Fashion-MNIST), chiến lược CBAM-Local làm bản đồ đặc trưng nhanh chóng mất thông tin không gian do sự chồng chéo giữa DWConv và SAM. Chiến lược CBAM-Hook tránh được vấn đề này bằng cách chỉ áp dụng lọc không gian ở các điểm nối, nơi bản đồ đặc trưng đã đủ phong phú về ngữ nghĩa.
+
+\item \textbf{Cân bằng giữa hiệu năng và chi phí tính toán:} Thay vì chèn CBAM vào mỗi khối (gây tăng tham số tuyến tính theo số khối), chỉ chèn tại ba điểm nối chiến lược giúp kiểm soát tổng lượng tham số bổ sung ở mức tối thiểu.
+\end{itemize}
+
+Các giả thuyết trên sẽ được kiểm chứng thông qua thực nghiệm đối chứng tại mục 3.3.
+
+%%% ===== 3.2.3 =====
 \subsubsection{3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)}\label{3-2-3-math-analysis}
-\begin{quote}
-\emph{[Nội dung phần này đang được cập nhật/viết tiếp...]}
-\end{quote}
+
+Mục này trình bày phân tích toán học chặt chẽ để giải thích \textit{tại sao} chiến lược chèn CBAM cục bộ bên trong khối FR-PDP (CBAM-Local) có thể dẫn đến suy giảm hiệu năng, từ đó củng cố cơ sở khoa học cho chiến lược chèn phân cấp CBAM-Hook.
+
+\paragraph{Phân tích vùng tiếp nhận (Receptive Field Analysis).}
+
+Xét bản đồ đặc trưng trung gian $\mathbf{F} \in \mathbb{R}^{H \times W \times C}$ tại vị trí ngay sau phép Depthwise Convolution bên trong một khối FR-PDP. Tại mỗi vị trí không gian $(i, j)$, giá trị đặc trưng trên kênh thứ $c$ được tính bởi:
+
+\begin{equation}
+\mathbf{F}(i, j, c) = \sum_{m=-\lfloor k/2 \rfloor}^{\lfloor k/2 \rfloor} \sum_{n=-\lfloor k/2 \rfloor}^{\lfloor k/2 \rfloor} \mathbf{W}_c(m, n) \cdot \mathbf{X}(i+m, j+n, c) + b_c
+\label{eq:dwconv}
+\end{equation}
+
+trong đó $\mathbf{W}_c \in \mathbb{R}^{k \times k}$ là kernel riêng cho kênh $c$, $k$ là kích thước kernel (thường $k = 3$ trong TickNets), và $\mathbf{X}$ là đầu vào. Điểm mấu chốt là: phép DWConv đã mã hóa thông tin không gian cục bộ trong vùng tiếp nhận $k \times k$ xung quanh mỗi vị trí $(i, j)$ vào giá trị $\mathbf{F}(i, j, c)$.
+
+Bây giờ, xét hoạt động của SAM khi được đặt ngay sau DWConv trong khối FR-PDP. SAM tạo bản đồ chú ý không gian qua ba bước:
+
+\textbf{Bước 1 --- Gộp kênh (Channel-wise pooling):} SAM áp dụng đồng thời Average Pooling và Max Pooling \textit{dọc theo chiều kênh} tại mỗi vị trí không gian:
+\begin{equation}
+\mathbf{F}_{\text{avg}}^s(i,j) = \frac{1}{C}\sum_{c=1}^{C} \mathbf{F}(i,j,c), \quad
+\mathbf{F}_{\text{max}}^s(i,j) = \max_{c \in \{1,\ldots,C\}} \mathbf{F}(i,j,c)
+\label{eq:sam-pool}
+\end{equation}
+
+\textbf{Bước 2 --- Tích chập $7 \times 7$:} Hai bản đồ $\mathbf{F}_{\text{avg}}^s$ và $\mathbf{F}_{\text{max}}^s$ được nối (concatenate) và đưa qua lớp tích chập với kernel $7 \times 7$:
+\begin{equation}
+M_s(i,j) = \sigma\Bigg(\sum_{m=-3}^{3}\sum_{n=-3}^{3} \mathbf{W}^s(m,n) \cdot [\mathbf{F}_{\text{avg}}^s(i+m,j+n);\; \mathbf{F}_{\text{max}}^s(i+m,j+n)] + b^s\Bigg)
+\label{eq:sam-conv}
+\end{equation}
+trong đó $\sigma$ là hàm sigmoid, $\mathbf{W}^s \in \mathbb{R}^{7 \times 7 \times 2}$ là kernel của SAM.
+
+\paragraph{Hiện tượng chồng chéo vùng tiếp nhận.}
+
+Thay phương trình (\ref{eq:dwconv}) vào (\ref{eq:sam-pool}), ta thấy rằng giá trị $\mathbf{F}_{\text{avg}}^s(i,j)$ thực chất là trung bình có trọng số của các giá trị pixel trong vùng $k \times k$ quanh $(i,j)$ trên \textit{tất cả} $C$ kênh:
+
+\begin{equation}
+\mathbf{F}_{\text{avg}}^s(i,j) = \frac{1}{C}\sum_{c=1}^{C}\Bigg[\sum_{m,n} \mathbf{W}_c(m,n) \cdot \mathbf{X}(i+m,j+n,c) + b_c\Bigg]
+\label{eq:overlap}
+\end{equation}
+
+Sau đó, phép tích chập $7 \times 7$ của SAM (phương trình \ref{eq:sam-conv}) lại tổng hợp thông tin từ vùng $7 \times 7$ xung quanh $(i,j)$ trên bản đồ $\mathbf{F}_{\text{avg}}^s$. Do đó, \textbf{vùng tiếp nhận hiệu dụng} (effective receptive field) của SAM khi đặt sau DWConv là:
+
+\begin{equation}
+\text{ERF}_{\text{SAM}} = (k - 1) + (7 - 1) + 1 = k + 5
+\label{eq:erf}
+\end{equation}
+
+Với $k = 3$ (kernel DWConv điển hình trong TickNets), $\text{ERF}_{\text{SAM}} = 8$ pixel. Điều này có nghĩa là SAM cục bộ đang cố gắng học bản đồ chú ý không gian dựa trên thông tin trong vùng tiếp nhận chỉ $8 \times 8$ pixel --- thực chất đây vẫn là thông tin \textbf{cục bộ}, không mang tính toàn cục.
+
+\paragraph{Phân tích dư thừa thông tin trên ảnh kích thước nhỏ.}
+
+Vấn đề trở nên nghiêm trọng hơn trên các ảnh có kích thước nhỏ. Xét tập dữ liệu Fashion-MNIST với ảnh gốc $28 \times 28$ pixel. Sau một vài khối FR-PDP với stride $> 1$ hoặc pooling, kích thước bản đồ đặc trưng giảm nhanh chóng. Giả sử tại khối FR-PDP thứ $l$, bản đồ đặc trưng có kích thước $H_l \times W_l$. Khi $H_l$ hoặc $W_l$ giảm xuống gần bằng hoặc nhỏ hơn $\text{ERF}_{\text{SAM}}$, ta có:
+
+\begin{equation}
+\text{Tỉ lệ phủ} = \frac{\text{ERF}_{\text{SAM}}^2}{H_l \times W_l} \rightarrow 1 \quad \text{khi } H_l, W_l \rightarrow k + 5
+\label{eq:coverage}
+\end{equation}
+
+Khi tỉ lệ phủ tiến gần 1, bản đồ chú ý không gian $M_s$ trở nên \textbf{gần như đồng nhất} trên toàn bộ bản đồ đặc trưng --- tức SAM mất khả năng phân biệt vùng không gian nào quan trọng hơn vùng nào. Trong trường hợp này, SAM không những không cung cấp thông tin bổ sung mà còn đưa thêm \textit{nhiễu gradient} vào quá trình huấn luyện do phải tối ưu các tham số $\mathbf{W}^s$ trên tín hiệu gần đồng nhất.
+
+\paragraph{Tại sao CBAM-Hook giải quyết được vấn đề?}
+
+Trong kiến trúc CBAM-Hook, mô-đun SAM không được đặt bên trong từng khối FR-PDP mà được đặt tại các hooking points --- nơi bản đồ đặc trưng đã trải qua nhiều khối xử lý liên tiếp. Tại các vị trí này, mỗi pixel trên bản đồ đặc trưng đã tích lũy thông tin từ một vùng tiếp nhận \textit{lớn hơn nhiều} trên ảnh gốc nhờ hiệu ứng chồng tầng (cascading effect) của nhiều lớp tích chập:
+
+\begin{equation}
+\text{ERF}_{\text{tích lũy}}^{(L)} = 1 + \sum_{l=1}^{L} (k_l - 1) \cdot \prod_{j=l+1}^{L} s_j
+\label{eq:cumulative-erf}
+\end{equation}
+
+trong đó $L$ là số lớp tích chập đã đi qua, $k_l$ là kích thước kernel tại lớp $l$, $s_j$ là stride tại lớp $j$. Với $L$ đủ lớn (tại hooking points), $\text{ERF}_{\text{tích lũy}}$ có thể bao phủ phần lớn hoặc toàn bộ ảnh đầu vào. Khi đó, phép gộp kênh của SAM (phương trình \ref{eq:sam-pool}) thực hiện trên bản đồ đặc trưng mà mỗi vị trí đã chứa thông tin \textbf{ngữ nghĩa toàn cục}, giúp SAM thực sự có khả năng phân biệt ``đâu là vùng đối tượng'' và ``đâu là vùng nền'' một cách có ý nghĩa.
+
+\paragraph{Tóm tắt luận điểm toán học.}
+
+Phân tích trên cho thấy hai kết luận quan trọng:
+
+\begin{enumerate}
+\item \textbf{CBAM-Local gây dư thừa:} Khi SAM được đặt ngay sau DWConv bên trong khối FR-PDP, vùng tiếp nhận hiệu dụng của SAM bị giới hạn ở mức cục bộ ($k + 5$ pixel), chồng chéo chức năng với DWConv. Trên ảnh nhỏ, bản đồ chú ý không gian trở nên đồng nhất và vô nghĩa, gây suy giảm hiệu năng.
+
+\item \textbf{CBAM-Hook tối ưu:} Khi SAM được đặt tại các hooking points sau nhiều khối FR-PDP, vùng tiếp nhận tích lũy đủ lớn để SAM hoạt động trên thông tin ngữ nghĩa toàn cục. Đồng thời, việc giữ nguyên SE nội khối đảm bảo lọc kênh cục bộ vẫn hoạt động hiệu quả mà không có xung đột chức năng.
+\end{enumerate}
+
+Các kết luận lý thuyết này sẽ được kiểm chứng bằng thực nghiệm đối chứng trên bốn bộ dữ liệu ở mục 3.3, đặc biệt qua phân tích hiện tượng suy giảm hiệu năng cục bộ (mục 3.3.2.4) và trực quan hóa Grad-CAM (mục 3.3.2.5).
 
 \subsection{3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:}\label{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}
 
