@@ -96,54 +96,79 @@
 \newlabel{3-2-proposed-model}{{}{35}{3.2. ĐỀ XUẤT MÔ HÌNH TICKNETS KẾT HỢP CƠ CHẾ CHÚ Ý PHÂN CẤP (HIERARCHICAL ATTENTION):}{section*.45}{}}
 \@writefile{toc}{\contentsline {subsubsection}{3.2.1. Thiết kế kiến trúc đề xuất TickNet-small CBAM-Hook}{35}{section*.46}\protected@file@percent }
 \newlabel{3-2-1-arch-design}{{}{35}{3.2.1. Thiết kế kiến trúc đề xuất TickNet-small CBAM-Hook}{section*.46}{}}
-\@writefile{toc}{\contentsline {subsubsection}{3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)}{36}{section*.47}\protected@file@percent }
-\newlabel{3-2-2-hierarchical-attention}{{}{36}{3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)}{section*.47}{}}
-\@writefile{toc}{\contentsline {subsubsection}{3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)}{36}{section*.48}\protected@file@percent }
-\newlabel{3-2-3-math-analysis}{{}{36}{3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)}{section*.48}{}}
-\@writefile{toc}{\contentsline {subsection}{3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:}{36}{section*.49}\protected@file@percent }
-\newlabel{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}{{}{36}{3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:}{section*.49}{}}
-\@writefile{toc}{\contentsline {subsubsection}{3.3.1. Môi trường thực nghiệm và xây dựng mô hình:}{36}{section*.50}\protected@file@percent }
-\newlabel{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}{{}{36}{3.3.1. Môi trường thực nghiệm và xây dựng mô hình:}{section*.50}{}}
-\newlabel{3-3-1-1-environment}{{}{36}{3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU NVIDIA T4/P100, TensorFlow và Keras)}{section*.51}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU NVIDIA T4/P100, TensorFlow và Keras)}{36}{section*.51}\protected@file@percent }
-\newlabel{3-3-1-2-datasets}{{}{36}{3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:}{section*.52}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:}{36}{section*.52}\protected@file@percent }
-\newlabel{3-3-1-2-1-standard}{{}{36}{3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10}{section*.53}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10}{36}{section*.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Động lực thiết kế.}{35}{section*.47}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Nguyên lý thiết kế kiến trúc CBAM-Hook.}{36}{section*.48}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Kiến trúc chi tiết TickNet-small CBAM-Hook.}{36}{section*.49}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Kiến trúc tổng thể mô hình đề xuất TickNet-small CBAM-Hook: các mô-đun CBAM được chèn tại ba điểm nối chiến lược (hooking points) dọc theo kiến trúc xương sống hình dấu tích}}{37}{figure.5}\protected@file@percent }
+\newlabel{fig:ticknet-cbam-hook-arch}{{5}{37}{Kiến trúc tổng thể mô hình đề xuất TickNet-small CBAM-Hook: các mô-đun CBAM được chèn tại ba điểm nối chiến lược (hooking points) dọc theo kiến trúc xương sống hình dấu tích}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces So sánh kiến trúc ba mô hình thực nghiệm}}{38}{table.1}\protected@file@percent }
+\newlabel{tab:architecture-comparison}{{1}{38}{So sánh kiến trúc ba mô hình thực nghiệm}{table.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)}{38}{section*.50}\protected@file@percent }
+\newlabel{3-2-2-hierarchical-attention}{{}{38}{3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)}{section*.50}{}}
+\@writefile{toc}{\contentsline {paragraph}{Khái niệm chú ý phân cấp.}{38}{section*.51}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tại sao giữ nguyên SE nội khối thay vì thay thế bằng CBAM?}{39}{section*.52}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Luồng xử lý đặc trưng qua kiến trúc phân cấp.}{39}{section*.53}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces So sánh ba chiến lược tích hợp cơ chế chú ý: (a) SE Baseline --- chỉ có SE nội khối, (b) CBAM-Local --- thay SE bằng CBAM trong khối, gây xung đột đặc trưng, (c) CBAM-Hook --- giữ SE nội khối, chèn CBAM phân cấp tại các điểm nối}}{40}{figure.6}\protected@file@percent }
+\newlabel{fig:three-model-comparison}{{6}{40}{So sánh ba chiến lược tích hợp cơ chế chú ý: (a) SE Baseline --- chỉ có SE nội khối, (b) CBAM-Local --- thay SE bằng CBAM trong khối, gây xung đột đặc trưng, (c) CBAM-Hook --- giữ SE nội khối, chèn CBAM phân cấp tại các điểm nối}{figure.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Ưu thế kỳ vọng của kiến trúc phân cấp.}{41}{section*.54}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)}{41}{section*.55}\protected@file@percent }
+\newlabel{3-2-3-math-analysis}{{}{41}{3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)}{section*.55}{}}
+\@writefile{toc}{\contentsline {paragraph}{Phân tích vùng tiếp nhận (Receptive Field Analysis).}{41}{section*.56}\protected@file@percent }
+\newlabel{eq:dwconv}{{3}{42}{Phân tích vùng tiếp nhận (Receptive Field Analysis)}{equation.3}{}}
+\newlabel{eq:sam-pool}{{4}{42}{Phân tích vùng tiếp nhận (Receptive Field Analysis)}{equation.4}{}}
+\newlabel{eq:sam-conv}{{5}{42}{Phân tích vùng tiếp nhận (Receptive Field Analysis)}{equation.5}{}}
+\@writefile{toc}{\contentsline {paragraph}{Hiện tượng chồng chéo vùng tiếp nhận.}{42}{section*.57}\protected@file@percent }
+\newlabel{eq:overlap}{{6}{42}{Hiện tượng chồng chéo vùng tiếp nhận}{equation.6}{}}
+\newlabel{eq:erf}{{7}{42}{Hiện tượng chồng chéo vùng tiếp nhận}{equation.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Phân tích dư thừa thông tin trên ảnh kích thước nhỏ.}{43}{section*.58}\protected@file@percent }
+\newlabel{eq:coverage}{{8}{43}{Phân tích dư thừa thông tin trên ảnh kích thước nhỏ}{equation.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Tại sao CBAM-Hook giải quyết được vấn đề?}{43}{section*.59}\protected@file@percent }
+\newlabel{eq:cumulative-erf}{{9}{43}{Tại sao CBAM-Hook giải quyết được vấn đề?}{equation.9}{}}
+\@writefile{toc}{\contentsline {paragraph}{Tóm tắt luận điểm toán học.}{43}{section*.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:}{44}{section*.61}\protected@file@percent }
+\newlabel{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}{{}{44}{3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:}{section*.61}{}}
+\@writefile{toc}{\contentsline {subsubsection}{3.3.1. Môi trường thực nghiệm và xây dựng mô hình:}{44}{section*.62}\protected@file@percent }
+\newlabel{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}{{}{44}{3.3.1. Môi trường thực nghiệm và xây dựng mô hình:}{section*.62}{}}
+\newlabel{3-3-1-1-environment}{{}{44}{3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU NVIDIA T4/P100, TensorFlow và Keras)}{section*.63}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU NVIDIA T4/P100, TensorFlow và Keras)}{44}{section*.63}\protected@file@percent }
+\newlabel{3-3-1-2-datasets}{{}{44}{3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:}{section*.64}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:}{44}{section*.64}\protected@file@percent }
+\newlabel{3-3-1-2-1-standard}{{}{44}{3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10}{section*.65}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10}{44}{section*.65}\protected@file@percent }
 \gdef \LT@i {\LT@entry 
     {1}{74.86519pt}\LT@entry 
     {1}{208.12921pt}}
 \gdef \LT@ii {\LT@entry 
     {1}{74.89568pt}\LT@entry 
     {1}{208.16478pt}}
-\newlabel{bux1ea3ng-3.1-bux1ea3ng-muxf4-tux1ea3-dux1eef-liux1ec7u-tux1eadp-dux1eef-liux1ec7u-mnist-fashion}{{}{37}{Bảng 3.1 Bảng mô tả dữ liệu tập dữ liệu MNIST-Fashion}{section*.54}{}}
-\@writefile{toc}{\contentsline {paragraph}{Bảng 3.1 Bảng mô tả dữ liệu tập dữ liệu MNIST-Fashion}{37}{section*.54}\protected@file@percent }
-\newlabel{bux1ea3ng-3.2-bux1ea3ng-muxf4-tux1ea3-dux1eef-liux1ec7u-tux1eadp-dux1eef-liux1ec7u-cifar-10}{{}{37}{Bảng 3.2 Bảng mô tả dữ liệu tập dữ liệu Cifar-10}{section*.55}{}}
-\@writefile{toc}{\contentsline {paragraph}{Bảng 3.2 Bảng mô tả dữ liệu tập dữ liệu Cifar-10}{37}{section*.55}\protected@file@percent }
-\newlabel{3-3-1-2-2-practical}{{}{38}{3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)}{section*.56}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)}{38}{section*.56}\protected@file@percent }
-\newlabel{3-3-1-3-preprocessing}{{}{38}{3.3.1.3. Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu (Data Augmentation) cho từng nhóm ảnh}{section*.57}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.1.3. Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu (Data Augmentation) cho từng nhóm ảnh}{38}{section*.57}\protected@file@percent }
-\newlabel{3-3-1-4-models}{{}{38}{3.3.1.4. Hiện thực hóa 3 mô hình đối chứng thực nghiệm:}{section*.58}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.1.4. Hiện thực hóa 3 mô hình đối chứng thực nghiệm:}{38}{section*.58}\protected@file@percent }
-\newlabel{3-3-1-4-1-baseline}{{}{39}{3.3.1.4.1. Mô hình 1 (SE Baseline): TickNet-small nguyên bản sử dụng chú ý SE trong khối}{section*.59}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.1. Mô hình 1 (SE Baseline): TickNet-small nguyên bản sử dụng chú ý SE trong khối}{39}{section*.59}\protected@file@percent }
-\newlabel{3-3-1-4-2-local}{{}{39}{3.3.1.4.2. Mô hình 2 (CBAM-Local): Chèn trực tiếp CBAM thay SE cục bộ trong khối FR-PDP}{section*.60}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.2. Mô hình 2 (CBAM-Local): Chèn trực tiếp CBAM thay SE cục bộ trong khối FR-PDP}{39}{section*.60}\protected@file@percent }
-\newlabel{3-3-1-4-3-hook}{{}{39}{3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại các điểm nối và cuối mạng}{section*.61}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại các điểm nối và cuối mạng}{39}{section*.61}\protected@file@percent }
-\newlabel{3-3-1-5-training-config}{{}{43}{3.3.1.5. Cấu hình quá trình huấn luyện và tối ưu hóa:}{section*.62}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.1.5. Cấu hình quá trình huấn luyện và tối ưu hóa:}{43}{section*.62}\protected@file@percent }
-\newlabel{3-3-1-5-1-sgd-loss}{{}{43}{3.3.1.5.1. Bộ tối ưu SGD và các hàm Loss tương ứng}{section*.63}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.5.1. Bộ tối ưu SGD và các hàm Loss tương ứng}{43}{section*.63}\protected@file@percent }
-\newlabel{3-3-1-5-2-callbacks}{{}{43}{3.3.1.5.2. Hàm gọi lại tự động giảm tốc độ học (ReduceLROnPlateau) và dừng sớm (EarlyStopping)}{section*.64}{}}
-\@writefile{toc}{\contentsline {subparagraph}{3.3.1.5.2. Hàm gọi lại tự động giảm tốc độ học (ReduceLROnPlateau) và dừng sớm (EarlyStopping)}{43}{section*.64}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{3.3.2. Kết quả thực nghiệm, phân tích và đánh giá:}{43}{section*.65}\protected@file@percent }
-\newlabel{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}{{}{43}{3.3.2. Kết quả thực nghiệm, phân tích và đánh giá:}{section*.65}{}}
-\newlabel{3-3-2-1-metrics}{{}{43}{3.3.2.1. Các độ đo hiệu năng chuẩn mực (Accuracy, Precision, Recall, F1-score) và cấu trúc Confusion Matrix}{section*.66}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.2.1. Các độ đo hiệu năng chuẩn mực (Accuracy, Precision, Recall, F1-score) và cấu trúc Confusion Matrix}{43}{section*.66}\protected@file@percent }
-\newlabel{3-3-2-2-standard-results}{{}{45}{3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu chuẩn (Fashion-MNIST, CIFAR-10)}{section*.67}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu chuẩn (Fashion-MNIST, CIFAR-10)}{45}{section*.67}\protected@file@percent }
+\newlabel{bux1ea3ng-3.1-bux1ea3ng-muxf4-tux1ea3-dux1eef-liux1ec7u-tux1eadp-dux1eef-liux1ec7u-mnist-fashion}{{}{45}{Bảng 3.1 Bảng mô tả dữ liệu tập dữ liệu MNIST-Fashion}{section*.66}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bảng 3.1 Bảng mô tả dữ liệu tập dữ liệu MNIST-Fashion}{45}{section*.66}\protected@file@percent }
+\newlabel{bux1ea3ng-3.2-bux1ea3ng-muxf4-tux1ea3-dux1eef-liux1ec7u-tux1eadp-dux1eef-liux1ec7u-cifar-10}{{}{45}{Bảng 3.2 Bảng mô tả dữ liệu tập dữ liệu Cifar-10}{section*.67}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bảng 3.2 Bảng mô tả dữ liệu tập dữ liệu Cifar-10}{45}{section*.67}\protected@file@percent }
+\newlabel{3-3-1-2-2-practical}{{}{46}{3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)}{section*.68}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)}{46}{section*.68}\protected@file@percent }
+\newlabel{3-3-1-3-preprocessing}{{}{46}{3.3.1.3. Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu (Data Augmentation) cho từng nhóm ảnh}{section*.69}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.1.3. Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu (Data Augmentation) cho từng nhóm ảnh}{46}{section*.69}\protected@file@percent }
+\newlabel{3-3-1-4-models}{{}{46}{3.3.1.4. Hiện thực hóa 3 mô hình đối chứng thực nghiệm:}{section*.70}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.1.4. Hiện thực hóa 3 mô hình đối chứng thực nghiệm:}{46}{section*.70}\protected@file@percent }
+\newlabel{3-3-1-4-1-baseline}{{}{46}{3.3.1.4.1. Mô hình 1 (SE Baseline): TickNet-small nguyên bản sử dụng chú ý SE trong khối}{section*.71}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.1. Mô hình 1 (SE Baseline): TickNet-small nguyên bản sử dụng chú ý SE trong khối}{46}{section*.71}\protected@file@percent }
+\newlabel{3-3-1-4-2-local}{{}{47}{3.3.1.4.2. Mô hình 2 (CBAM-Local): Chèn trực tiếp CBAM thay SE cục bộ trong khối FR-PDP}{section*.72}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.2. Mô hình 2 (CBAM-Local): Chèn trực tiếp CBAM thay SE cục bộ trong khối FR-PDP}{47}{section*.72}\protected@file@percent }
+\newlabel{3-3-1-4-3-hook}{{}{47}{3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại các điểm nối và cuối mạng}{section*.73}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại các điểm nối và cuối mạng}{47}{section*.73}\protected@file@percent }
+\newlabel{3-3-1-5-training-config}{{}{51}{3.3.1.5. Cấu hình quá trình huấn luyện và tối ưu hóa:}{section*.74}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.1.5. Cấu hình quá trình huấn luyện và tối ưu hóa:}{51}{section*.74}\protected@file@percent }
+\newlabel{3-3-1-5-1-sgd-loss}{{}{51}{3.3.1.5.1. Bộ tối ưu SGD và các hàm Loss tương ứng}{section*.75}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.5.1. Bộ tối ưu SGD và các hàm Loss tương ứng}{51}{section*.75}\protected@file@percent }
+\newlabel{3-3-1-5-2-callbacks}{{}{51}{3.3.1.5.2. Hàm gọi lại tự động giảm tốc độ học (ReduceLROnPlateau) và dừng sớm (EarlyStopping)}{section*.76}{}}
+\@writefile{toc}{\contentsline {subparagraph}{3.3.1.5.2. Hàm gọi lại tự động giảm tốc độ học (ReduceLROnPlateau) và dừng sớm (EarlyStopping)}{51}{section*.76}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{3.3.2. Kết quả thực nghiệm, phân tích và đánh giá:}{51}{section*.77}\protected@file@percent }
+\newlabel{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}{{}{51}{3.3.2. Kết quả thực nghiệm, phân tích và đánh giá:}{section*.77}{}}
+\newlabel{3-3-2-1-metrics}{{}{51}{3.3.2.1. Các độ đo hiệu năng chuẩn mực (Accuracy, Precision, Recall, F1-score) và cấu trúc Confusion Matrix}{section*.78}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.2.1. Các độ đo hiệu năng chuẩn mực (Accuracy, Precision, Recall, F1-score) và cấu trúc Confusion Matrix}{51}{section*.78}\protected@file@percent }
+\newlabel{3-3-2-2-standard-results}{{}{53}{3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu chuẩn (Fashion-MNIST, CIFAR-10)}{section*.79}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu chuẩn (Fashion-MNIST, CIFAR-10)}{53}{section*.79}\protected@file@percent }
 \gdef \LT@iii {\LT@entry 
     {1}{120.73311pt}\LT@entry 
     {1}{51.76707pt}\LT@entry 
@@ -156,22 +181,22 @@
     {1}{51.70816pt}\LT@entry 
     {1}{56.2219pt}\LT@entry 
     {1}{41.0766pt}}
-\newlabel{bux1ea3ng-3.3-bux1ea3ng-so-suxe1nh-kux1ebft-quux1ea3-giux1eefa-cuxe1c-giux1ea3i-thuux1eadt-truxean-tux1eadp-dux1eef-liux1ec7u-mnist-fashion}{{}{47}{Bảng 3.3 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu MNIST-Fashion}{section*.68}{}}
-\@writefile{toc}{\contentsline {paragraph}{Bảng 3.3 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu MNIST-Fashion}{47}{section*.68}\protected@file@percent }
-\newlabel{3-3-2-3-practical-results}{{}{48}{3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu thực tiễn (PlantVillage, Chest-Xray-Pneumonia)}{section*.69}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu thực tiễn (PlantVillage, Chest-Xray-Pneumonia)}{48}{section*.69}\protected@file@percent }
-\newlabel{3-3-2-4-performance-drop}{{}{48}{3.3.2.4. Phân tích hiện tượng suy giảm hiệu năng cục bộ (CBAM-Local) và ưu thế của giải pháp đề xuất (CBAM-Hook)}{section*.70}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.2.4. Phân tích hiện tượng suy giảm hiệu năng cục bộ (CBAM-Local) và ưu thế của giải pháp đề xuất (CBAM-Hook)}{48}{section*.70}\protected@file@percent }
-\newlabel{3-3-2-5-gradcam}{{}{48}{3.3.2.5. Giải thích mô hình bằng trực quan hóa bản đồ nhiệt Grad-CAM (Sự tập trung vùng không gian đặc trưng thực tế)}{section*.71}{}}
-\@writefile{toc}{\contentsline {paragraph}{3.3.2.5. Giải thích mô hình bằng trực quan hóa bản đồ nhiệt Grad-CAM (Sự tập trung vùng không gian đặc trưng thực tế)}{48}{section*.71}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{CHƯƠNG 4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN NGHỊ}{48}{section*.72}\protected@file@percent }
-\newlabel{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}{{}{48}{CHƯƠNG 4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN NGHỊ}{section*.72}{}}
-\@writefile{toc}{\contentsline {subsection}{4.1. KẾT QUẢ ĐẠT ĐƯỢC CỦA ĐỀ TÀI}{48}{section*.73}\protected@file@percent }
-\newlabel{kux1ebft-quux1ea3}{{}{48}{4.1. KẾT QUẢ ĐẠT ĐƯỢC CỦA ĐỀ TÀI}{section*.73}{}}
-\@writefile{toc}{\contentsline {subsection}{4.2. KẾT LUẬN (Đánh giá mức độ hoàn thành so với mục tiêu và ý nghĩa thực tiễn)}{48}{section*.74}\protected@file@percent }
-\newlabel{kux1ebft-luux1eadn}{{}{48}{4.2. KẾT LUẬN (Đánh giá mức độ hoàn thành so với mục tiêu và ý nghĩa thực tiễn)}{section*.74}{}}
-\@writefile{toc}{\contentsline {subsection}{4.3. KIẾN NGHỊ VÀ CÁC HƯỚNG PHÁT TRIỂN TIẾP THEO}{49}{section*.75}\protected@file@percent }
-\newlabel{kiux1ebfn-nghux1ecb}{{}{49}{4.3. KIẾN NGHỊ VÀ CÁC HƯỚNG PHÁT TRIỂN TIẾP THEO}{section*.75}{}}
-\@writefile{toc}{\contentsline {section}{TÀI LIỆU THAM KHẢO}{49}{section*.76}\protected@file@percent }
-\newlabel{tuxe0i-liux1ec7u-tham-khux1ea3o}{{}{49}{TÀI LIỆU THAM KHẢO}{section*.76}{}}
-\gdef \@abspage@last{50}
+\newlabel{bux1ea3ng-3.3-bux1ea3ng-so-suxe1nh-kux1ebft-quux1ea3-giux1eefa-cuxe1c-giux1ea3i-thuux1eadt-truxean-tux1eadp-dux1eef-liux1ec7u-mnist-fashion}{{}{55}{Bảng 3.3 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu MNIST-Fashion}{section*.80}{}}
+\@writefile{toc}{\contentsline {paragraph}{Bảng 3.3 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu MNIST-Fashion}{55}{section*.80}\protected@file@percent }
+\newlabel{3-3-2-3-practical-results}{{}{56}{3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu thực tiễn (PlantVillage, Chest-Xray-Pneumonia)}{section*.81}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu thực tiễn (PlantVillage, Chest-Xray-Pneumonia)}{56}{section*.81}\protected@file@percent }
+\newlabel{3-3-2-4-performance-drop}{{}{56}{3.3.2.4. Phân tích hiện tượng suy giảm hiệu năng cục bộ (CBAM-Local) và ưu thế của giải pháp đề xuất (CBAM-Hook)}{section*.82}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.2.4. Phân tích hiện tượng suy giảm hiệu năng cục bộ (CBAM-Local) và ưu thế của giải pháp đề xuất (CBAM-Hook)}{56}{section*.82}\protected@file@percent }
+\newlabel{3-3-2-5-gradcam}{{}{56}{3.3.2.5. Giải thích mô hình bằng trực quan hóa bản đồ nhiệt Grad-CAM (Sự tập trung vùng không gian đặc trưng thực tế)}{section*.83}{}}
+\@writefile{toc}{\contentsline {paragraph}{3.3.2.5. Giải thích mô hình bằng trực quan hóa bản đồ nhiệt Grad-CAM (Sự tập trung vùng không gian đặc trưng thực tế)}{56}{section*.83}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{CHƯƠNG 4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN NGHỊ}{56}{section*.84}\protected@file@percent }
+\newlabel{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}{{}{56}{CHƯƠNG 4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN NGHỊ}{section*.84}{}}
+\@writefile{toc}{\contentsline {subsection}{4.1. KẾT QUẢ ĐẠT ĐƯỢC CỦA ĐỀ TÀI}{56}{section*.85}\protected@file@percent }
+\newlabel{kux1ebft-quux1ea3}{{}{56}{4.1. KẾT QUẢ ĐẠT ĐƯỢC CỦA ĐỀ TÀI}{section*.85}{}}
+\@writefile{toc}{\contentsline {subsection}{4.2. KẾT LUẬN (Đánh giá mức độ hoàn thành so với mục tiêu và ý nghĩa thực tiễn)}{56}{section*.86}\protected@file@percent }
+\newlabel{kux1ebft-luux1eadn}{{}{56}{4.2. KẾT LUẬN (Đánh giá mức độ hoàn thành so với mục tiêu và ý nghĩa thực tiễn)}{section*.86}{}}
+\@writefile{toc}{\contentsline {subsection}{4.3. KIẾN NGHỊ VÀ CÁC HƯỚNG PHÁT TRIỂN TIẾP THEO}{57}{section*.87}\protected@file@percent }
+\newlabel{kiux1ebfn-nghux1ecb}{{}{57}{4.3. KIẾN NGHỊ VÀ CÁC HƯỚNG PHÁT TRIỂN TIẾP THEO}{section*.87}{}}
+\@writefile{toc}{\contentsline {section}{TÀI LIỆU THAM KHẢO}{57}{section*.88}\protected@file@percent }
+\newlabel{tuxe0i-liux1ec7u-tham-khux1ea3o}{{}{57}{TÀI LIỆU THAM KHẢO}{section*.88}{}}
+\gdef \@abspage@last{58}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  25 JUL 2026 11:39
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  25 JUL 2026 13:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1257,131 +1257,172 @@ File: ./media/classification_challenges.png Graphic file (type bmp)
 File: ./media/classification_applications.png Graphic file (type bmp)
 <./media/classification_applications.png>
  [32] [33] [34] [35]
+
+LaTeX Warning: Reference `fig:ticknet-cbam-hook-arch' on page 36 undefined on i
+nput line 1381.
+
+File: ./media/ticknet_cbam_hook_architecture.png Graphic file (type bmp)
+<./media/ticknet_cbam_hook_architecture.png>
+[36] [37]
+
+LaTeX Warning: Reference `tab:architecture-comparison' on page 38 undefined on 
+input line 1400.
+
+
+Overfull \hbox (34.30002pt too wide) in paragraph at lines 1406--1425
+ [][] 
+ []
+
+[38]
+
+LaTeX Warning: Reference `fig:three-model-comparison' on page 39 undefined on i
+nput line 1452.
+
+File: ./media/hierarchical_attention_comparison.png Graphic file (type bmp)
+<./media/hierarchical_attention_comparison.png>
+[39] [40] [41]
+
+LaTeX Warning: Reference `eq:dwconv' on page 42 undefined on input line 1530.
+
+
+LaTeX Warning: Reference `eq:sam-pool' on page 42 undefined on input line 1530.
+
+
+
+LaTeX Warning: Reference `eq:sam-conv' on page 42 undefined on input line 1537.
+
+
+[42]
+
+LaTeX Warning: Reference `eq:sam-pool' on page 43 undefined on input line 1566.
+
+
+[43]
 File: ./media/image34.png Graphic file (type bmp)
 <./media/image34.png>
- [36]
-ignored error: Infinite glue shrinkage found in box being split [37]
+ [44]
+ignored error: Infinite glue shrinkage found in box being split [45]
 File: ./media/image38.jpeg Graphic file (type bmp)
 <./media/image38.jpeg>
 
-Overfull \hbox (79.19319pt too wide) in paragraph at lines 1607--1608
+Overfull \hbox (79.19319pt too wide) in paragraph at lines 1770--1771
 [][] 
  []
 
 File: ./media/image39.jpeg Graphic file (type bmp)
 <./media/image39.jpeg>
 
-Overfull \hbox (22.06667pt too wide) in paragraph at lines 1610--1611
+Overfull \hbox (22.06667pt too wide) in paragraph at lines 1773--1774
 [][] 
  []
 
-[38]
+[46]
 File: ./media/image40.png Graphic file (type bmp)
 <./media/image40.png>
 
-Overfull \hbox (55.05782pt too wide) in paragraph at lines 1683--1684
+Overfull \hbox (55.05782pt too wide) in paragraph at lines 1846--1847
 [][] 
  []
 
-[39]
+[47]
 Overfull \vbox (10.53546pt too high) has occurred while \output is active []
 
 
-[40]
+[48]
 File: ./media/image41.png Graphic file (type bmp)
 <./media/image41.png>
 
-Overfull \hbox (40.37276pt too wide) in paragraph at lines 1687--1688
+Overfull \hbox (40.37276pt too wide) in paragraph at lines 1850--1851
 [][] 
  []
 
-[41]
+[49]
 Overfull \vbox (35.82957pt too high) has occurred while \output is active []
 
 
-[42] [43]
+[50] [51]
 File: ./media/image42.jpeg Graphic file (type bmp)
 <./media/image42.jpeg>
- [44]
+ [52]
 Missing character: There is no 𝟎 in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 𝟏 in font [lmroman10-regular]:mapping=tex-text;!
 File: ./media/image43.png Graphic file (type bmp)
 <./media/image43.png>
 
-Overfull \hbox (62.60356pt too wide) in paragraph at lines 1831--1832
+Overfull \hbox (62.60356pt too wide) in paragraph at lines 1994--1995
 [][] 
  []
 
-[45]
+[53]
 File: ./media/image44.jpeg Graphic file (type bmp)
 <./media/image44.jpeg>
 
-Overfull \hbox (81.29688pt too wide) in paragraph at lines 1842--1843
+Overfull \hbox (81.29688pt too wide) in paragraph at lines 2005--2006
 [][] 
  []
 
-[46]
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1874--1875
+[54]
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 2037--2038
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1874--1875
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 2037--2038
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1878--1879
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 2041--2042
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1878--1879
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 2041--2042
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1882--1883
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 2045--2046
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1882--1883
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 2045--2046
 \TU/lmr/bx/n/10 Recall  
  []
 
 
-Overfull \hbox (10.23293pt too wide) in paragraph at lines 1917--1918
+Overfull \hbox (10.23293pt too wide) in paragraph at lines 2080--2081
 [] 
  []
 
 
-Overfull \hbox (56.72293pt too wide) in paragraph at lines 1917--1918
+Overfull \hbox (56.72293pt too wide) in paragraph at lines 2080--2081
 \TU/lmr/bx/n/10 Accuracy  
  []
 
 
-Overfull \hbox (10.29184pt too wide) in paragraph at lines 1921--1922
+Overfull \hbox (10.29184pt too wide) in paragraph at lines 2084--2085
 [] 
  []
 
 
-Overfull \hbox (56.33185pt too wide) in paragraph at lines 1921--1922
+Overfull \hbox (56.33185pt too wide) in paragraph at lines 2084--2085
 \TU/lmr/bx/n/10 Precision  
  []
 
 
-Overfull \hbox (5.7781pt too wide) in paragraph at lines 1925--1926
+Overfull \hbox (5.7781pt too wide) in paragraph at lines 2088--2089
 [] 
  []
 
 
-Overfull \hbox (36.7581pt too wide) in paragraph at lines 1925--1926
+Overfull \hbox (36.7581pt too wide) in paragraph at lines 2088--2089
 \TU/lmr/bx/n/10 Recall  
  []
 
-[47] [48]
-Underfull \hbox (badness 1270) in paragraph at lines 2042--2046
+[55] [56]
+Underfull \hbox (badness 1270) in paragraph at lines 2205--2209
 \TU/lmr/m/n/10 convolutional neural network architectures.” arXiv preprint arXi
 v:
  []
@@ -1392,26 +1433,29 @@ Missing character: There is no ấ in font ectt1000!
 Missing character: There is no ấ in font ectt1000!
 Missing character: There is no ạ in font ectt1000!
 Missing character: There is no ạ in font ectt1000!
-[49]
+[57]
 Missing character: There is no ụ in font ectt1000!
 Missing character: There is no ụ in font ectt1000!
-[50] (main.aux)
+[58] (main.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 
 
+LaTeX Warning: There were undefined references.
+
+
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 18941 strings out of 402986
- 343376 string characters out of 5452850
- 938529 words of memory out of 5000000
- 47406 multiletter control sequences out of 15000+600000
+ 18974 strings out of 402986
+ 344548 string characters out of 5452850
+ 939011 words of memory out of 5000000
+ 47437 multiletter control sequences out of 15000+600000
  631587 words of font info for 75 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  90i,9n,114p,1003b,622s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on main.pdf (50 pages).
+Output written on main.pdf (58 pages).
