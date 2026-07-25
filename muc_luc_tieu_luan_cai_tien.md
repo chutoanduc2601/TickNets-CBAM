@@ -39,6 +39,13 @@
 
 ### CHƯƠNG 3: BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI TIẾN PHÂN CẤP
 * **3.1. GIỚI THIỆU BÀI TOÁN PHÂN LOẠI HÌNH ẢNH**
+  * **3.1.1. Khái niệm và đặc điểm của bài toán phân loại ảnh**
+  * **3.1.2	Biểu diễn hình ảnh trong máy tính**
+  * **3.1.3	Thách thức của bài toán**
+  * **3.1.4	Ứng dụng thực tiễn**
+  * **3.1.5	Các phương pháp tiếp cận bài toán phân loại hình ảnh**
+  * **3.1.6	Vai trò của cơ chế chú ý trong bài toán phân loại ảnh**
+
 * **3.2. ĐỀ XUẤT MÔ HÌNH TICKNETS KẾT HỢP CƠ CHẾ CHÚ Ý PHÂN CẤP (HIERARCHICAL ATTENTION):**
   * **3.2.1. Thiết kế kiến trúc đề xuất TickNet-small CBAM-Hook**
   * **3.2.2. Cơ chế chú ý phân cấp (Giữ SE nội khối FR-PDP, chèn CBAM ngoại khối tại các điểm nối Hooking points và cuối mạng)**
