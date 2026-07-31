@@ -1,0 +1,1888 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\usepackage[normalem]{ulem}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{}
+
+\begin{document}
+
+\includegraphics[width=1.48in,height=1.48in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image1.jpeg}
+
+\begin{quote}
+\textbf{BỘ GIÁO DỤC VÀ ĐÀO TẠO}
+
+\textbf{TRƯỜNG ĐẠI HỌC NÔNG LÂM TP HCM}
+
+\textbf{KHOA CÔNG NGHỆ THÔNG TIN}
+\end{quote}
+
+TIỂU LUẬN TỐT NGHIỆP
+
+\begin{quote}
+\textbf{TÊN ĐỀ TÀI}
+\end{quote}
+
+\textbf{Nghiên cứu cải tiến TickNets bằng cơ chế}
+
+\textbf{attention CBAM cho bài toán phân loại ảnh}
+
+\begin{quote}
+\textbf{Ngành : Công nghệ thông tin.}
+
+\textbf{Niên khoá : 2022 -- 2026.}
+
+\textbf{Lớp : DH22DTC.}
+
+\textbf{Sinh viên thực hiện : Chu Toàn Đức.}
+\end{quote}
+
+\includegraphics[width=1.48in,height=1.47833in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image1.jpeg}
+
+\begin{quote}
+\textbf{BỘ GIÁO DỤC VÀ ĐÀO TẠO}
+
+\textbf{TRƯỜNG ĐẠI HỌC NÔNG LÂM TP HCM}
+
+\textbf{KHOA CÔNG NGHỆ THÔNG TIN}
+
+TIỂU LUẬN TỐT NGHIỆP
+
+\textbf{TÊN ĐỀ TÀI}
+\end{quote}
+
+\textbf{Nghiên cứu cải tiến TickNets bằng cơ chế}
+
+\textbf{attention CBAM cho bài toán phân loại ảnh}
+
+\begin{quote}
+\textbf{CÁN BỘ HƯỚNG DẪN} \textbf{SINH VIÊN THỰC HIỆN}
+
+TS. Nguyễn Văn Dũ 1. Chu Toàn Đức (22130047).
+
+TP.HỒ CHÍ MINH,24 tháng 07 năm 2026
+\end{quote}
+
+\hypertarget{danh-suxe1ch-chux1eef-viux1ebft-tux1eaft}{%
+\section{DANH SÁCH CHỮ VIẾT
+TẮT}\label{danh-suxe1ch-chux1eef-viux1ebft-tux1eaft}}
+
+\begin{quote}
+NLP \textbf{N}atural \textbf{L}anguage \textbf{P}rocessing Xử lý ngôn
+ngữ tự nhiên.
+
+CNN \textbf{C}onvolutional \textbf{N}eural \textbf{N}etwork Mạng nơ-ron
+tích chập.
+\end{quote}
+
+CV \textbf{C}omputer \textbf{V}ision.
+
+Thị giác máy tính.
+
+\begin{quote}
+DL \textbf{D}eep \textbf{L}earning Học sâu.
+
+ANN \textbf{A}rtificial \textbf{N}eural \textbf{N}etwork Mạng nơ-ron
+nhân tạo.
+
+FC \textbf{F}ully \textbf{C}onnected Layer Lớp đầy đủ.
+
+CAM \textbf{C}hannel \textbf{A}ttention \textbf{M}odule Mô-đun chú ý
+theo kênh.
+
+SAM \textbf{S}patial \textbf{A}ttention \textbf{M}odule
+
+Mô-đun chú ý theo không gian.
+
+KNN \textbf{K}-\textbf{N}earest \textbf{N}eighbors K láng giềng gần
+nhất.
+\end{quote}
+
+\hypertarget{danh-mux1ee5c-huxecnh-ux1ea3nh}{%
+\section{DANH MỤC HÌNH ẢNH}\label{danh-mux1ee5c-huxecnh-ux1ea3nh}}
+
+\begin{quote}
+Hình 2.1. Minh họa về Neural Network 5
+
+Hình 2.2 Ví dụ về kiến trúc của CNN 6
+
+Hình 2.3 Ví dụ về Output của Convolution 8
+
+Hình 2.4 Ví dụ về việc sử dụng hàm kích hoạt ReLU 9
+
+Hình 2.4 Ví dụ về Max-pooling và Average-pooling 11
+
+Hình 2.5 Minh họa Fully Connected Layer 12
+
+Hình 2.6 Kiến trúc mô hình VGG16 13
+
+Hình 2.7 Ví dụ cách thức hoạt động của CNN 14
+
+Hình 2.8 Công thức tính toán output của Convolution 15
+
+Hình 2.9 Mô hình hoạt động của CAM 17
+
+Hình 2.10 Mô hình hoạt động của SAM 19
+
+Hình 2.11 Mô hình CBAM 20
+
+Hình 3.1 Ví dụ về bài toán phân loại ảnh 22
+
+Hình 3.2 Mô hình CNN kết hợp CBAM 23
+
+Hình 3.3 Quá trình xây dựng và huấn luyện mô hình 24
+
+Hình 3.4 Tải tập dữ liệu 26
+
+Hình 3.5 Mô hình CNN cho tập dữ liệu MNIST-Fashion 28
+
+Hình 3.6 Mô hình CNN cho tập dữ liệu Cifar-10 29
+
+Hình 3.7 Cấu trúc Confusion matrix 31
+
+Hình 3.8 Biểu đồ loss và accuracy của mô hình CNN có áp dụng Attention
+và không áp dụng với tập dữ liệu MNIST-Fashion 33
+
+Hình 3.9 Biểu đồ loss và accuracy của mô hình CNN có áp dụng Attention
+và không áp dụng với tập dữ liệu Cifar-10 34
+\end{quote}
+
+\hypertarget{danh-mux1ee5c-bux1ea3ng}{%
+\section{DANH MỤC BẢNG}\label{danh-mux1ee5c-bux1ea3ng}}
+
+\begin{quote}
+Bảng 3.1 Bảng mô tả dữ liệu tập dữ liệu MNIST-Fashion 25
+
+Bảng 3.2 Bảng mô tả dữ liệu tập dữ liệu Cifar-10 26
+
+Bảng 3.3 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu
+MNIST-Fashion
+
+. 35
+
+Bảng 3.4 Bảng so sánh kết quả giữa các giải thuật trên tập dữ liệu
+Cifar-10 35
+
+\textbf{TÓM TẮT}
+
+Bài báo cáo này nghiên cứu, đề xuất và hiện thực hóa giải pháp cải tiến
+kiến trúc mạng nơ-ron tích chập nhẹ TickNets bằng cách tích hợp phân cấp
+cơ chế chú ý khối tích chập CBAM (Convolutional Block Attention Module)
+cho bài toán phân loại hình ảnh. Thông qua các thử nghiệm thực tiễn trên
+hai nhóm tập dữ liệu chuẩn học thuật Fashion-MNIST, CIFAR-10 và ứng dụng
+thực tế phức tạp PlantVillage, Chest-Xray-Pneumonia, kết quả thực nghiệm
+chỉ ra rằng giải pháp chèn CBAM phân cấp tại các điểm nối mạng không chỉ
+giúp loại bỏ hiệu quả nhiễu nền trên ảnh bối cảnh thực tế mà còn khắc
+phục tối ưu sự suy giảm hiệu năng cục bộ trên ảnh kích thước nhỏ. Dựa
+trên các độ đo chuẩn mực bao gồm accuracy, precision, recall và
+f1-score, mô hình cải tiến đề xuất mang lại hiệu suất vượt trội và ổn
+định hơn đáng kể so với các mô hình baseline không áp dụng hoặc chèn cơ
+chế chú ý sai vị trí, đóng góp một hướng đi có giá trị khoa học cao cho
+các ứng dụng học sâu tối giản trên thiết bị có tài nguyên hạn chế.
+\end{quote}
+
+\hypertarget{mux1ee5c-lux1ee5c}{%
+\section{MỤC LỤC}\label{mux1ee5c-lux1ee5c}}
+
+\protect\hyperlink{danh-suxe1ch-chux1eef-viux1ebft-tux1eaft}{DANH SÁCH
+CHỮ VIẾT TẮT
+\protect\hyperlink{danh-suxe1ch-chux1eef-viux1ebft-tux1eaft}{1}}
+
+\protect\hyperlink{danh-mux1ee5c-huxecnh-ux1ea3nh}{DANH MỤC HÌNH ẢNH
+\protect\hyperlink{danh-mux1ee5c-huxecnh-ux1ea3nh}{2}}
+
+\protect\hyperlink{danh-mux1ee5c-bux1ea3ng}{DANH MỤC BẢNG
+\protect\hyperlink{danh-mux1ee5c-bux1ea3ng}{3}}
+
+\protect\hyperlink{_Toc235870340}{MỤC LỤC
+\protect\hyperlink{_Toc235870340}{5}}
+
+\protect\hyperlink{mux1edf-ux111ux1ea7u}{MỞ ĐẦU
+\protect\hyperlink{mux1edf-ux111ux1ea7u}{7}}
+
+\protect\hyperlink{luxfd-do-chux1ecdn-ux111ux1ec1-tuxe0i}{1. LÝ DO CHỌN
+ĐỀ TÀI: \protect\hyperlink{luxfd-do-chux1ecdn-ux111ux1ec1-tuxe0i}{7}}
+
+\protect\hyperlink{mux1ee5c-tiuxeau-vuxe0-phux1ea1m-vi-nghiuxean-cux1ee9u}{2.
+MỤC TIÊU VÀ PHẠM VI NGHIÊN CỨU
+\protect\hyperlink{mux1ee5c-tiuxeau-vuxe0-phux1ea1m-vi-nghiuxean-cux1ee9u}{7}}
+
+\protect\hyperlink{uxfd-nghux129a-khoa-hux1ecdc-vuxe0-thux1ef1c-tiux1ec5n-cux1ee7a-ux111ux1ec1-tuxe0i}{3.
+Ý NGHĨA KHOA HỌC VÀ THỰC TIỄN CỦA ĐỀ TÀI
+\protect\hyperlink{uxfd-nghux129a-khoa-hux1ecdc-vuxe0-thux1ef1c-tiux1ec5n-cux1ee7a-ux111ux1ec1-tuxe0i}{8}}
+
+\protect\hyperlink{chux1b0ux1a1ng-1-tux1ed5ng-quan-ux111ux1ec1-tuxe0i}{CHƯƠNG
+1 TỔNG QUAN ĐỀ TÀI
+\protect\hyperlink{chux1b0ux1a1ng-1-tux1ed5ng-quan-ux111ux1ec1-tuxe0i}{10}}
+
+\protect\hyperlink{chux1b0ux1a1ng-2-cux1a1-sux1edf-luxfd-thuyux1ebft}{CHƯƠNG
+2 CƠ SỞ LÝ THUYẾT
+\protect\hyperlink{chux1b0ux1a1ng-2-cux1a1-sux1edf-luxfd-thuyux1ebft}{11}}
+
+\protect\hyperlink{mux1ea1ng-nux1a1-ron-tuxedch-chux1eadp-nhux1eb9-siuxeau-nhux1eb9-ticknets}{2.1.
+MẠNG NƠ-RON TÍCH CHẬP NHẸ SIÊU NHẸ TICKNETS:
+\protect\hyperlink{mux1ea1ng-nux1a1-ron-tuxedch-chux1eadp-nhux1eb9-siuxeau-nhux1eb9-ticknets}{11}}
+
+\protect\hyperlink{mux1ea1ng-tuxedch-chux1eadp-siuxeau-nhux1eb9-ticknets}{2.1.1.
+Mạng tích chập siêu nhẹ TickNets
+\protect\hyperlink{mux1ea1ng-tuxedch-chux1eadp-siuxeau-nhux1eb9-ticknets}{11}}
+
+\protect\hyperlink{cuxe1c-khuxe1i-niux1ec7m-tuxedch-chux1eadp-tux1ed1i-giux1ea3n.}{2.1.2
+Các khái niệm tích chập tối giản.
+\protect\hyperlink{cuxe1c-khuxe1i-niux1ec7m-tuxedch-chux1eadp-tux1ed1i-giux1ea3n.}{12}}
+
+\protect\hyperlink{kiux1ebfn-truxfac-khux1ed1i-full-residual-point-depth-point}{2.1.3
+Kiến trúc khối Full-Residual Point-Depth-Point
+\protect\hyperlink{kiux1ebfn-truxfac-khux1ed1i-full-residual-point-depth-point}{13}}
+
+\protect\hyperlink{cux1ea5u-truxfac-xux1b0ux1a1ng-sux1ed1ng-co-giuxe3n-kuxeanh-huxecnh-dux1ea5u-tuxedch-vuxe0-muxf4-huxecnh-ticknet-small}{2.1.4
+Cấu trúc xương sống co giãn kênh hình dấu tích và mô hình TickNet-small
+\protect\hyperlink{cux1ea5u-truxfac-xux1b0ux1a1ng-sux1ed1ng-co-giuxe3n-kuxeanh-huxecnh-dux1ea5u-tuxedch-vuxe0-muxf4-huxecnh-ticknet-small}{15}}
+
+\protect\hyperlink{cux1a1-chux1ebf-lan-truyux1ec1n-ux111ux1eb7c-trux1b0ng-vuxe0-cuxe1ch-thux1ee9c-houx1ea1t-ux111ux1ed9ng-cux1ee7a-ticknets}{2.1.5
+Cơ chế lan truyền đặc trưng và cách thức hoạt động của TickNets
+\protect\hyperlink{cux1a1-chux1ebf-lan-truyux1ec1n-ux111ux1eb7c-trux1b0ng-vuxe0-cuxe1ch-thux1ee9c-houx1ea1t-ux111ux1ed9ng-cux1ee7a-ticknets}{16}}
+
+\protect\hyperlink{cux1a1-chux1ebf-chuxfa-uxfd-attention-mechanism}{2.2
+CƠ CHẾ CHÚ Ý (ATTENTION MECHANISM):
+\protect\hyperlink{cux1a1-chux1ebf-chuxfa-uxfd-attention-mechanism}{17}}
+
+\protect\hyperlink{squeeze-and-excitation-mux1eb7c-ux111ux1ecbnh-trong-ticknets}{2.2.1
+Squeeze-and-Excitation mặc định trong TickNets
+\protect\hyperlink{squeeze-and-excitation-mux1eb7c-ux111ux1ecbnh-trong-ticknets}{17}}
+
+\protect\hyperlink{channel-attention-module-cam}{2.2.2 Channel Attention
+Module (CAM): \protect\hyperlink{channel-attention-module-cam}{19}}
+
+\protect\hyperlink{spatial-attention-module-sam}{2.2.3 Spatial Attention
+Module (SAM): \protect\hyperlink{spatial-attention-module-sam}{20}}
+
+\protect\hyperlink{muxf4-ux111un-chuxfa-uxfd-khux1ed1i-tuxedch-chux1eadp-cbam-houx1ea1t-ux111ux1ed9ng-tuux1ea7n-tux1ef1-cam-sam}{2.2.4
+Mô-đun chú ý khối tích chập CBAM hoạt động tuần tự CAM + SAM
+\protect\hyperlink{muxf4-ux111un-chuxfa-uxfd-khux1ed1i-tuxedch-chux1eadp-cbam-houx1ea1t-ux111ux1ed9ng-tuux1ea7n-tux1ef1-cam-sam}{21}}
+
+\protect\hyperlink{phux1b0ux1a1ng-phuxe1p-nghiuxean-cux1ee9u}{2.3.
+PHƯƠNG PHÁP NGHIÊN CỨU
+\protect\hyperlink{phux1b0ux1a1ng-phuxe1p-nghiuxean-cux1ee9u}{23}}
+
+\protect\hyperlink{chux1b0ux1a1ng-3-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh-vuxe0-ux111ux1ec1-xuux1ea5t-cux1ea3i-tiux1ebfn}{CHƯƠNG
+3 BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI TIẾN
+\protect\hyperlink{chux1b0ux1a1ng-3-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh-vuxe0-ux111ux1ec1-xuux1ea5t-cux1ea3i-tiux1ebfn}{25}}
+
+\protect\hyperlink{giux1edbi-thiux1ec7u-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}{3.1
+GIỚI THIỆU BÀI TOÁN PHÂN LOẠI HÌNH ẢNH
+\protect\hyperlink{giux1edbi-thiux1ec7u-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}{25}}
+
+\protect\hyperlink{ux111ux1ec1-xuux1ea5t-muxf4-huxecnh-ticknets-kux1ebft-hux1ee3p-cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p-hierarchical-attention}{3.2
+ĐỀ XUẤT MÔ HÌNH TICKNETS KẾT HỢP CƠ CHẾ CHÚ Ý PHÂN CẤP HIERARCHICAL
+ATTENTION
+\protect\hyperlink{ux111ux1ec1-xuux1ea5t-muxf4-huxecnh-ticknets-kux1ebft-hux1ee3p-cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p-hierarchical-attention}{25}}
+
+\protect\hyperlink{thiux1ebft-kux1ebf-kiux1ebfn-truxfac-ux111ux1ec1-xuux1ea5t-ticknet-small-cbam-hook}{3.2.1.
+Thiết kế kiến trúc đề xuất TickNet-small CBAM-Hook
+\protect\hyperlink{thiux1ebft-kux1ebf-kiux1ebfn-truxfac-ux111ux1ec1-xuux1ea5t-ticknet-small-cbam-hook}{26}}
+
+\protect\hyperlink{cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p}{3.2.2
+Cơ chế chú ý phân cấp
+\protect\hyperlink{cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p}{26}}
+
+\protect\hyperlink{phuxe2n-tuxedch-touxe1n-hux1ecdc-giux1ea3i-quyux1ebft-sux1ef1-chux1ed3ng-chuxe9o-ux111ux1eb7c-trux1b0ng-khuxf4ng-gian-giux1eefa-depthwise-convolution-vuxe0-spatial-attention-module}{3.2.3
+Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa
+Depthwise Convolution và Spatial Attention Module
+\protect\hyperlink{phuxe2n-tuxedch-touxe1n-hux1ecdc-giux1ea3i-quyux1ebft-sux1ef1-chux1ed3ng-chuxe9o-ux111ux1eb7c-trux1b0ng-khuxf4ng-gian-giux1eefa-depthwise-convolution-vuxe0-spatial-attention-module}{27}}
+
+\protect\hyperlink{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}{3.3 HIỆN THỰC
+GIẢI PHÁP:
+\protect\hyperlink{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}{28}}
+
+\protect\hyperlink{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}{3.3.1
+Môi trường thực nghiệm và xây dựng mô hình:
+\protect\hyperlink{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}{28}}
+
+\protect\hyperlink{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}{3.3.2
+Kết quả thực nghiệm và đánh giá:
+\protect\hyperlink{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}{28}}
+
+\protect\hyperlink{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}{CHƯƠNG
+4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN NGHỊ
+\protect\hyperlink{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}{29}}
+
+\protect\hyperlink{kux1ebft-quux1ea3}{4.1 KẾT QUẢ:
+\protect\hyperlink{kux1ebft-quux1ea3}{29}}
+
+\protect\hyperlink{kux1ebft-luux1eadn}{4.2 KẾT LUẬN
+\protect\hyperlink{kux1ebft-luux1eadn}{29}}
+
+\protect\hyperlink{kiux1ebfn-nghux1ecb}{4.3 KIẾN NGHỊ
+\protect\hyperlink{kiux1ebfn-nghux1ecb}{29}}
+
+\protect\hyperlink{tuxe0i-liux1ec7u-tham-khux1ea3o}{TÀI LIỆU THAM KHẢO
+\protect\hyperlink{tuxe0i-liux1ec7u-tham-khux1ea3o}{31}}
+
+\hypertarget{mux1edf-ux111ux1ea7u}{%
+\section{MỞ ĐẦU}\label{mux1edf-ux111ux1ea7u}}
+
+\hypertarget{luxfd-do-chux1ecdn-ux111ux1ec1-tuxe0i}{%
+\subsection{LÝ DO CHỌN ĐỀ
+TÀI:}\label{luxfd-do-chux1ecdn-ux111ux1ec1-tuxe0i}}
+
+\begin{quote}
+Phân loại hình ảnh (image classification) là một trong những bài toán cơ
+bản trong thị giác máy tính. Bài toán này được phát biểu như sau: cho
+một hình ảnh, cần xác định hình ảnh này thuộc lớp nào trong một số lớp
+cho trước. Ngày nay nó được áp dụng rộng rãi trong hầu hết các lĩnh vực
+như quản lý chất lượng sản phẩm, ô tô tự lái, y tế, \ldots vì vậy việc
+nâng cao tính chính xác của việc phân loại hình ảnh là một trong những
+vấn đề cấp thiết.
+
+Trong TickNet là một kiến trúc CNN nhẹ được thiết kế nhằm giảm số lượng
+tham số và chi phí tính toán nhưng vẫn duy trì hiệu quả phân loại cao
+thông qua khối Full-Residual Point-Depth-Point (FR-PDP) và cấu trúc
+Tick-shape Backbone. Tuy nhiên, mô hình TickNet gốc chưa khai thác cơ
+chế Attention để tăng cường khả năng tập trung vào các đặc trưng quan
+trọng của ảnh.
+
+Trong số các cơ chế Attention, Convolutional Block Attention Module
+(CBAM) là một mô-đun nhẹ, có khả năng cải thiện việc trích xuất đặc
+trưng bằng cách kết hợp chú ý theo kênh và chú ý theo không gian. Vì
+vậy, việc nghiên cứu tích hợp CBAM vào TickNet-Small nhằm nâng cao hiệu
+quả phân loại ảnh là một hướng nghiên cứu có ý nghĩa cả về mặt học thuật
+và ứng dụng thực tiễn.
+
+Xuất phát từ những lý do trên, đề tài "Nghiên cứu cải tiến TickNet-Small
+bằng cơ chế Attention CBAM cho bài toán phân loại ảnh" được lựa chọn
+thực hiện.
+\end{quote}
+
+\hypertarget{mux1ee5c-tiuxeau-vuxe0-phux1ea1m-vi-nghiuxean-cux1ee9u}{%
+\subsection{MỤC TIÊU VÀ PHẠM VI NGHIÊN
+CỨU}\label{mux1ee5c-tiuxeau-vuxe0-phux1ea1m-vi-nghiuxean-cux1ee9u}}
+
+\begin{quote}
+Mục tiêu của đề tài hướng đến việc nghiên cứu kiến trúc TickNet-Small và
+cơ chế Attention CBAM, từ đó đề xuất mô hình TickNet-Small kết hợp CBAM
+nhằm nâng cao hiệu quả của bài toán phân loại ảnh. Đồng thời, tiến hành
+thực nghiệm trên nhiều bộ dữ liệu khác nhau để đánh giá khả năng cải
+thiện hiệu suất của mô hình so với TickNet-Small gốc.
+
+Phạm vi nghiên cứu:
+
+Nghiên cứu kiến trúc TickNet, khối FR-PDP và cấu trúc Tick-shape
+Backbone.
+
+Nghiên cứu cơ chế Attention, đặc biệt là Convolutional Block Attention
+Module (CBAM).
+
+Xây dựng mô hình TickNet-Small kết hợp CBAM.
+
+Huấn luyện và đánh giá mô hình trên các tập dữ liệu MNIST, CIFAR-10,
+PlantVillage và ChestXray.
+
+Quá trình huấn luyện sử dụng bộ tối ưu hóa SGD kết hợp với cấu hình hàm
+gọi lại động bao gồm giảm tốc độ học ReduceLROnPlateau và dừng huấn
+luyện sớm EarlyStopping.
+
+Đánh giá hiệu năng dựa trên các độ đo tiêu chuẩn: Accuracy, Precision,
+Recall, F1-score cùng trực quan hóa bằng Confusion Matrix và bản đồ
+nhiệt Grad-CAM để giải thích vùng chú ý của mô hình.
+\end{quote}
+
+\hypertarget{uxfd-nghux129a-khoa-hux1ecdc-vuxe0-thux1ef1c-tiux1ec5n-cux1ee7a-ux111ux1ec1-tuxe0i}{%
+\subsection{Ý NGHĨA KHOA HỌC VÀ THỰC TIỄN CỦA ĐỀ
+TÀI}\label{uxfd-nghux129a-khoa-hux1ecdc-vuxe0-thux1ef1c-tiux1ec5n-cux1ee7a-ux111ux1ec1-tuxe0i}}
+
+\begin{quote}
+Ý nghĩa khoa học:
+\end{quote}
+
+\begin{itemize}
+\item
+  Giải quyết xung đột kiến trúc trong mạng siêu nhẹ: Đề tài đóng góp một
+  lời giải khoa học sâu sắc cho việc tối ưu hóa hiệu năng các mạng
+  nơ-ron siêu nhẹ bằng cách chỉ ra và xử lý thành công sự chồng chéo
+  thông tin giữa phép tích chập chiều sâu và mô-đun chú ý không gian
+  trong các cấu trúc Perceptron cục bộ.
+\item
+  Đề xuất mô hình chú ý phân cấp mới: Nghiên cứu tiên phong trong việc
+  thiết lập cấu trúc phối hợp hai tầng cơ chế chú ý: giữ nguyên
+  attention kênh SE ở cấp độ khối cơ bản để lọc đặc trưng cục bộ, và áp
+  dụng attention hỗn hợp CBAM ở cấp độ điểm nối để kiểm soát đặc trưng
+  toàn cục. Điều này mở ra một hướng tiếp cận mới mẻ trong việc thiết kế
+  và tích hợp các khối attention vào các mạng nơ-ron tối giản.
+\item
+  Góp phần phát triển lý thuyết học sâu giải thích được : Thông qua việc
+  ứng dụng thuật toán Grad-CAM để trực quan hóa các bản đồ nhiệt chú ý ,
+  đề tài cung cấp các minh chứng khoa học trực quan, rõ ràng giải thích
+  tại sao mô hình cải tiến có thể hội tụ nhanh hơn, định vị chính xác
+  hơn các vùng bệnh lý hoặc vật thể so với mô hình baseline thông
+  thường\ldots{}
+\end{itemize}
+
+\begin{quote}
+Ý nghĩa thực tiễn: kết quả nghiên cứu trình bày trong tiểu luận có ý
+nghĩa rất lớn khi áp dụng vào các bài toán trong thực tiễn như sau
+\end{quote}
+
+\begin{itemize}
+\item
+  Nâng cao chất lượng chẩn đoán y khoa và quản lý nông nghiệp: Kết quả
+  thực nghiệm của mô hình cải tiến trên tập dữ liệu Chest-Xray-Pneumonia
+  giúp tối ưu hóa độ chính xác và giảm thiểu tỷ lệ bỏ sót trong việc
+  chẩn đoán viêm phổi qua hình ảnh X-quang phổi . Đồng thời, thực nghiệm
+  trên tập PlantVillage giúp hỗ trợ bà con nông dân nhận diện sớm và
+  chính xác các loại bệnh trên lá cây trồng, góp phần thúc đẩy các giải
+  pháp nông nghiệp thông minh, công nghệ cao.
+\item
+  Tính khả thi cao trong triển khai thực tế trên thiết bị biên: Nhờ kế
+  thừa ưu điểm siêu nhẹ của mạng TickNets, mô hình TickNet-small cải
+  tiến bằng CBAM phân cấp cực kỳ phù hợp để đóng gói và vận hành trực
+  tiếp trên các thiết bị di động cá nhân, máy tính bảng cầm tay, thiết
+  bị bay không người lái hay các chip nhúng biên IoT có năng lượng và
+  năng lực tính toán hạn chế mà không cần phụ thuộc vào máy chủ đám mây.
+\item
+\end{itemize}
+
+\hypertarget{chux1b0ux1a1ng-1-tux1ed5ng-quan-ux111ux1ec1-tuxe0i}{%
+\section{CHƯƠNG 1 TỔNG QUAN ĐỀ
+TÀI}\label{chux1b0ux1a1ng-1-tux1ed5ng-quan-ux111ux1ec1-tuxe0i}}
+
+\begin{quote}
+Cơ chế chú ý (Attention Mechanism) là một trong những cơ chế được sử
+dụng phổ biến trong các bài toán xử lý ngôn ngữ tự nhiên (NLP), đặc biệt
+là trong các mô hình dịch máy. Một trong những thành tựu nổi bật của nó
+là sự phát triển của mô hình Transformer, giới thiệu trong bài báo
+``Attention is All You Need'' của Vaswani et al. năm 2017 {[}1{]}. Mô
+hình Transformer đã thay đổi cách tiếp cận dịch máy và các bài toán xử
+lý ngôn ngữ tự nhiên (NLP) nhờ vào cơ chế Attention mạnh mẽ của nó. Góp
+phần dẫn đến sự phát triển của các mô hình như BERT (Bidirectional
+Encoder Representations from Transformers) và GPT (Generative
+Pre-trained Transformer). Những mô hình này đã thiết lập các chuẩn mực
+mới trong nhiều bài toán NLP khác nhau, bao gồm dịch máy, hiểu ngôn ngữ
+tự nhiên, và tạo văn bản.
+
+Mặc dù các nghiên cứu tích hợp cơ chế chú ý như CBAM đã chứng minh hiệu
+quả vượt trội khi kết hợp với các mạng tích chập truyền thống như VGG16
+, việc áp dụng cơ chế này lên các kiến trúc mạng siêu nhẹ vẫn đối mặt
+với nhiều thách thức lớn về sự tương thích cấu trúc . Các mạng siêu nhẹ
+phổ biến hiện nay như MobileNets hay ShuffleNets thường chỉ sử dụng cơ
+chế chú ý một hướng SE để tái cấu trúc kênh đặc trưng nhằm tiết kiệm
+tham số . Kiến trúc mạng siêu nhẹ cải tiến gần đây là TickNets -- nổi
+bật với khối FR-PDP và cấu trúc xương sống co giãn kênh hình dấu tích
+tuy đạt hiệu suất cao nhưng cũng mới chỉ dừng lại ở việc tích hợp mặc
+định cơ chế attention SE ở mức cục bộ bên trong khối.
+
+Do đó, bài nghiên cứu này tập trung vào giải pháp cải tiến mạng
+TickNet-small bằng cơ chế chú ý phân cấp. Phương pháp này đề xuất giữ
+nguyên SE cục bộ trong khối FR-PDP, đồng thời chèn CBAM một cách chiến
+lược tại các điểm nối mạng giữa hai backbone co giãn và trước lớp Global
+Average Pooling cuối mạng , giúp mô hình phát huy tối đa sức mạnh lọc
+nhiễu không gian toàn cục mà không làm bùng nổ tham số tính toán.
+\end{quote}
+
+\hypertarget{chux1b0ux1a1ng-2-cux1a1-sux1edf-luxfd-thuyux1ebft}{%
+\section{\texorpdfstring{CHƯƠNG 2\\
+CƠ SỞ LÝ
+THUYẾT}{CHƯƠNG 2 CƠ SỞ LÝ THUYẾT}}\label{chux1b0ux1a1ng-2-cux1a1-sux1edf-luxfd-thuyux1ebft}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item ~
+  \hypertarget{mux1ea1ng-nux1a1-ron-tuxedch-chux1eadp-nhux1eb9-siuxeau-nhux1eb9-ticknets}{%
+  \subsection{MẠNG NƠ-RON TÍCH CHẬP NHẸ SIÊU NHẸ
+  TICKNETS:}\label{mux1ea1ng-nux1a1-ron-tuxedch-chux1eadp-nhux1eb9-siuxeau-nhux1eb9-ticknets}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{mux1ea1ng-tuxedch-chux1eadp-siuxeau-nhux1eb9-ticknets}{%
+    \subsubsection{Mạng tích chập siêu nhẹ
+    TickNets}\label{mux1ea1ng-tuxedch-chux1eadp-siuxeau-nhux1eb9-ticknets}}
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+Trong xu hướng phát triển của học sâu ứng dụng trên các thiết bị di động
+và hệ thống nhúng, các mạng nơ-ron tích chập siêu nhẹ đóng vai trò tối
+quan trọng nhờ khả năng cân bằng giữa kích thước mô hình tối giản, độ
+phức tạp tính toán thấp và hiệu suất năng lượng tối ưu . Các kiến trúc
+kinh điển như MobileNets, ShuffleNets hay EfficientNets đã gặt hái được
+nhiều thành công nhờ thay thế các phép tích chập tiêu chuẩn bằng các
+phép tích chập tối giản có chi phí thấp.
+
+Tuy nhiên các kiến trúc siêu nhẹ truyền thống này vẫn tồn tại hai hạn
+chế cấu trúc cốt lõi:
+
+Sự bùng nổ tham số ở các tầng cuối: Backbone của các mạng này được thiết
+kế theo nguyên tắc tăng dần đều số lượng kênh đặc trưng. Khi mạng càng
+đi sâu, số lượng kênh ở các tầng cuối cùng tăng lên rất lớn, dẫn đến
+kích thước mô hình bị phình to ra nhanh chóng.
+
+Sự thiếu hụt liên kết đồng nhất. Dựa trên cơ chế kết nối tàn dư nhằm
+giải quyết vấn đề triệt tiêu gradient , các mạng siêu nhẹ thường sử dụng
+các liên kết tắt . Tuy nhiên, các liên kết tắt này chỉ là bán tàn dư ,
+tức là chúng chỉ được kích hoạt khi kích thước không gian và số lượng
+kênh đặc trưng giữa đầu vào và đầu ra hoàn toàn trùng khớp. Khi xảy ra
+sự thay đổi kích thước không gian do bước trượt tích chập s
+\textgreater{} 1 hoặc sự thay đổi số lượng kênh đặc trưng giữa các khối
+nơ-ron, liên kết đồng nhất bị phá vỡ.
+
+Để khắc phục triệt để các hạn chế trên, họ mạng TickNets được đề xuất
+như một kiến trúc mạng tích chập siêu nhẹ thế hệ mới dựa trên ba đóng
+góp khoa học chính: khối tích chập tối giản FR-PDP sử dụng liên kết tàn
+dư đầy đủ để duy trì các liên kết đồng nhất trực tiếp trong mọi điều
+kiện; cấu trúc xương sống co giãn kênh hình dấu tích nhằm tối ưu hóa
+phân bổ tham số để linh hoạt tùy biến độ sâu của mô hình.
+\end{quote}
+
+\hypertarget{cuxe1c-khuxe1i-niux1ec7m-tuxedch-chux1eadp-tux1ed1i-giux1ea3n.}{%
+\subsubsection{Các khái niệm tích chập tối
+giản.}\label{cuxe1c-khuxe1i-niux1ec7m-tuxedch-chux1eadp-tux1ed1i-giux1ea3n.}}
+
+\begin{quote}
+Để giảm chi phí tính toán cực kỳ đắt đỏ của các phép tích chập tiêu
+chuẩn vốn đòi hỏi dung lượng bộ nhớ lớn , họ mạng TickNets tận dụng các
+phép tích chập tối giản, bao gồm tích chập chiều sâu và tích chập điểm.
+
+\textbf{Phép tích chập tiêu chuẩn} \textbf{:} Cho một tensor đầu vào
+\(\mathcal{T \in}\mathbb{R}^{C_{in} \times H \times W}\) với \(C_{in}\)
+là số lượng kênh đầu vào, H\(\times\)W là kích thước không gian của mỗi
+kênh đặc trưng. Phép tiêu chuẩn biến đổi \(\mathcal{T}\) thành một
+tensor đầu ra
+\(\mathcal{T}_{\mu} \in \mathbb{R}^{C_{out} \times H \times W}\) bằng
+cách áp dụng \(C_{out}\) bộ lọc kernels kích thước
+\(C_{in} \times K\  \times K\ :\)
+\end{quote}
+
+\[\mathcal{T}_{\mu}\  = \mu_{i}\mathcal{*T,\ }i\ \  = \ 1,\ \ldots,\ C_{out}\]
+
+\begin{quote}
+Chi phí tính toán của phép toán này là cực kỳ lớn và tỷ lệ thuận với
+tích của cả số kênh đầu vào và đầu ra:
+\end{quote}
+
+\[\mathcal{O}\left( H\  \times W\  \times C_{in} \times C_{out} \times K\  \times K \right)\]
+
+\begin{quote}
+\textbf{Phép tích chập chiều sâu :} Để tối giản hóa quá trình trích xuất
+đặc trưng không gian, phép tích chập chiều sâu tách biệt quá trình lọc
+theo từng kênh đặc trưng \(c_{j}\) của tensor đầu vào \(\mathcal{T}\)
+bằng cách sử dụng các bộ lọc độc lập kích thước
+\(1 \times K \times K\ \):
+\end{quote}
+
+\[\mathcal{T}_{d} = \xi_{i}*c_{j}\ ,\ \ j = 1,\ldots,C_{in}\]
+
+\begin{quote}
+Trong đó,
+\(\mathcal{T}_{d} \in \mathbb{R}^{C_{in} \times H \times W}\)và
+\(\xi_{i}\) đại diện cho bộ lọc tương ứng với kênh đặc trưng thứ j .
+Phép toán này chỉ thực hiện vai trò lọc không gian mà không tạo ra bất
+kỳ sự tương tác kênh mới nào.
+
+\textbf{Phép tích chập điểm :} Nhằm tổng hợp và thiết lập các mối quan
+hệ phi tuyến giữa các kênh đặc trưng sau khi đã được lọc không gian bởi
+phép tích chập chiều sâu, phép tích chập điểm được áp dụng bằng cách sử
+dụng các bộ lọc kích thước \(C_{in} \times 1 \times 1\) quét qua các
+điểm ảnh :
+\end{quote}
+
+\[\mathcal{T}_{p} = \ \zeta_{j}*\ \mathcal{T}_{d},\ \ j\  = \ 1,\ \ldots,\ C_{out}\]
+
+\begin{quote}
+Hệ quả là thu được tensor đặc trưng mới
+\(\mathcal{T}_{p} \in \mathbb{R}^{C_{out} \times H \times W}\). . Phép
+toán này đóng vai trò quan trọng trong việc co giãn linh hoạt số lượng
+kênh đặc trưng.dựa trên mục tiêu thiết kế kiến trúc.
+\end{quote}
+
+\hypertarget{kiux1ebfn-truxfac-khux1ed1i-full-residual-point-depth-point}{%
+\subsubsection{Kiến trúc khối Full-Residual
+Point-Depth-Point}\label{kiux1ebfn-truxfac-khux1ed1i-full-residual-point-depth-point}}
+
+\begin{quote}
+Trọng tâm cải tiến của họ mạng TickNets nằm ở thiết kế khối FR-PDP. Khối
+này kết hợp mô-đun trích xuất đặc trưng phân tầng PDP độc đáo với cơ chế
+liên kết tàn dư đầy đủ để khắc phục tình trạng gián đoạn liên kết đồng
+nhất khi mạng thực hiện giảm chiều không gian hoặc co giãn kênh .
+
+\textbf{Mô-đun trích xuất đặc trưng Point-Depth-Point}. Khác với khối
+Bottleneck ngược của MobileNetV2 mở rộng số kênh ở đầu khối, khối PDP
+thực hiện nén và giữ nguyên số lượng kênh đặc trưng ở giai đoạn đầu để
+bảo toàn các thông tin đặc trưng nguyên bản. Quy trình biến đổi một
+tensor đầu vào
+\(\mathcal{T \in}\mathbb{R}^{C_{in} \times H \times W}\ \)qua mô đun PDP
+bao gồm 4 bước liên tiếp:
+
+Bước 1 - Tích chập điểm thứ nhất : Áp dụng \(C_{in}\) bộ lọc kích thước
+\(1 \times 1\) với bước trượt \(s = 1\ \)để tạo ra các đặc trưng điểm
+ảnh được nén nhưng giữ nguyên chiều sâu kênh gốc nhằm cung cấp đầu vào
+chất lượng cho tích chập chiều sâu :
+\end{quote}
+
+\[\mathcal{P}_{w1} = \ \zeta_{j}\mathcal{*\ T,\ \ \ }j\  = \ 1,\ \ldots,\ C_{in}\]
+
+\begin{quote}
+Trong đó, \(\mathcal{P}_{w1} \in \mathbb{R}^{C_{in} \times H \times W}\)
+
+Bước 2 - Tích chập chiều sâu : Sử dụng bộ lọc kích thước \(3 \times 3\)
+với bước trượt \(s = 1\ \)hoặc \(s > 1\) trong trường hợp cần giảm kích
+thước không gian để học các đặc trưng trong cục bộ.
+\end{quote}
+
+\[\mathcal{D}_{ws} = \xi_{j}^{3 \times 3}*c_{j} \in \mathcal{P}_{w1},\quad j = 1,\ldots,C_{in}\]
+
+\begin{quote}
+Trong đó,
+\(\mathcal{D}_{ws} \in \mathbb{R}^{C_{in} \times H_{s} \times W_{s}}\).
+
+Bước 3 - Tích chập điểm thứ 2 : Thiết lập sự tương tác kênh và co giãn
+số lượng kênh đặc trưng đầu ra thành \(C_{out}\) kênh theo cấu hình
+thiết kế bằng phép tích chập điểm tuần tự:
+\end{quote}
+
+\[\mathcal{P}_{w2} = \mu_{j}*\mathcal{D}_{ws},\quad j = 1,\ldots,C_{out}\]
+
+\begin{quote}
+Trong đó,
+\(\mathcal{P}_{w2} \in \mathbb{R}^{C_{out} \times H_{s} \times W_{s}}\).
+
+Bước 4 - Cơ chế chú ý kênh : Để tối ưu hóa biểu diễn đặc trưng, khối PDP
+áp dụng cơ chế chú ý SE với tỷ lệ giảm mặc định \(r = 16\). Khác biệt
+cốt lõi của TickNets là tính toán trọng số chú ý trực tiếp từ các đặc
+trưng điểm ảnh phong phú của\(\mathcal{\ P}_{w2}\) thay vì các đặc trưng
+lọc thô của lớp tích chập chiều sâu:
+\end{quote}
+
+\[\mathcal{T}_{PDP} = c_{k} \otimes f_{k},\quad k = 1,\ldots,C_{out}\quad\left\lbrack 108,\text{Eq.~7} \right\rbrack\]
+
+\begin{quote}
+Trong đó, \(\otimes\) ký hiệu phép nhân theo từng kênh đặc trưng, và
+\(f_{k} \in \mathcal{F}_{\mathcal{P}_{w2}}\) đại diện cho bộ trọng số
+chú ý kênh được học từ \(\mathcal{P}_{w2}\).
+
+\textbf{Cơ chế liên kết tàn dư đầy đủ.} Để duy trì liên kết đồng nhất
+ngay cả khi kích thước không gian hoặc số lượng kênh của \(T\) thay đổi
+so với đầu ra \(\ \mathcal{T}_{PDP}\) , TickNets đề xuất giải pháp sử
+dụng một phép tích chập điểm phụ trợ \(\mathcal{P}_{wRs}\) để chuyển đổi
+tensor đầu vào \(\mathcal{T}\) về cùng cấu trúc không gian và số lượng
+kênh đặc trưng với đầu ra :
+\end{quote}
+
+\[\mathcal{P}_{wRs} = \nu_{j}*\mathcal{T},\quad j = 1,\ldots,C_{out}\quad\left\lbrack 110,\text{Eq.~8} \right\rbrack\]
+
+\begin{quote}
+Trong đó,
+\(\mathcal{P}_{wRs} \in \mathbb{R}^{C_{out} \times H_{s} \times W_{s}}\)
+sử dụng bước trượt \(s\) đồng bộ với bước trượt của lớp tích chập chiều
+sâu \(\mathcal{D}_{ws}\) . Công thức tổng hợp đầu ra khối FR-PDP được
+định nghĩa hoàn chỉnh như sau:
+\end{quote}
+
+\[\mathcal{T}_{FR - PDP} = \left\{ \begin{matrix}
+\mathcal{T} \oplus \mathcal{T}_{PDP}, & \text{nếu~}s = 1\text{~và~}\left| \mathcal{T} \right| = \left| \mathcal{T}_{PDP} \right| \\
+\mathcal{P}_{wRs} \oplus \mathcal{T}_{PDP}, & \text{trong~các~trường~hợp~khác} \\
+\end{matrix} \right.\ \quad\left\lbrack 111,\text{Eq.~9} \right\rbrack\]
+
+\begin{quote}
+Trong đó, \(\oplus\) là phép toán cộng ma trận theo từng phần tử. Giải
+pháp này đảm bảo mạng luôn khai thác được hai luồng thông tin tàn dư
+song song để tối đa hóa hiệu năng trích xuất đặc trưng.
+\end{quote}
+
+\hypertarget{cux1ea5u-truxfac-xux1b0ux1a1ng-sux1ed1ng-co-giuxe3n-kuxeanh-huxecnh-dux1ea5u-tuxedch-vuxe0-muxf4-huxecnh-ticknet-small}{%
+\subsubsection{Cấu trúc xương sống co giãn kênh hình dấu tích và mô hình
+TickNet-small}\label{cux1ea5u-truxfac-xux1b0ux1a1ng-sux1ed1ng-co-giuxe3n-kuxeanh-huxecnh-dux1ea5u-tuxedch-vuxe0-muxf4-huxecnh-ticknet-small}}
+
+\begin{quote}
+Một đặc trưng độc bản của họ mạng TickNets là thiết kế hệ thống phân bổ
+kênh đặc trưng theo mô hình co giãn kênh hình dấu tích phá vỡ tư duy
+tăng kênh tuyến tính truyền thống để giảm thiểu tối đa sự bùng nổ tham
+số thừa.
+
+\textbf{Xương sống hình dấu tích cơ bản .} Một xương sống hình dấu tích
+cơ bản được thiết lập bởi một chuỗi tuần tự gồm 5 khối FR-PDP. Sự co
+giãn số lượng kênh đặc trưng đầu ra \(C_{out\ }\)của chuỗi 5 khối này
+biến thiên tăng giảm nhịp nhàng mô phỏng theo hình dáng của một dấu tích
+:
+\end{quote}
+
+\[Tick\_ B\left( \mathcal{T} \right) = \Psi_{s}^{512}\left( \Psi_{s}^{256}\left( \Psi_{s}^{128}\left( \Psi_{s}^{64}\left( \Psi_{s}^{128}\left( \mathcal{T} \right) \right) \right) \right) \right)\quad\left\lbrack 116,\text{Eq.~10} \right\rbrack\]
+
+\begin{quote}
+Trong đó, \(\Psi_{s}^{C_{out}}\ \)ký hiệu phép xử lý của một khối FR-PDP
+cho ra số kênh \(C_{out}\) với bước trượt \(s\). Số lượng kênh đặc trưng
+trải qua chu kỳ co giãn tuần tự:
+\(128\  \rightarrow 64 \rightarrow 128 \rightarrow 256 \rightarrow 512\).
+
+Việc co hẹp số lượng kênh đặc trưng về mức cực tiểu 64 kênh ở giai đoạn
+đầu và chỉ mở rộng mạnh mẽ ở khối cuối cùng giúp kiểm soát nghiêm ngặt
+dung lượng mô hình và loại bỏ các đặc trưng thừa.
+
+\textbf{Kiến trúc mạng TickNet-small .} Tận dụng tính chất co giãn kênh
+linh hoạt của xương sống cơ bản, mạng TickNet-small được xây dựng bằng
+phương pháp ghép nối trực tiếp hai xương sống hình dấu tích tuần tự
+thông qua cơ chế hooking:
+\end{quote}
+
+\[\mathcal{T}ick\mathcal{N}et\text{-small}\left( \mathcal{T} \right) = \mathcal{T}ick\_ B\left( \mathcal{T}ick\_ B\left( \mathcal{T} \right) \right)\quad\left\lbrack 119,\text{Eq.~11} \right\rbrack\]
+
+\begin{quote}
+Cấu trúc hoàn chỉnh của TickNet-small bao gồm 10 khối FR-PDP liên kết
+chặt chẽ. Cấu hình phân bổ số lượng kênh đặc trưng cho 10 khối này được
+triển khai chi tiết theo chuỗi co giãn đôi tương ứng với hai xương sống
+hình dấu tích được ghép nối tiếp:
+\(128 \rightarrow 64 \rightarrow 128 \rightarrow 256 \rightarrow 512 \rightarrow 128 \rightarrow 64 \rightarrow 128 \rightarrow 256 \rightarrow 512\).
+
+Nhờ giải pháp co giãn kênh đặc trưng này, TickNet-small chỉ sở hữu vỏn
+vẹn khoảng 3 triệu tham số huấn luyện trên tập dữ liệu ImageNet-1k. Con
+số này tối giản hơn đáng kể so với mức 3.51 triệu tham số của mô hình
+MobileNetV2 nhưng vẫn giúp mạng đạt được độ sâu trích xuất đặc trưng
+vượt trội.
+\end{quote}
+
+\hypertarget{cux1a1-chux1ebf-lan-truyux1ec1n-ux111ux1eb7c-trux1b0ng-vuxe0-cuxe1ch-thux1ee9c-houx1ea1t-ux111ux1ed9ng-cux1ee7a-ticknets}{%
+\subsubsection{Cơ chế lan truyền đặc trưng và cách thức hoạt động của
+TickNets}\label{cux1a1-chux1ebf-lan-truyux1ec1n-ux111ux1eb7c-trux1b0ng-vuxe0-cuxe1ch-thux1ee9c-houx1ea1t-ux111ux1ed9ng-cux1ee7a-ticknets}}
+
+\begin{quote}
+Quy trình truyền xuôi (feed-forward pipeline) của mạng TickNet-small
+hoạt động tuần tự để trích xuất đặc trưng hình ảnh phân cấp thông qua
+các lớp tính toán được tối ưu hóa như sau:
+
+{[}Ảnh đầu vào (224x224x3){]}
+
+│
+
+▼ (s=2)
+
+{[}Lớp Initial\_conv3x3{]} ──► (112x112x32)
+
+│
+
+▼ (s=2)
+
+{[}Backbone 1: Khối FR-PDP 1 - 5{]} ──► (7x7x512)
+
+│
+
+▼ (s=1)
+
+{[}Điểm nối Hooking Point{]} ──► (CBAM cải tiến đề xuất)
+
+│
+
+▼ (s=1)
+
+{[}Backbone 2: Khối FR-PDP 6 - 10{]} ──► (7x7x512)
+
+│
+
+▼ (s=1)
+
+{[}Lớp Final\_conv1x1{]} ──► (7x7x1024)
+
+│
+
+▼
+
+{[}Lớp Global AvgPooling{]} ──► (1024)
+
+│
+
+▼
+
+{[}Lớp Fully Connected / Softmax{]} ──► {[}Nhãn dự đoán phân loại{]}
+
+Giai đoạn xử lý ban đầu. Hình ảnh đầu vào kích thước chuẩn
+\(224 \times 224 \times 3\) đi qua lớp tích chập tiêu chuẩn đầu tiên
+\(Initial\_ conv3 \times 3\) có kích thước bộ lọc \(3 \times 3\) với
+bước trượt \(s = 2\) để nén kích thước không gian xuống
+\(112 \times 112\ \)và tăng kênh lên 32.
+
+Giai đoạn lan truyền qua Backbone 1. Tensor đặc trưng được lan truyền
+qua xương sống thứ nhất. Quá trình giảm kích thước bản đồ đặc trưng được
+thực hiện một cách chiến lược bằng cách áp dụng bước trượt
+\(s = 2\ \)tại khối 1, 3, 4, và 5. Đầu ra của backbone thứ nhất đạt kích
+thước \(7 \times 7\) với số kênh đặc trưng là 512.
+
+Giai đoạn lan truyền qua Backbone 2. Sau khi đi qua điểm nối mạng
+(Hooking point), đặc trưng tiếp tục lan truyền qua xương sống dấu tích
+thứ hai với bước trượt \(s = 1\) tại tất cả các khối để tập trung học
+sâu các đặc trưng ngữ nghĩa nâng cao. Đầu ra cuối cùng duy trì kích
+thước \(7 \times 7 \times 512\) .
+
+Giai đoạn phân loại cuối. Bản đồ đặc trưng được tăng cường kênh đặc
+trưng lên 1024 bằng lớp tích chập điểm \(Final\_ conv1 \times 1\), sau
+đó làm phẳng qua lớp AvgPooling thành vector đặc trưng 1D có kích thước
+1024, trước khi đi qua lớp kết nối đầy đủ và hàm kích hoạt Softmax để
+tính toán xác suất phân loại lớp tương ứng.
+
+Lưu ý cấu hình thực nghiệm: Đối với việc phân loại các hình ảnh kích
+thước rất nhỏ như CIFAR-10 \(32 \times 32\), mạng TickNet-small sẽ cấu
+hình bước trượt \(s = 1\ \)cho hai khối FR-PDP đầu tiên FR-PDP-1 và
+FR-PDP-2 để bảo toàn tối đa các đặc trưng không gian mịn của ảnh tránh
+bị mất mát thông tin quá sớm.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item ~
+  \hypertarget{cux1a1-chux1ebf-chuxfa-uxfd-attention-mechanism}{%
+  \subsection{CƠ CHẾ CHÚ Ý (ATTENTION
+  MECHANISM):}\label{cux1a1-chux1ebf-chuxfa-uxfd-attention-mechanism}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{squeeze-and-excitation-mux1eb7c-ux111ux1ecbnh-trong-ticknets}{%
+    \subsubsection{Squeeze-and-Excitation mặc định trong
+    TickNets}\label{squeeze-and-excitation-mux1eb7c-ux111ux1ecbnh-trong-ticknets}}
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+Cơ chế chú ý trong mạng nơ-ron nhân tạo là một kỹ thuật toán học mô
+phỏng theo hệ thống nhận thức trực quan của con người, giúp mô hình tự
+động gán trọng số và tập trung vào các vùng thông tin có giá trị cao
+đồng thời bỏ qua các vùng thông tin nhiễu. Trong các kiến trúc mạng
+nơ-ron tích chập siêu nhẹ, cơ chế chú ý theo kênh Squeeze-and-Excitation
+(SE), được đề xuất bởi Hu và các cộng sự , là một giải pháp tối giản
+nhưng mang lại hiệu năng biểu diễn đặc trưng vượt trội bằng cách thiết
+lập các mối quan hệ phụ thuộc lẫn nhau giữa các kênh đặc trưng.
+
+Khác biệt cốt lõi của việc tích hợp SE trong khối cơ bản FR-PDP của mạng
+TickNets so với các mạng nơ-ron truyền thống nằm ở vị trí thu thập thông
+tin. Thay vì tính toán trọng số chú ý từ các đặc trưng thô sau lớp tích
+chập chiều sâu vốn chỉ mang tính chất lọc không gian đơn lẻ và chưa
+thiết lập tương tác kênh TickNets thực hiện trích xuất thông tin chú ý
+trực tiếp từ bản đồ đặc trưng điểm tích lũy \(\mathcal{P}_{w2}\) thu
+được từ lớp tích chập điểm thứ hai :
+\end{quote}
+
+\[\mathcal{F}_{\mathcal{P}_{w2}} = \mathbf{F}_{ex}\left( \mathbf{F}_{sq}\left( \mathcal{P}_{w2} \right),\mathbf{W} \right)\]
+
+\begin{quote}
+Quy trình tính toán của mô-đun SE mặc định trong khối FR-PDP được thực
+hiện qua hai giai đoạn toán học tuần tự:
+
+\textbf{Phép toán Squeeze} (Nén đặc trưng toàn cục): Sử dụng phép gộp
+trung bình toàn cục để nén thông tin không gian kích thước
+\(H \times W\) của mỗi kênh đặc trưng thành một trị số vô hướng duy nhất
+đại diện cho phân bố kênh toàn cục. Đầu ra của bước này là một vector
+đặc trưng \(\mathbf{z} \in \mathbb{R}^{C_{out} \times 1 \times 1}\) với
+phần tử thứ\(\ k\) được định nghĩa là :
+\end{quote}
+
+\[z_{k} = \frac{1}{H \times W}\sum_{i = 1}^{H}{\sum_{j = 1}^{W}\mathcal{P}_{w2}}(i,j,k)\]
+
+\begin{quote}
+\textbf{Phép toán Excitation} (Kích hoạt thích ứng): Để thu thập đầy đủ
+các mối quan hệ phi tuyến giữa các kênh đặc trưng, vector nén \(z\)được
+chuyển qua một cấu trúc Perceptron đa tầng tối giản với hai lớp kết nối
+đầy đủ và một tỷ lệ giảm số kênh mặc định là \(r = 16\ \)để kiểm soát số
+lượng tham số tính toán :
+\end{quote}
+
+\[\mathbf{s} = \sigma\left( \mathbf{W}_{2} \cdot \delta\left( \mathbf{W}_{1} \cdot \mathbf{z} \right) \right)\]
+
+\begin{quote}
+Trong đó, \(\delta\) ký hiệu hàm kích hoạt phi tuyến ReLU, \(\sigma\) là
+hàm kích hoạt Sigmoid đưa giá trị trọng số về khoảng 1 và
+\(\mathbf{W}_{1} \in \mathbb{R}^{\frac{C_{out}}{r} \times C_{out}}\) ,
+\(\mathbf{W}_{2} \in \mathbb{R}^{C_{out} \times \frac{C_{out}}{r}}\) lần
+lượt là các ma trận trọng số của hai lớp FC.
+
+Cuối cùng, bản đồ đặc trưng đầu ra được hiệu chỉnh bằng cách nhân trực
+tiếp từng phần tử của bản đồ đặc trưng điểm \(\mathcal{P}_{w2}\) với
+trọng số chú ý kênh tương ứng \(s_{k},\ trong\ vecto\ \mathbf{s}\) :
+\end{quote}
+
+\[\mathcal{T}_{PDP} = c_{k} \otimes s_{k},\quad k = 1,\ldots,C_{out}\]
+
+\hypertarget{channel-attention-module-cam}{%
+\subsubsection{Channel Attention Module
+(CAM):}\label{channel-attention-module-cam}}
+
+\begin{quote}
+\includegraphics[width=6.25197in,height=2.3937in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image3.PNG}Mô-đun
+chú ý theo kênh Channel Attention Module trong cấu trúc chú ý hỗn hợp
+CBAM đóng vai trò xác định thực thể thông tin nào mang tính quyết định
+trong bản đồ đặc trưng đầu vào. Khác với cơ chế SE chỉ sử dụng duy nhất
+phép gộp trung bình toàn cục GAP, CAM đề xuất một giải pháp thu thập
+thông tin kênh song song bằng cách kết hợp đồng thời cả phép gộp trung
+bình toàn cục GAP và phép gộp cực đại toàn cục Global Max Pooling.
+
+Hình 2.2.2 Mô-đun chú ý kênh CAM
+
+Giả sử tensor đặc trưng đầu vào tại một điểm nối mạng bất kỳ của TickNet
+small là \(\mathbf{F} \in \mathbb{R}^{C \times H \times W}\) . Quy trình
+tính toán của CAM được biểu diễn thông qua các bước toán học chặt chẽ
+sau:
+
+\textbf{Trích xuất đặc trưng kênh song song}: Bản đồ đặc trưng
+\(\mathbf{F}\) được nén độc lập theo chiều không gian để tạo ra hai
+vector đặc trưng kênh riêng biệt đại diện cho hai khía cạnh thông tin
+khác nhau:
+
+Vector trung bình toàn cục:
+\(\mathbf{F}_{avg}^{c} \in \mathbb{R}^{C \times 1 \times 1}\ \)lưu trữ
+thông tin bối cảnh không gian mang tính trung bình.
+
+Vecto cực đại toàn cục:
+\(\mathbf{F}_{\max}^{c} \in \mathbb{R}^{C \times 1 \times 1}\) định vị
+các đặc trưng nổi bật nhất của đối tượng phân loại trong không gian.
+
+\textbf{Lan truyền qua mạng Perceptron đa tầng chia sẻ} (Shared MLP): Để
+đảm bảo tính tối giản về mặt tham số huấn luyện của mạng siêu nhẹ, cả
+hai vector đặc trưng trên được đưa qua một cấu trúc MLP chia sẻ trọng số
+duy nhất. Shared MLP này bao gồm một lớp ẩn với số lượng nơ-ron được
+giảm đi theo tỷ lệ giảm \(r\) với hệ số nén mặc định \(r = 16\) hoặc
+điều chỉnh linh hoạt tùy thuộc cấu hình thực nghiệm:
+\end{quote}
+
+\[\mathbf{M}_{c}\left( \mathbf{F} \right) = \sigma\left( \text{MLP}\left( \text{AvgPool}\left( \mathbf{F} \right) \right) + \text{MLP}\left( \text{MaxPool}\left( \mathbf{F} \right) \right) \right)\]
+
+\[\mathbf{M}_{\mathbf{c}}\left( \mathbf{F} \right)\mathbf{= \sigma}\left( \mathbf{W}_{\mathbf{1}}\mathbf{\cdot}\left( \mathbf{W}_{\mathbf{0}}\mathbf{\cdot}\mathbf{F}_{\mathbf{avg}}^{\mathbf{c}} \right)\mathbf{+}\mathbf{W}_{\mathbf{1}}\mathbf{\cdot}\left( \mathbf{W}_{\mathbf{0}}\mathbf{\cdot}\mathbf{F}_{\mathbf{\max}}^{\mathbf{c}} \right) \right)\]
+
+\begin{quote}
+Trong đó, \(\mathbf{W}_{0} \in \mathbb{R}^{\frac{C}{r} \times C}\) và
+\(\mathbf{W}_{1} \in \mathbb{R}^{C \times \frac{C}{r}}\) là các trọng số
+liên kết dùng chung cho cả hai nhánh xử lý thông tin, và \(\sigma\)đại
+diện cho hàm kích hoạt Sigmoid. Bản đồ chú ý kênh cuối cùng thu được là
+một vector trọng số phân bố thích ứng
+\(\mathbf{M}_{c}\left( \mathbf{F} \right) \in \mathbb{R}^{C \times 1 \times 1}\).
+\end{quote}
+
+\hypertarget{spatial-attention-module-sam}{%
+\subsubsection{Spatial Attention Module
+(SAM):}\label{spatial-attention-module-sam}}
+
+\begin{quote}
+\includegraphics[width=6.25in,height=2.08333in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image4.png}Trong
+khi mô-đun CAM tập trung vào việc tìm kiếm các đặc trưng kênh ý nghĩa,
+mô-đun chú ý theo không gian Spatial Attention Module (SAM) chịu trách
+nhiệm định vị vị trí không gian chứa thông tin cốt lõi cần được chú ý
+trong ảnh. SAM đóng vai trò là một bộ lọc không gian cục bộ mạnh mẽ,
+giúp loại bỏ nhiễu từ bối cảnh phức tạp của môi trường xung quanh đối
+tượng phân loại.
+
+Hình 2.2.3 Sơ đồ mạng nơ-ron Tensor
+
+Quy trình thiết lập bản đồ chú ý không gian 2D từ một tensor đặc trưng
+đầu vào \(\mathbf{F}' \in \mathbb{R}^{C \times H \times W}\) được thực
+hiện như sau:
+
+\textbf{Gộp đặc trưng dọc theo chiều sâu kênh}: SAM thực hiện phép toán
+gộp trung bình (Average Pooling) và gộp cực đại (Max Pooling) dọc theo
+trục kênh để nén thông tin chiều sâu và trích xuất trực tiếp mối quan hệ
+không gian 2D:
+
+Bản đồ trung bình không gian:
+\(\mathbf{F}_{avg}^{s} \in \mathbb{R}^{1 \times H \times W}\)
+
+Bản đồ cực đại không gian:
+\(\mathbf{F}_{\max}^{s} \in \mathbb{R}^{1 \times H \times W}\)
+
+Ghép nối và tích chập tổng hợp thông tin: Hai bản đồ đặc trưng 2D trên
+được ghép nối dọc theo chiều sâu để tạo thành một tensor đặc trưng hỗn
+hợp kích thước \(\mathbb{R}^{2 \times H \times W}\) . Tiếp theo, một
+phép toán tích chập tiêu chuẩn với kích thước bộ lọc lớn \(k \times k\)
+thường mặc định \(7\  \times \ 7\ \)đối với ảnh lớn hoặc tối ưu hóa
+xuống \(3 \times 3\ \)đối với ảnh nhỏ được áp dụng để trích xuất cấu
+trúc không gian diện rộng:
+\end{quote}
+
+\[\mathbf{M}_{s}\left( \mathbf{F}' \right) = \sigma\left( f^{k \times k}\left( \left\lbrack \text{AvgPool}\left( \mathbf{F}' \right);\text{MaxPool}\left( \mathbf{F}' \right) \right\rbrack \right) \right)\]
+
+\[\mathbf{M}_{s}\left( \mathbf{F}' \right) = \sigma\left( f^{k \times k}\left( \left\lbrack \mathbf{F}_{avg}^{s};\mathbf{F}_{\max}^{s} \right\rbrack \right) \right)\]
+
+\begin{quote}
+Trong đó, \(f^{k \times k}\) đại diện cho phép toán tích chập với bộ lọc
+kích thước \(k \times k\)và \(\sigma\) diện cho hàm kích hoạt Sigmoid
+đưa phân bố không gian về khoảng giá trị tối ưu. Kết quả thu được là bản
+đồ chú ý không gian 2D
+\(\mathbf{M}_{s}\left( \mathbf{F}' \right) \in \mathbb{R}^{1 \times H \times W}\).
+\end{quote}
+
+\hypertarget{muxf4-ux111un-chuxfa-uxfd-khux1ed1i-tuxedch-chux1eadp-cbam-houx1ea1t-ux111ux1ed9ng-tuux1ea7n-tux1ef1-cam-sam}{%
+\subsubsection{Mô-đun chú ý khối tích chập CBAM hoạt động tuần tự CAM +
+SAM}\label{muxf4-ux111un-chuxfa-uxfd-khux1ed1i-tuxedch-chux1eadp-cbam-houx1ea1t-ux111ux1ed9ng-tuux1ea7n-tux1ef1-cam-sam}}
+
+\begin{quote}
+CBAM là sự kết hợp đồng bộ và tuần tự của hai mô-đun CAM và SAM nhằm tối
+đa hóa khả năng biểu diễn đặc trưng phân cấp của mạng nơ-ron tích chập.
+Khác với các phương pháp chèn song song hoặc chèn độc lập, CBAM thiết
+lập một quy trình tinh lọc thông tin hai bước cực kỳ khoa học: thông tin
+đi qua bộ lọc kênh CAM trước để xác định các kênh đặc trưng quan trọng,
+sau đó đi qua bộ lọc không gian SAM để khoanh vùng tọa độ đặc trưng mục
+tiêu.
+
+Sự phối hợp tuần tự này được định nghĩa một cách chặt chẽ thông qua hệ
+thống công thức sau:
+\end{quote}
+
+\[\mathbf{F}' = \mathbf{M}_{c}\left( \mathbf{F} \right) \otimes \mathbf{F}\]
+
+\[\mathbf{F}'' = \mathbf{M}_{s}\left( \mathbf{F}' \right) \otimes \mathbf{F}'\]
+
+\begin{quote}
+\includegraphics[width=5.32569in,height=2.71042in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image5.png}Trong
+đó, \(F\) là tensor đặc trưng thô ban đầu, \(F'\) là bản đồ đặc trưng đã
+được hiệu chỉnh thông tin theo kênh thông qua phép nhân element-wise
+\(\otimes \ \)với vector chú ý
+\(\mathbf{M}_{c}\left( \mathbf{F} \right)\) , và \(F''\) là bản đồ đặc
+trưng đầu ra hoàn chỉnh sau khi được lọc không gian diện rộng bởi bản đồ
+nhiệt chú ý 2D \(\mathbf{M}_{s}(\mathbf{F}')\).
+
+Hình 2.2.4 Sơ đồ quy trình CBAM
+
+Việc áp dụng cơ chế CBAM tuần tự mang lại ba lợi ích to lớn cho bài toán
+phân loại hình ảnh:
+
+\textbf{Tính toàn diện của biểu diễn đặc trưng:} Giúp mô hình đồng thời
+nắm bắt cả thông tin mức độ cao hình dạng, nhãn lớp thông qua CAM và
+thông tin không gian mức độ thấp góc, cạnh, định vị vật thể thông qua
+SAM.
+
+\textbf{Khả năng tương thích kiến trúc cực cao:} CBAM là một mô-đun độc
+lập và cực kỳ gọn nhẹ chỉ bổ sung một lượng tham số không đáng kể từ
+Shared MLP, cho phép tích hợp linh hoạt vào bất kỳ điểm nối mạng nào mà
+không làm ảnh hưởng đến tiến trình truyền xuôi gốc.
+
+\textbf{Tối ưu hóa khả năng giải thích của mô hình:} Các bản đồ chú ý
+không gian 2D tạo ra bởi SAM cung cấp nền tảng toán học rõ ràng giúp
+người nghiên cứu dễ dàng giải thích hành vi học máy trực quan bằng các
+thuật toán bản đồ nhiệt như Grad-CAM.
+\end{quote}
+
+\hypertarget{phux1b0ux1a1ng-phuxe1p-nghiuxean-cux1ee9u}{%
+\subsection{PHƯƠNG PHÁP NGHIÊN
+CỨU}\label{phux1b0ux1a1ng-phuxe1p-nghiuxean-cux1ee9u}}
+
+\begin{quote}
+Đề tài được triển khai dựa trên sự kết hợp giữa phương pháp nghiên cứu
+lý thuyết và phương pháp nghiên cứu thực nghiệm.
+
+\textbf{Về phương pháp lý thuyết:} Đề tài tiến hành thu thập, phân tích
+và hệ thống hóa các tài liệu khoa học liên quan đến mạng nơ-ron tích
+chập siêu nhẹ, trọng tâm là họ mạng TickNets với khối cơ bản FR-PDP và
+cấu trúc xương sống co giãn kênh hình dấu tích. Đồng thời, nghiên cứu cơ
+chế chú ý theo kênh SE mặc định kết hợp với mô đun chú ý hỗn hợp tuần tự
+CBAM (gồm CAM và SAM). Trên cơ sở đó, đề tài phân tích toán học để chỉ
+ra sự chồng chéo không gian của attention cục bộ bên trong khối và đề
+xuất giải pháp chèn CBAM phân cấp tại các điểm nối mạng để tối ưu hiệu
+năng.
+
+\textbf{Về phương pháp thực nghiệm:} Đề tài lập trình hiện thực hóa giải
+pháp cải tiến trên ngôn ngữ Python với thư viện TensorFlow và Keras. Quy
+trình thực nghiệm được triển khai đồng bộ qua 4 bước tuần tự sau:
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \begin{quote}
+  Chuẩn bị và tiền xử lý dữ liệu: Thử nghiệm trên 4 bộ dữ liệu, chia làm
+  hai nhóm: nhóm học thưuật Fashion-MNIST, CIFAR-10 và nhóm thực tiễn
+  (PlantVillage, Chest-Xray-Pneumonia). Pixel ảnh được chuẩn hóa về
+  khoảng , nhãn được mã hóa One-Hot và áp dụng các kỹ thuật tăng cường
+  dữ liệu (xoay, lật, dịch chuyển) để chống quá khớp.
+  \end{quote}
+\item
+  Xây dựng các mô hình đối chứng: Thiết lập 3 kiến trúc mạng gồm: Mô
+  hình 1 SE Baseline TickNet-small gốc sử dụng SE trong khối. Mô hình 2
+  CBAM-Local chèn CBAM thay thế SE cục bộ. Mô hình 3 CBAM Hook đề xuất
+  cải tiến chèn CBAM phân cấp tại điểm nối và cuối mạng.
+\item
+  Huấn luyện và tối ưu hóa: Huấn luyện các mô hình bằng bộ tối ưu hóa
+  SGD kết hợp hàm loss tương ứng. Quá trình huấn luyện tích hợp bộ đôi
+  hàm gọi lại động là tự động giảm tốc độ học và dừng huấn luyện sớm để
+  khôi phục bộ trọng số tối ưu nhất.
+\item
+  Đánh giá và trực quan hóa giải thích: Đo lường hiệu năng các mô hình
+  thông qua các độ đo chuẩn mực gồm Accuracy, Precision, Recall,
+  F1-score và ma trận Confusion Matrix. Cuối cùng, ứng dụng thuật toán
+  Grad-CAM để trực quan hóa bản đồ nhiệt, giải thích khoa học khả năng
+  tập trung đặc trưng không gian của giải pháp cải tiến đề xuất.
+\end{enumerate}
+
+\hypertarget{chux1b0ux1a1ng-3-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh-vuxe0-ux111ux1ec1-xuux1ea5t-cux1ea3i-tiux1ebfn}{%
+\section{\texorpdfstring{CHƯƠNG 3\\
+BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI
+TIẾN}{CHƯƠNG 3 BÀI TOÁN PHÂN LOẠI HÌNH ẢNH VÀ ĐỀ XUẤT CẢI TIẾN}}\label{chux1b0ux1a1ng-3-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh-vuxe0-ux111ux1ec1-xuux1ea5t-cux1ea3i-tiux1ebfn}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item ~
+  \hypertarget{giux1edbi-thiux1ec7u-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}{%
+  \subsection{GIỚI THIỆU BÀI TOÁN PHÂN LOẠI HÌNH
+  ẢNH}\label{giux1edbi-thiux1ec7u-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{phuxe1t-biux1ec3u-buxe0i-touxe1n}{%
+    \subsubsection{Phát biểu bài
+    toán}\label{phuxe1t-biux1ec3u-buxe0i-touxe1n}}
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+Phân loại hình ảnh là một trong những bài toán nền tảng và quan trọng
+nhất trong lĩnh vực thị giác máy tính. Bài toán được phát biểu một cách
+hình thức như sau: cho một hình ảnh đầu vào \emph{I} và một tập hữu hạn
+các nhãn lớp
+\(\mathcal{C} = \left\{ c_{1},c_{2},\ldots,c_{K} \right\}\ \)đã được xác
+định trước, hệ thống cần xây dựng một hàm ánh xạ
+\(f:I \rightarrow \mathcal{C\ }\)để gán nhãn lớp phù hợp nhất cho hình
+ảnh đó. Nói cách khác, mục tiêu là xác định hình ảnh thuộc vào nhóm nào
+trong số các nhóm đã được định nghĩa sẵn.
+
+Ví dụ minh hoạ cụ thể: trong một hệ thống nhận dạng động vật, tập nhãn
+có thể bao gồm
+\(\mathcal{C} = \left\{ \text{chó},\text{mèo},\text{chim},\text{ngựa} \right\}.\ \)Khi
+nhận một bức ảnh chụp một con chó Golden Retriever, hệ thống cần phân
+tích các đặc trưng thị giác của ảnh bao gồm hình dạng, kết cấu lông, tỉ
+lệ cơ thể để đưa ra dự đoán chính xác rằng ảnh thuộc lớp ``chó'' với xác
+suất tin cậy cao nhất.
+
+\includegraphics[width=4.99925in,height=3.29264in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image6.png}
+
+\emph{Hình 3.1.1a Tổng quan bài toán phân loại ảnh}
+\end{quote}
+
+\hypertarget{biux1ec3u-diux1ec5n-huxecnh-ux1ea3nh-trong-muxe1y-tuxednh}{%
+\subsubsection{\texorpdfstring{Biểu diễn hình ảnh trong máy tính
+}{Biểu diễn hình ảnh trong máy tính }}\label{biux1ec3u-diux1ec5n-huxecnh-ux1ea3nh-trong-muxe1y-tuxednh}}
+
+\begin{quote}
+Đối với con người, việc nhận dạng nội dung một bức ảnh diễn ra gần như
+tức thì và tự nhiên. Tuy nhiên, đối với máy tính, một hình ảnh chỉ đơn
+thuần là một mảng ba chiều chứa các giá trị số nguyên. Cụ thể, một ảnh
+màu RGB được biểu diễn dưới dạng tensor
+\(\mathbf{X} \in \mathbb{R}^{H \times W \times C}\), trong đó \(H\) là
+chiều cao, \(W\ \)là chiều rộng tính bằng số pixel, và \(C = 3\ \)tương
+ứng với ba kênh màu đỏ , xanh lá , xanh dương. Mỗi phần tử trong tensor
+nhận giá trị từ 0 đến 255, thể hiện cường độ sáng của pixel tại vị trí
+tương ứng trên kênh màu đó.
+
+Ví dụ, một bức ảnh kích thước \(224 \times 224\) pixel với 3 kênh màu sẽ
+chứa tổng cộng \(224 \times 224 \times 3 = 150.528\ \)giá trị số. Nhiệm
+vụ của thuật toán phân loại chính là từ tập hợp hàng trăm nghìn con số
+này, rút trích ra được các đặc trưng có ý nghĩa ngữ nghĩa để phân biệt
+giữa các lớp đối tượng khác nhau. Khoảng cách lớn giữa thông tin mức
+pixel thô và ý nghĩa ngữ nghĩa cấp cao này được gọi là khoảng trống ngữ
+nghĩa, và đây chính là thách thức cốt lõi mà các phương pháp phân loại
+ảnh cần giải quyết.
+
+\includegraphics[width=3.41293in,height=3.53788in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image7.jpeg}
+
+\emph{Hình 3.1.2 So sánh cách con người nhìn ảnh trực quan và cách máy
+tính biểu diễn ảnh tensor} \(H \times W \times C\ \)\emph{các giá trị
+pixel}
+\end{quote}
+
+\hypertarget{thuxe1ch-thux1ee9c-cux1ee7a-buxe0i-touxe1n}{%
+\subsubsection{Thách thức của bài
+toán}\label{thuxe1ch-thux1ee9c-cux1ee7a-buxe0i-touxe1n}}
+
+Mặc dù bài toán phân loại hình ảnh có thể được phát biểu một cách đơn
+giản, việc xây dựng một hệ thống phân loại đạt độ chính xác cao trong
+thực tế đối mặt với nhiều thách thức nghiêm trọng:
+
+\includegraphics[width=3.41333in,height=3.41333in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image8.jpeg}
+
+\emph{Hình 3.1.3 Bốn thách thức chính của bài toán phân loại ảnh: biến
+đổi góc nhìn, biến đổi tỉ lệ, che khuất và đa dạng nội lớp}
+
+\textbf{Biến đổi góc nhìn (Viewpoint Variation):} Cùng một đối tượng khi
+được chụp từ các góc độ khác nhau sẽ tạo ra các hình ảnh có hình dạng
+rất khác biệt trên mặt phẳng 2D. Ví dụ, một chiếc ô tô chụp từ phía
+trước trông hoàn toàn khác so với khi chụp từ phía trên.
+
+\textbf{Biến đổi tỉ lệ (Scale Variation):} Đối tượng có thể xuất hiện ở
+nhiều kích thước khác nhau trong ảnh, từ rất nhỏ chiếm vài pixel đến rất
+lớn phủ gần toàn bộ khung hình. Hệ thống phải nhận dạng được đối tượng
+bất kể tỉ lệ.
+
+\textbf{Hiện tượng che khuất (Occlusion):} Trong nhiều tình huống thực
+tế, đối tượng cần nhận dạng bị che khuất một phần hoặc phần lớn bởi các
+vật thể khác. Khi chỉ một phần nhỏ của đối tượng hiển thị, việc phân
+loại trở nên rất khó khăn.
+
+\textbf{Đa dạng nội lớp (Intra-class Variation):} Các đối tượng thuộc
+cùng một lớp có thể có hình dạng, màu sắc và kết cấu rất khác nhau.
+Chẳng hạn, lớp ``ghế'' bao gồm ghế sofa, ghế gỗ, ghế xoay văn phòng tất
+cả đều là ghế nhưng có hình dáng bên ngoài rất khác biệt.
+
+\textbf{Biến đổi điều kiện chiếu sáng (Illumination Variation):} Cùng
+một đối tượng dưới các điều kiện ánh sáng khác nhau ngoài trời, trong
+nhà, ban đêm sẽ tạo ra các giá trị pixel rất khác nhau, gây khó khăn cho
+việc nhận dạng.
+
+\textbf{Nhiễu nền phức tạp (Background Clutter):} Khi đối tượng có màu
+sắc hoặc kết cấu tương tự với nền xung quanh, ranh giới giữa đối tượng
+và nền trở nên mờ nhạt, khiến việc tách biệt và phân loại gặp nhiều trở
+ngại.
+
+\hypertarget{ux1ee9ng-dux1ee5ng-thux1ef1c-tiux1ec5n}{%
+\subsubsection{Ứng dụng thực
+tiễn}\label{ux1ee9ng-dux1ee5ng-thux1ef1c-tiux1ec5n}}
+
+\begin{quote}
+Phân loại hình ảnh ngày nay đóng vai trò then chốt trong rất nhiều lĩnh
+vực ứng dụng thực tiễn, mang lại giá trị to lớn cho cả đời sống và sản
+xuất:
+
+\textbf{Y tế và chẩn đoán hình ảnh:} Phân loại ảnh X-quang để phát hiện
+viêm phổi, ung thư phổi, phân tích ảnh mô bệnh học để hỗ trợ bác sĩ chẩn
+đoán chính xác hơn, sàng lọc bệnh lý võng mạc từ ảnh quang học đáy mắt.
+Đặc biệt, bộ dữ liệu Chest-Xray-Pneumonia được sử dụng trong nghiên cứu
+này chính là một ví dụ điển hình cho ứng dụng phân loại ảnh y tế.
+
+\textbf{Nông nghiệp thông minh:} Nhận dạng và phân loại bệnh trên lá cây
+trồng từ ảnh chụp, giúp nông dân phát hiện sớm dịch bệnh và có biện pháp
+xử lý kịp thời. Bộ dữ liệu PlantVillage trong tiểu luận này là minh
+chứng cho tiềm năng ứng dụng của công nghệ phân loại ảnh trong nông
+nghiệp chính xác.
+
+\textbf{Xe tự hành:} Nhận dạng biển báo giao thông, phân loại đối tượng
+trên đường người đi bộ, xe cộ, chướng ngại vật là thành phần không thể
+thiếu trong hệ thống lái xe tự động.
+
+\textbf{Kiểm tra chất lượng sản phẩm:} Trong các dây chuyền sản xuất
+công nghiệp, hệ thống phân loại ảnh tự động phát hiện sản phẩm lỗi, kiểm
+tra khuyết tật bề mặt với tốc độ và độ chính xác vượt trội so với kiểm
+tra thủ công.
+
+\textbf{An ninh và giám sát:} Nhận dạng khuôn mặt, phân loại hành vi bất
+thường trong video giám sát, hỗ trợ lực lượng an ninh trong công tác
+phòng chống tội phạm.
+
+\textbf{Viễn thám và môi trường:} Phân loại ảnh vệ tinh để giám sát sử
+dụng đất, theo dõi biến đổi rừng, dự báo thiên tai và đánh giá tác động
+môi trường.
+\end{quote}
+
+\hypertarget{cuxe1c-phux1b0ux1a1ng-phuxe1p-tiux1ebfp-cux1eadn-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}{%
+\subsubsection{Các phương pháp tiếp cận bài toán phân loại hình
+ảnh}\label{cuxe1c-phux1b0ux1a1ng-phuxe1p-tiux1ebfp-cux1eadn-buxe0i-touxe1n-phuxe2n-loux1ea1i-huxecnh-ux1ea3nh}}
+
+\begin{quote}
+Lịch sử phát triển của bài toán phân loại ảnh có thể chia thành hai giai
+đoạn chính:
+
+\textbf{Giai đoạn 1 - Phương pháp truyền thống (trước 2012):} Các phương
+pháp sử dụng kỹ thuật trích xuất đặc trưng thủ công như SIFT,HOG hay
+LBP, kết hợp với các bộ phân lớp cổ điển như SVM hoặc KNN. Hạn chế chính
+của nhóm phương pháp này là đặc trưng được thiết kế bởi con người, phụ
+thuộc nhiều vào chuyên gia và không có khả năng tự thích ứng với dữ liệu
+mới.
+
+\textbf{Giai đoạn 2 - Phương pháp học sâu (từ 2012 đến nay):} Bước ngoặt
+lớn đến từ năm 2012 khi mô hình AlexNet của Krizhevsky và cộng sự giành
+chiến thắng cuộc thi ImageNet Large Scale Visual Recognition Challenge
+với khoảng cách vượt trội so với các phương pháp truyền thống. Kể từ đó,
+mạng nơ-ron tích chập trở thành kiến trúc chủ đạo cho bài toán phân loại
+ảnh. Các kiến trúc CNN đặc biệt thành công bao gồm VGGNet (2014),
+GoogLeNet/Inception (2014), ResNet (2015), DenseNet (2017), và
+EfficientNet (2019). Ưu điểm cốt lõi của phương pháp học sâu là khả năng
+tự động học các đặc trưng phân cấp trực tiếp từ dữ liệu thô, mà không
+cần sự can thiệp thủ công trong quá trình thiết kế đặc trưng.
+
+Tuy nhiên, các mô hình CNN hiệu năng cao thường có kích thước rất lớn
+hàng chục đến hàng trăm triệu tham số, đòi hỏi tài nguyên tính toán mạnh
+mẽ, không phù hợp với các thiết bị có tài nguyên hạn chế như điện thoại
+di động, thiết bị IoT hay thiết bị bay không người lái. Chính nhu cầu
+cân bằng giữa hiệu năng phân loại và chi phí tính toán đã thúc đẩy sự
+phát triển của các kiến trúc mạng CNN siêu nhẹ light-weight CNNs như
+MobileNets, ShuffleNets và TickNets là đối tượng nghiên cứu chính của
+tiểu luận này.
+\end{quote}
+
+\hypertarget{vai-truxf2-cux1ee7a-cux1a1-chux1ebf-chuxfa-uxfd-trong-buxe0i-touxe1n-phuxe2n-loux1ea1i-ux1ea3nh}{%
+\subsubsection{Vai trò của cơ chế chú ý trong bài toán phân loại
+ảnh}\label{vai-truxf2-cux1ee7a-cux1a1-chux1ebf-chuxfa-uxfd-trong-buxe0i-touxe1n-phuxe2n-loux1ea1i-ux1ea3nh}}
+
+\begin{quote}
+Bên cạnh việc tối ưu kiến trúc mạng, một hướng nghiên cứu quan trọng
+khác nhằm nâng cao hiệu năng phân loại ảnh là tích hợp cơ chế chú ý . Cơ
+chế chú ý mô phỏng khả năng tập trung chọn lọc của thị giác con người:
+thay vì xử lý đồng đều toàn bộ hình ảnh, mô hình học cách nhấn mạnh các
+vùng và đặc trưng quan trọng trong khi giảm thiểu ảnh hưởng của nhiễu
+nền và thông tin không liên quan.
+
+Đặc biệt trong các bài toán phân loại ảnh thực tế nơi đối tượng cần nhận
+dạng thường bị lẫn trong nền phức tạp .Ví dụ: vùng bệnh nhỏ trên lá cây
+giữa nền lá xanh, hay vùng viêm mờ trên ảnh X-quang phổi. Cơ chế chú ý
+đóng vai trò quyết định trong việc giúp mô hình định vị chính xác vùng
+đặc trưng mang tính phân biệt cao, từ đó cải thiện đáng kể độ chính xác
+phân loại.
+
+Chính từ bối cảnh trên, tiểu luận này đặt ra câu hỏi nghiên cứu: Làm thế
+nào để tích hợp hiệu quả cơ chế chú ý CBAM vào kiến trúc mạng siêu nhẹ
+TickNets nhằm nâng cao hiệu năng phân loại ảnh mà không làm bùng nổ chi
+phí tính toán? Câu trả lời cho câu hỏi này sẽ được trình bày chi tiết
+trong phần đề xuất mô hình cải tiến phân cấp ở mục 3.2 tiếp theo.
+\end{quote}
+
+\hypertarget{ux111ux1ec1-xuux1ea5t-muxf4-huxecnh-ticknets-kux1ebft-hux1ee3p-cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p-hierarchical-attention}{%
+\subsection{ĐỀ XUẤT MÔ HÌNH TICKNETS KẾT HỢP CƠ CHẾ CHÚ Ý PHÂN CẤP
+HIERARCHICAL
+ATTENTION}\label{ux111ux1ec1-xuux1ea5t-muxf4-huxecnh-ticknets-kux1ebft-hux1ee3p-cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p-hierarchical-attention}}
+
+\begin{quote}
+Dựa trên nền tảng lý thuyết ở Chương 2 và bối cảnh bài toán ở mục 3.1,
+mục này đề xuất kiến trúc cải tiến TickNet-small CBAM-Hook một hệ thống
+chú ý phân cấp hai tầng giữ nguyên SE cục bộ bên trong mỗi khối FR-PDP,
+đồng thời chèn CBAM toàn cục tại các điểm nối chiến lược hooking points
+giữa hai nhánh xương sống và trước lớp GAP cuối mạng.
+\end{quote}
+
+\hypertarget{thiux1ebft-kux1ebf-kiux1ebfn-truxfac-ux111ux1ec1-xuux1ea5t-ticknet-small-cbam-hook}{%
+\subsubsection{3.2.1 Thiết kế kiến trúc đề xuất TickNet-small
+CBAM-Hook}\label{thiux1ebft-kux1ebf-kiux1ebfn-truxfac-ux111ux1ec1-xuux1ea5t-ticknet-small-cbam-hook}}
+
+\begin{quote}
+TickNet-small nguyên bản tích hợp SE trong mỗi khối FR-PDP để tái hiệu
+chỉnh kênh cục bộ, nhưng hoàn toàn thiếu cơ chế lọc theo không gian
+không xác định được vùng nào trên bản đồ đặc trưng chứa thông tin phân
+loại quan trọng nhất. Hạn chế này đặc biệt nghiêm trọng trên dữ liệu
+thực tế có nền phức tạp nơi vùng bệnh lý chỉ chiếm phần nhỏ diện tích
+ảnh.
+
+Nghiên cứu so sánh hai chiến lược chèn CBAM:
+
+\textbf{CBAM-Local:} Thay trực tiếp SE bằng CBAM bên trong mỗi khối
+FR-PDP. Cách tiếp cận trực quan nhưng tiềm ẩn xung đột kiến trúc với
+phép tích chập tách biệt chiều sâu.
+
+\textbf{CBAM-Hook (đề xuất):} Giữ nguyên SE nội khối, chèn CBAM ở bên
+ngoài các khối tại các vị trí chiến lược, tạo hệ thống chú ý phân cấp
+hai tầng bổ sung cho nhau.
+
+Ba nguyên lý thiết kế cốt lõi:
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Phân tách chức năng: SE nội khối lọc kênh nào quan trọng ở phạm vi cục
+  bộ. CBAM ngoại khối lọc vùng không gian nào quan trọng trên bản đồ đặc
+  trưng đã tích lũy qua nhiều khối.
+\item
+  Tránh chồng chéo đặc trưng: SAM của CBAM dùng gộp kênh để tạo bản đồ
+  chú ý không gian 2D. Khi đặt SAM cùng mức với DWConv trong FR-PDP, cả
+  hai cùng hoạt động trên cùng miền không gian cục bộ với receptive
+  field tương đồng, gây dư thừa thông tin.
+\item
+  Chèn tại điểm chuyển pha: Tick-shape Backbone gồm pha mở rộng và pha
+  thu hẹp kênh. Điểm chuyển tiếp nơi đặc trưng đạt mức trừu tượng cao
+  nhất là vị trí lý tưởng để CBAM tinh lọc toàn cục trước khi đặc trưng
+  bước vào pha nén.
+\end{enumerate}
+
+\begin{quote}
+Ba điểm chèn chiến lược. Kiến trúc CBAM-Hook chèn CBAM tại ba hooking
+points:
+
+Hooking Point 1 - Giữa Expanding và Contracting Backbone\textbf{:} Vị
+trí số kênh cực đại, CBAM tái hiệu chỉnh kênh và lọc không gian trước
+khi đặc trưng vào pha nén.
+
+Hooking Point 2 - Cuối pha thu hẹp: ``Cổng kiểm soát cuối
+cùng\textquotesingle'' tinh chỉnh kênh và không gian của bản đồ đặc
+trưng đã nén trước khi truyền tới lớp phân loại.
+
+Hooking Point 3 - Trước GAP\textbf{:} Lọc không gian lần cuối, đảm bảo
+GAP chỉ tính trung bình trên vùng chứa đối tượng, không bị pha loãng bởi
+nền.
+
+\includegraphics[width=4.2197in,height=4.2197in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image9.jpeg}\emph{Hình
+3.2.1: Kiến trúc tổng thể mô hình đề xuất TickNet-small CBAM-Hook}
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3774}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1913}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2105}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2209}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Thành phần kiến trúc
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+SE Baseline
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+CBAM-Local
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+CBAM-Hook
+\end{minipage} \\
+\midrule()
+\endhead
+Attention nội khối FR-PDP & SE & CBAM & SE giữ nguyên \\
+Attention tại Hooking Point 1 & Không & Không & CBAM \\
+Attention tại Hooking Point 2 & Không & Không & CBAM \\
+Attention trước GAP & Không & Không & CBAM \\
+Lọc kênh cục bộ & Có SE & Có CAM & Có SE \\
+Lọc không gian cục bộ & Không & Có SAM & Không \\
+Lọc không gian toàn cục & Không & Không & Có SAM \\
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+\emph{Bảng 3.2.1 So sánh kiến trúc 3 mô hình thực nghiệm}
+\end{quote}
+
+\hypertarget{cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p}{%
+\subsubsection{3.2.2 Cơ chế chú ý phân
+cấp}\label{cux1a1-chux1ebf-chuxfa-uxfd-phuxe2n-cux1ea5p}}
+
+\begin{quote}
+Hai tầng chú ý phân cấp. Hệ thống chú ý phân cấp gồm hai tầng hoạt động
+bổ sung:
+
+Tầng 1 - Chú ý cục bộ nội khối: SE hoạt động bên trong mỗi khối FR-PDP,
+nén thông tin không gian qua GAP thành vector \(1 \times 1 \times C\),
+học hàm kích thích qua hai lớp FC để sinh trọng số kênh, khuếch đại kênh
+quan trọng và giảm thiểu kênh nhiễu.
+
+Tầng 2 - Chú ý toàn cục ngoại khối: CBAM hoạt động bên ngoài các khối
+tại các hooking points, lọc tuần tự theo cả kênh và không gian trên bản
+đồ đặc trưng đã tích lũy qua nhiều khối, ở mức trừu tượng cao hơn SE cục
+bộ.
+
+Ba cơ sở giữ nguyên SE nội khối:
+
+Cơ sở 1 - Tương thích kiến trúc: Khối FR-PDP dùng chuỗi PW
+\(\rightarrow\)DW \(\rightarrow\)PW, trong đó DWConv xử lý mỗi kênh độc
+lập trên miền không gian cục bộ \(k \times k\). SE chỉ hoạt động trên
+chiều kênh nên bổ sung hoàn toàn cho DWConv. Ngược lại, SAM của CBAM
+cũng xử lý miền không gian, gây dư thừa chức năng với DWConv.
+
+Cơ sở 2 - Hiệu quả tham số : SE cực nhẹ (hai lớp FC với tỉ lệ nén
+\(r\)). CBAM bổ sung thêm convolution \(7 \times 7\ \)cho SAM. Giữ SE
+trong mỗi khối duy trì tính tối giản của mạng siêu nhẹ.
+
+Cơ sở 3 - Phân vai tối ưu: SE là ``bộ lọc kênh nhanh'' cho xử lý nội bộ.
+CBAM là ``bộ lọc tổng hợp'' kênh lẫn không gian trên đặc trưng đã qua
+nhiều bước xử lý, mang tính ngữ nghĩa cao hơn.
+
+Luồng xử lý đặc trưng. Hình 3.2.2 minh hoa 3 chiến lược chèn cơ chế chú
+ý:
+
+\includegraphics[width=2.70833in,height=2.70833in]{vertopal_fe3807bd2608410aa17783721e5463e8/media/image10.jpeg}
+
+\emph{Hình 3.2.2 So sánh 3 mô hình : SE Baseline, CBAM-Local, CBAM-Hook}
+
+Luồng xử lý CBAM-Hook gồm 7 bước:
+
+Bước 1-2: ~Ảnh đầu vào
+\(\mathbf{X}_{0} \in \mathbb{R}^{H \times W \times 3}\) qua stem
+convolution, sau đó qua các khối FR-PDP pha mở rộng kênh với SE nội khối
+và full-residual skip connection:
+
+\(\mathbf{F}_{i} = \text{FR-PDP}_{i}\left( \mathbf{F}_{i - 1} \right) = \mathbf{F}_{i - 1} + \text{SE}\left( \text{PW}_{2}\left( \text{DW}\left( \text{PW}_{1}\left( \mathbf{F}_{i - 1} \right) \right) \right) \right.\ \)
+(1)
+
+Bước 3: Tại Hooking Point 1, CBAM toàn cục được áp dụng:
+
+\(\mathbf{F}'_{\text{hook1}} = \text{CBAM}\left( \mathbf{F}_{N} \right) = M_{s}\left( M_{c}\left( \mathbf{F}_{N} \right) \otimes \mathbf{F}_{N} \right) \otimes \left( M_{c}\left( \mathbf{F}_{N} \right) \otimes \mathbf{F}_{N} \right.\ \)
+(2)
+
+Trong đó, \(M_{c}\) \(M_{s}\) lần lượt là bản đồ chú ý kênh và không
+gian, \(\otimes \ \)là phép nhân theo phần tử.
+
+Bước 4-5: Đặc trưng qua các khối FR-PDP pha thu hẹp, rồi CBAM toàn cục
+thứ hai tại Hooking Point 2.
+
+Bước 6: CBAM cuối cùng tại Hooking Point 3 (trước GAP) đảm bảo GAP chỉ
+tổng hợp từ vùng không gian mang tính phân biệt cao.
+
+Bước 7: GAP nén bản đồ đặc trưng 3D thành vector 1D, lớp Dense + Softmax
+đưa ra phân phối xác suất.
+
+Ưu thế kỳ vọng:
+
+Loại bỏ nhiễu nền vượt trội nhờ ba lớp lọc không gian CBAM dần loại bỏ
+vùng nền qua từng pha, hiệu quả trên dữ liệu nền phức tạp.
+
+Khắc phục suy giảm ảnh nhỏ: CBAM-Local làm mất thông tin không gian do
+chồng chéo DWConv SAM. CBAM-Hook chỉ lọc không gian ở điểm nối nơi đặc
+trưng đã đủ phong phú ngữ nghĩa.
+
+Cân bằng hiệu năng chi phí. Chỉ 3 điểm chèn CBAM thay vì mỗi khối, kiểm
+soát tham số bổ sung ở mức tối thiểu.
+
+Các giả thuyết trên được kiểm chứng qua thực nghiệm đối chứng tại mục
+3.3.
+\end{quote}
+
+\hypertarget{phuxe2n-tuxedch-touxe1n-hux1ecdc-giux1ea3i-quyux1ebft-sux1ef1-chux1ed3ng-chuxe9o-ux111ux1eb7c-trux1b0ng-khuxf4ng-gian-giux1eefa-depthwise-convolution-vuxe0-spatial-attention-module}{%
+\subsubsection{3.2.3 Phân tích toán học giải quyết sự chồng chéo đặc
+trưng không gian giữa Depthwise Convolution và Spatial Attention
+Module}\label{phuxe2n-tuxedch-touxe1n-hux1ecdc-giux1ea3i-quyux1ebft-sux1ef1-chux1ed3ng-chuxe9o-ux111ux1eb7c-trux1b0ng-khuxf4ng-gian-giux1eefa-depthwise-convolution-vuxe0-spatial-attention-module}}
+
+\begin{quote}
+Mục này phân tích toán học tại sao CBAM-Local có thể gây suy giảm hiệu
+năng, củng cố cơ sở cho chiến lược CBAM-Hook.
+
+Phân tích vùng tiếp nhận
+\(\mathbf{F} \in \mathbb{R}^{H \times W \times C}\) ngay sau DWConv
+trong khối FR-PDP. Giá trị tại vị trí \((i,j)\)trên kênh \(c\):
+
+\(\mathbf{F}(i,j,c) = \sum_{m = - \left\lfloor k/2 \right\rfloor}^{\left\lfloor k/2 \right\rfloor}{\sum_{n = - \left\lfloor k/2 \right\rfloor}^{\left\lfloor k/2 \right\rfloor}\mathbf{W}_{c}}(m,n) \cdot \mathbf{X}(i + m,j + n,c) + b_{c}\)
+(3)
+
+Trong đó, \(\mathbf{W}_{c} \in \mathbb{R}^{k \times k}\ \)là kernel kênh
+\(c\ \)( \(k = 3\ \)trong TickNets). DWConv đã mã hóa thông tin không
+gian cục bộ \(k \times k\ \)vào \(\mathbf{F}(i,j,c)\).
+
+SAM đặt ngay sau DWConv tạo bản đồ chú ý không gian qua:
+
+Gộp kênh:
+
+\(\mathbf{F}_{\text{avg}}^{s}(i,j) = \frac{1}{C}\sum_{c = 1}^{C}\mathbf{F}(i,j,c),\quad\mathbf{F}_{\text{max}}^{s}(i,j) = \max_{c \in \left\{ 1,\ldots,C \right\}}{\mathbf{F}(i,j,c)}\)
+(4)
+
+Tích chập \(7 \times 7\):
+\end{quote}
+
+\[M_{s}(i,j) = \sigma\left( \sum_{m = - 3}^{3}{\sum_{n = - 3}^{3}\mathbf{W}^{s}}(m,n) \cdot \left\lbrack \mathbf{F}_{\text{avg}}^{s}(i + m,j + n);\mspace{6mu}\mathbf{F}_{\text{max}}^{s}(i + m,j + n) \right\rbrack + b^{s} \right)\]
+
+\begin{quote}
+(5)
+
+Hiện tượng chồng chéo. Thay (3) vào (4):
+\end{quote}
+
+\[\mathbf{F}_{\text{avg}}^{s}(i,j) = \frac{1}{C}\sum_{c = 1}^{C}\left\lbrack \sum_{m,n}^{}\mathbf{W}_{c}(m,n) \cdot \mathbf{X}(i + m,j + n,c) + b_{c} \right\rbrack\]
+
+\begin{quote}
+(6)
+
+Kết hợp với convolution \(7 \times 7\) của SAM, vùng tiếp cận hiệu dụng
+là~:
+
+\(\text{ERF}_{\text{SAM}} = (k - 1) + (7 - 1) + 1 = k + 5\) (7)
+
+Với \(k = 3\): \(\text{ERF}_{\text{SAM}}\)= 8\(\ \)pixel - SAM cục bộ
+chỉ học trên thông tin \textbf{cục bộ}, không toàn cục.
+
+Dư thừa nghiêm trọng trên ảnh nhỏ. Với Fashion-MNIST \(28 \times 28\),
+sau vài khối FR-PDP có stride \(> 1\), bản đồ đặc trưng
+\(H_{l} \times W_{l}\ \)giảm nhanh:
+
+\(\text{Tỉ~lệ~phủ}\) =
+\(\frac{\text{ERF}_{\text{SAM}}^{2}}{H_{l} \times W_{l}} \rightarrow 1\quad\text{khi~}H_{l},W_{l} \rightarrow k + 5\)
+(8)
+
+Khi tỷ lệ phủ \(\rightarrow 1,\ M_{s}\ \)trở nên đồng nhất - SAM mất khả
+năng phân biệt vùng quan trọng và còn đưa thêm nhiễu gradient vào huấn
+luyện.
+
+Tại sao CBAM-Hook giải quyết được? Tại các hooking points, mỗi pixel
+trên bản đồ đặc trưng đã tích lũy vùng tiếp nhận lớn hơn nhiều nhờ hiệu
+ứng chồng tầng:
+
+\(\text{ERF}_{\text{t}\text{í}\text{ch}\text{~}\text{l}\text{ũ}\text{y}}^{(L)} = 1 + \sum_{l = 1}^{L}\left( k_{l} - 1 \right) \cdot \prod_{j = l + 1}^{L}s_{j}\ \)(9)
+
+Với \(L\) đủ lớn,
+\(\text{ERF}_{\text{t}\text{í}\text{ch}\text{~}\text{l}\text{ũ}\text{y}}\)
+bao phủ phần lớn ảnh đầu vào, giúp SAM phân biệt được ``vùng đối tượng''
+và ``vùng nền'' một cách có ý nghĩa.
+
+Kết luận toán học.
+
+CBAM-Local gây dư thừa: SAM sau DWConv bị giới hạn ERF ở mức cục bộ
+\(k + 5\ \)pixel, chồng chéo với DWConv. Trên ảnh nhỏ, bản đồ chú ý đồng
+nhất và vô nghĩa, gây suy giảm hiệu năng.
+
+CBAM-Hook tối ưu: SAM tại hooking points có ERF tích lũy đủ lớn để hoạt
+động trên thông tin ngữ nghĩa toàn cục. SE nội khối vẫn lọc kênh cục bộ
+hiệu quả, không xung đột.
+
+Các kết luận này được kiểm chứng bằng thực nghiệm đối chứng tại mục 3.3.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item ~
+  \hypertarget{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}{%
+  \subsection{HIỆN THỰC GIẢI
+  PHÁP:}\label{hiux1ec7n-thux1ef1c-giux1ea3i-phuxe1p}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}{%
+    \subsubsection{Môi trường thực nghiệm và xây dựng mô
+    hình:}\label{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m-vuxe0-xuxe2y-dux1ef1ng-muxf4-huxecnh}}
+
+    \begin{enumerate}
+    \def\labelenumiii{\arabic{enumiii}.}
+    \item ~
+      \hypertarget{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m}{%
+      \paragraph{Môi trường thực
+      nghiệm}\label{muxf4i-trux1b0ux1eddng-thux1ef1c-nghiux1ec7m}}
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+
+\begin{quote}
+Viết ở đây
+\end{quote}
+
+\hypertarget{nhuxf3m-4-bux1ed9-dux1eef-liux1ec7u-thux1ef1c-nghiux1ec7m}{%
+\paragraph{Nhóm 4 bộ dữ liệu thực
+nghiệm}\label{nhuxf3m-4-bux1ed9-dux1eef-liux1ec7u-thux1ef1c-nghiux1ec7m}}
+
+\begin{quote}
+Viết ở đây
+\end{quote}
+
+\hypertarget{cuxe1c-phux1b0ux1a1ng-phuxe1p-tiux1ec1n-xux1eed-luxfd-dux1eef-liux1ec7u-vuxe0-tux103ng-cux1b0ux1eddng-dux1eef-liux1ec7u-data-augmentation-cho-tux1eebng-nhuxf3m-ux1ea3nh}{%
+\paragraph{Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu
+(Data Augmentation) cho từng nhóm
+ảnh}\label{cuxe1c-phux1b0ux1a1ng-phuxe1p-tiux1ec1n-xux1eed-luxfd-dux1eef-liux1ec7u-vuxe0-tux103ng-cux1b0ux1eddng-dux1eef-liux1ec7u-data-augmentation-cho-tux1eebng-nhuxf3m-ux1ea3nh}}
+
+\begin{quote}
+Viết ở đây
+\end{quote}
+
+\hypertarget{hiux1ec7n-thux1ef1c-huxf3a-3-muxf4-huxecnh-ux111ux1ed1i-chux1ee9ng-thux1ef1c-nghiux1ec7m}{%
+\paragraph{Hiện thực hóa 3 mô hình đối chứng thực
+nghiệm}\label{hiux1ec7n-thux1ef1c-huxf3a-3-muxf4-huxecnh-ux111ux1ed1i-chux1ee9ng-thux1ef1c-nghiux1ec7m}}
+
+\begin{quote}
+Viết ở đây
+\end{quote}
+
+\hypertarget{cux1ea5u-huxecnh-quuxe1-truxecnh-huux1ea5n-luyux1ec7n-vuxe0-tux1ed1i-ux1b0u-huxf3a}{%
+\paragraph{Cấu hình quá trình huấn luyện và tối ưu
+hóa}\label{cux1ea5u-huxecnh-quuxe1-truxecnh-huux1ea5n-luyux1ec7n-vuxe0-tux1ed1i-ux1b0u-huxf3a}}
+
+\begin{quote}
+Viết ở đây
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item ~
+  \hypertarget{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}{%
+  \subsubsection{Kết quả thực nghiệm và đánh
+  giá:}\label{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-ux111uxe1nh-giuxe1}}
+
+  \begin{enumerate}
+  \def\labelenumii{\arabic{enumii}.}
+  \item ~
+    \hypertarget{cuxe1c-ux111ux1ed9-ux111o-hiux1ec7u-nux103ng-chuux1ea9n-mux1ef1c-accuracy-precision-recall-f1-score-vuxe0-cux1ea5u-truxfac-confusion-matrix}{%
+    \paragraph{Các độ đo hiệu năng chuẩn mực Accuracy, Precision,
+    Recall, F1-score và cấu trúc Confusion
+    Matrix}\label{cuxe1c-ux111ux1ed9-ux111o-hiux1ec7u-nux103ng-chuux1ea9n-mux1ef1c-accuracy-precision-recall-f1-score-vuxe0-cux1ea5u-truxfac-confusion-matrix}}
+  \item ~
+    \hypertarget{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-biux1ec3u-ux111ux1ed3-lossaccuracy-truxean-tux1eadp-dux1eef-liux1ec7u-chuux1ea9n-fashion-mnist-cifar-10}{%
+    \paragraph{Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ
+    liệu chuẩn Fashion-MNIST,
+    CIFAR-10}\label{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-biux1ec3u-ux111ux1ed3-lossaccuracy-truxean-tux1eadp-dux1eef-liux1ec7u-chuux1ea9n-fashion-mnist-cifar-10}}
+  \item ~
+    \hypertarget{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-biux1ec3u-ux111ux1ed3-lossaccuracy-truxean-tux1eadp-dux1eef-liux1ec7u-thux1ef1c-tiux1ec5n-plantvillage-chest-xray-pneumonia}{%
+    \paragraph{Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ
+    liệu thực tiễn PlantVillage,
+    Chest-Xray-Pneumonia}\label{kux1ebft-quux1ea3-thux1ef1c-nghiux1ec7m-vuxe0-biux1ec3u-ux111ux1ed3-lossaccuracy-truxean-tux1eadp-dux1eef-liux1ec7u-thux1ef1c-tiux1ec5n-plantvillage-chest-xray-pneumonia}}
+  \item ~
+    \hypertarget{phuxe2n-tuxedch-hiux1ec7n-tux1b0ux1ee3ng-suy-giux1ea3m-hiux1ec7u-nux103ng-cux1ee5c-bux1ed9-cbam-local-vuxe0-ux1b0u-thux1ebf-cux1ee7a-giux1ea3i-phuxe1p-ux111ux1ec1-xuux1ea5t-cbam-hook}{%
+    \paragraph{Phân tích hiện tượng suy giảm hiệu năng cục bộ CBAM-Local
+    và ưu thế của giải pháp đề xuất
+    CBAM-Hook}\label{phuxe2n-tuxedch-hiux1ec7n-tux1b0ux1ee3ng-suy-giux1ea3m-hiux1ec7u-nux103ng-cux1ee5c-bux1ed9-cbam-local-vuxe0-ux1b0u-thux1ebf-cux1ee7a-giux1ea3i-phuxe1p-ux111ux1ec1-xuux1ea5t-cbam-hook}}
+  \item ~
+    \hypertarget{giux1ea3i-thuxedch-muxf4-huxecnh-bux1eb1ng-trux1ef1c-quan-huxf3a-bux1ea3n-ux111ux1ed3-nhiux1ec7t-grad-cam.-sux1ef1-tux1eadp-trung-vuxf9ng-khuxf4ng-gian-ux111ux1eb7c-trux1b0ng-thux1ef1c-tux1ebf}{%
+    \paragraph{Giải thích mô hình bằng trực quan hóa bản đồ nhiệt
+    Grad-CAM. Sự tập trung vùng không gian đặc trưng thực
+    tế}\label{giux1ea3i-thuxedch-muxf4-huxecnh-bux1eb1ng-trux1ef1c-quan-huxf3a-bux1ea3n-ux111ux1ed3-nhiux1ec7t-grad-cam.-sux1ef1-tux1eadp-trung-vuxf9ng-khuxf4ng-gian-ux111ux1eb7c-trux1b0ng-thux1ef1c-tux1ebf}}
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}{%
+\section{CHƯƠNG 4: KẾT QUẢ, KẾT LUẬN VÀ KIẾN
+NGHỊ}\label{chux1b0ux1a1ng-4-kux1ebft-quux1ea3-kux1ebft-luux1eadn-vuxe0-kiux1ebfn-nghux1ecb}}
+
+\hypertarget{kux1ebft-quux1ea3}{%
+\subsection{KẾT QUẢ:}\label{kux1ebft-quux1ea3}}
+
+\begin{quote}
+Trong bài tiểu luận này, thông qua các tài liệu về mô hình mạng nơ-ron
+tích chập (CNN) và cơ chế chú ý CBAM, học viên đã hiểu kiến trúc, cách
+thức hoạt động của mô hình CNN, cùng với đó là cơ chế chú ý và áp dụng
+vào mô hình CNN. Học viên đã khảo sát và hoàn thành thực hiện nghiên cứu
+việc áp dụng cơ chế chú ý CBAM vào mô hình CNN với pre-trained model
+VGG16 trên mặt lý thuyết lẫn thực nghiệm trên hai tập dữ liệu
+MNIST-Fashion và Cifar-10. Học viên đã xây dựng được cơ chế chú ý CBAM
+áp dụng vào sau một vài lớp của mô hình CNN và thực hiện huấn luyện cùng
+với một số mô hình không áp dụng. Từ các số liệu từ hình 3.8,3.9 và bảng
+3.3,3.4 so sánh accuracy, precision, recall và f1 score thu được thông
+qua thực nghiệm đã cho thấy được mô hình CNN có áp dụng cơ chế chú ý
+CBAM đã mang lại kết quả tích cực cho mô hình.
+\end{quote}
+
+\hypertarget{kux1ebft-luux1eadn}{%
+\subsection{KẾT LUẬN}\label{kux1ebft-luux1eadn}}
+
+\begin{quote}
+Qua những thông số thu được từ kết quả thực nghiệm cho thấy kết quả của
+mô hình CNN thật sự tốt hơn so với các mô hình máy học truyền thống, đặc
+biệt là việc áp dụng cơ chế chú ý CBAM vào mô hình đã cải thiện hiệu
+suất cho mô hình thông qua các chỉ số như accuracy, precision, recall và
+f1 score. Việc tích hợp CBAM vào mô hình CNN đã chứng minh được hiệu quả
+trong việc nâng cao độ chính xác và hiệu suất tổng thể của mô hình phân
+loại hình ảnh. Cơ chế Attention giúp mô hình tập trung vào các đặc trưng
+và vùng quan trọng, cải thiện khả năng tổng quát hóa. Những kết quả này
+khẳng định rằng việc sử dụng cơ chế chú ý à một hướng đi triển vọng
+trong việc phát triển các mô hình học sâu cho bài toán phân loại hình
+ảnh.
+\end{quote}
+
+\hypertarget{kiux1ebfn-nghux1ecb}{%
+\subsection{KIẾN NGHỊ}\label{kiux1ebfn-nghux1ecb}}
+
+\begin{quote}
+Cơ chế chú ý đã thật sự mang lại hiệu quả tốt cho mô hình CNN, vì vậy
+thông qua nghiên cứu này có thể nghiên cứu thêm các cơ chế chú ý khác và
+áp dụng nhiều cơ chế chú ý khác nhau để tận dụng các ưu điểm của từng
+loại để đạt được hiệu suất cao hơn. Nghiên cứu các phương pháp tối ưu
+hóa để giảm thiểu chi phí tính toán của
+
+cơ chế chú ý mà vẫn giữ được hiệu suất cao. Nghiên cứu mở rộng việc áp
+dụng cơ chế chú ý vào các nhiệm vụ và các mô hình học sâu.
+\end{quote}
+
+\hypertarget{tuxe0i-liux1ec7u-tham-khux1ea3o}{%
+\section{TÀI LIỆU THAM KHẢO}\label{tuxe0i-liux1ec7u-tham-khux1ea3o}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion
+  Jones, Aidan N. Gomez, Łukasz Kaiser, Illia Polosukhin ``Attention is
+  all you need'', 2017.
+\item
+  Trang web \uline{What is Convolutial Neural Network? Begin's Tutorial
+  for Machine} \uline{Learning and Deep Learning}, truy cập ngày
+  12/03/2024.
+\item
+  Altenberger, Felix, and Claus Lenz. ``A non-technical survey on deep
+  convolutional neural network architectures.'' arXiv preprint arXiv:
+  1803.02129 (2018).
+\item
+  Cao, Changyu et al. ``A convolutional neural network face recognition
+  algorithm based on data augmentation.'' (2019)
+\item
+  Simonyan, K.; Zisserman, A. Very deep convolutional networks for
+  large-scale image recognition. arXiv 2014, arXiv:1409.1556..
+\item
+  Trang web \uline{Thuật toán CNN là gì? Và cấu trúc mạng Convolution
+  Neural} \uline{Network}, truy cập ngày 5/4/2024.
+\item
+  Guo, M.-H., Xu, T.-X., Liu, J.-J., Liu, Z.-N., Jiang, P.-T., Mu,
+  T.-J., ... \&
+\end{enumerate}
+
+\begin{quote}
+Wang, Y. (2022). Attention mechanisms in computer vision: A survey.
+Computational Visual Media, 8, 331-368.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\item
+  Trang web \uline{Attention Mechanisms in Computer Vision: CBAM}, truy
+  cập ngày 10/05/2024.
+\item
+  Sanghyun Woo, Jongchan Park, Joon-Young Lee, In So Kweon ``CBAM:
+  Convolution Block Attention Module''.
+\item
+  Jie Hu, Li Shen, Samuel Albanie, Gang Sun, Enhua Wu
+  ``Squeeze-and-Excitation Networks''.
+\item
+  Trang web \uline{CBAM-keras}, truy cập ngày 15/05/2024.
+\item
+  Trang web \uline{Understanding Transfer Learning for Deep Learning},
+  truy cập ngày 15/05/2024.
+\item
+  Trang web \uline{Fine tuning pre-trained model trong pytorch và áp
+  dụng vào} \uline{Visual Saliency Prediction}, truy cập ngày
+  16/05/2024.
+\end{enumerate}
+
+\end{document}
