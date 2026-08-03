@@ -1,53 +1,8 @@
-##############################################################################
-# BỘ CODE CẢI TIẾN TOÀN DIỆN CHO NOTEBOOK: TickNets_CBAM_PlantVillage.ipynb
-# (Dành cho PlantVillage & Chest-Xray)
-#
-# CÁC ĐIỂM CẢI TIẾN KIẾN TRÚC KHOA HỌC (HƯỚNG A):
-#   1. Thêm Hooking Point 3 (Pre-GAP) trước lớp GAP (1024 channels) - đúng 100% với luận văn!
-#   2. Bổ sung Residual Connection cho CBAM tại các điểm nối (x + CBAM(x)) giúp gradient ổn định.
-#   3. Dùng SAM kernel 7x7 và reduction ratio=8 cho CBAM tại các điểm nối (Hooking Points) 
-#      để học đặc trưng toàn cục ngữ nghĩa tốt hơn.
-#   4. Sửa lỗi PyTorch mới: bỏ `verbose=True` ở ReduceLROnPlateau.
-#   5. Tự động xuất đầy đủ file kết quả (json, csv, png, pth) ở cell cuối cùng.
-##############################################################################
+import json
+import os
 
-"""
-HƯỚNG DẪN THỰC HIỆN TRÊN KAGGLE:
-
-Bước 1: Thay thế toàn bộ code Định nghĩa Mô hình và Attention trong Notebook PlantVillage
-        bằng đoạn code dưới đây (từ class CBAM đến class TickNetSmall).
-
-Bước 2: Ở Cell CONFIG, chọn:
-        CONFIG = {
-            'batch_size': 32,
-            'max_epochs': 40,
-            'learning_rate': 0.01,
-            'weight_decay': 1e-4,
-            'se_reduction': 16,
-            'cbam_reduction': 8,
-            'cbam_spatial_kernel': 7,
-            'patience': 8,
-            'lr_patience': 3,
-            'lr_factor': 0.5,
-            'seed': 42,
-            'train_models': True
-        }
-
-Bước 3: Thêm 1 Cell MỚI ở cuối cùng notebook và dán toàn bộ đoạn [PHẦN XUẤT KẾT QUẢ] vào.
-
-Bước 4: Bấm Run All.
-"""
-
-# =====================================================================
-# [ĐOẠN CODE CẤU TRÚC MÔ HÌNH CẢI TIẾN MỚI - COPY VÀO CELL MÔ HÌNH]
-# =====================================================================
-
-MODEL_CODE_PLANTVILLAGE = '''
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-class Swish(nn.Module):
+# Code kiến trúc mô hình mới cho Classification
+MODEL_CODE_CLASSIFICATION = """class Swish(nn.Module):
     def forward(self, x):
         return x * torch.sigmoid(x)
 
@@ -190,7 +145,7 @@ class CBAM(nn.Module):
 
 # 3. Khối FR-PDP tích hợp Attention
 class FR_PDP_block(nn.Module):
-    def __init__(self, in_channels, out_channels, stride, attention_type='se', reduction=16, spatial_kernel=7):
+    def __init__(self, in_channels, out_channels, stride, attention_type='se', reduction=16, spatial_kernel=3):
         super().__init__()
         self.Pw1 = conv1x1_block(in_channels=in_channels, out_channels=in_channels, use_bn=False, activation=None)
         self.Dw = conv3x3_dw_blockAll(channels=in_channels, stride=stride)         
@@ -223,16 +178,22 @@ class FR_PDP_block(nn.Module):
 
 # 4. Mạng TickNetSmall tích hợp 3 Điểm Nối Attention Phân Cấp (CBAM-Hook Chuẩn Luận Văn)
 class TickNetSmall(nn.Module): 
-    def __init__(self, num_classes, attention_mode='se_only', cbam_reduction=8, cbam_spatial_kernel=7, cifar=False):
+    def __init__(self, num_classes, attention_mode='se_only', cbam_reduction=8, cbam_spatial_kernel=3, cifar=True):
         super().__init__()
         init_conv_channels = 32
         backbone1_channels = [[128], [64, 128], [256, 512, 128]]
         backbone2_channels = [[64, 128, 256], [512]]
         
-        self.in_size = (224, 224)
-        init_conv_stride = 2
-        strides_b1 = [2, 1, 2]
-        strides_b2 = [2, 2]
+        if cifar:
+            self.in_size = (32, 32)
+            init_conv_stride = 1
+            strides_b1 = [1, 1, 2]
+            strides_b2 = [2, 2]
+        else:
+            self.in_size = (224, 224)
+            init_conv_stride = 2
+            strides_b1 = [2, 1, 2]
+            strides_b2 = [2, 2]
             
         self.attention_mode = attention_mode
         self.data_bn = nn.BatchNorm2d(num_features=3)
@@ -285,7 +246,7 @@ class TickNetSmall(nn.Module):
         self.final_conv_channels = 1024
         self.final_conv = conv1x1_block(in_channels=in_ch, out_channels=self.final_conv_channels, activation="relu")
         
-        # HOOKING POINT 3 (MỚI BỔ SUNG ĐÚNG THEO LUẬN VĂN): Đặt trước lớp GAP (1024 channels)
+        # HOOKING POINT 3 (THÊM MỚI CHUẨN THEO LUẬN VĂN): Trước lớp GAP (1024 channels)
         if attention_mode == 'cbam_hook':
             self.cbam_pre_gap = CBAM(gate_channels=1024, reduction_ratio=cbam_reduction, kernel_size=7, use_residual=True)
             
@@ -315,14 +276,243 @@ class TickNetSmall(nn.Module):
         x = self.global_pool(x)
         x = self.classifier(x)
         return x
-'''
 
-# =====================================================================
-# [PHẦN XUẤT KẾT QUẢ - COPY VÀO CELL CUỐI CÙNG VÀ CHẠY]
-# =====================================================================
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad)"""
 
-EXPORT_CELL_CODE_PLANTVILLAGE = '''
+# Hàm train_model chuẩn (không có verbose=True)
+TRAIN_MODEL_CODE = """def train_epoch(model, loader, criterion, optimizer, scaler, device):
+    model.train()
+    running_loss = 0.0
+    correct = 0
+    total = 0
+    
+    for images, labels in loader:
+        images, labels = images.to(device), labels.to(device)
+        optimizer.zero_grad()
+        
+        with torch.amp.autocast('cuda', enabled=(device.type == 'cuda')):
+            outputs = model(images)
+            loss = criterion(outputs, labels)
+            
+        if scaler is not None:
+            scaler.scale(loss).backward()
+            scaler.step(optimizer)
+            scaler.update()
+        else:
+            loss.backward()
+            optimizer.step()
+        
+        running_loss += loss.item() * images.size(0)
+        _, predicted = outputs.max(1)
+        total += labels.size(0)
+        correct += predicted.eq(labels).sum().item()
+        
+    return running_loss / total, 100.0 * correct / total
+
+def evaluate(model, loader, criterion, device):
+    model.eval()
+    running_loss = 0.0
+    correct = 0
+    total = 0
+    
+    with torch.no_grad():
+        for images, labels in loader:
+            images, labels = images.to(device), labels.to(device)
+            with torch.amp.autocast('cuda', enabled=(device.type == 'cuda')):
+                outputs = model(images)
+                loss = criterion(outputs, labels)
+            
+            running_loss += loss.item() * images.size(0)
+            _, predicted = outputs.max(1)
+            total += labels.size(0)
+            correct += predicted.eq(labels).sum().item()
+            
+    return running_loss / total, 100.0 * correct / total
+
+def train_model(model, train_loader, val_loader, config, device):
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(model.parameters(), lr=config['learning_rate'], momentum=0.9, weight_decay=config['weight_decay'])
+    scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', patience=config['lr_patience'], factor=config['lr_factor'])
+    scaler = torch.amp.GradScaler('cuda') if device.type == 'cuda' else None
+    
+    history = {
+        'train_loss': [], 'train_acc': [],
+        'val_loss': [], 'val_acc': []
+    }
+    
+    best_val_loss = float('inf')
+    best_model_wts = copy.deepcopy(model.state_dict())
+    patience_counter = 0
+    
+    start_time = time.time()
+    for epoch in range(config['max_epochs']):
+        train_loss, train_acc = train_epoch(model, train_loader, criterion, optimizer, scaler, device)
+        val_loss, val_acc = evaluate(model, val_loader, criterion, device)
+        scheduler.step(val_loss)
+        
+        history['train_loss'].append(train_loss)
+        history['train_acc'].append(train_acc)
+        history['val_loss'].append(val_loss)
+        history['val_acc'].append(val_acc)
+        
+        print(f"Epoch [{epoch+1}/{config['max_epochs']}] - Loss: {train_loss:.4f}, Acc: {train_acc:.2f}% | Val Loss: {val_loss:.4f}, Val Acc: {val_acc:.2f}%")
+        
+        # Dừng sớm & lưu weights tốt nhất
+        if val_loss < best_val_loss:
+            best_val_loss = val_loss
+            best_model_wts = copy.deepcopy(model.state_dict())
+            patience_counter = 0
+        else:
+            patience_counter += 1
+            if patience_counter >= config['patience']:
+                print(f"-> Kích hoạt Dừng sớm (Early Stopping) tại epoch {epoch+1}")
+                break
+                
+    elapsed_time = time.time() - start_time
+    print(f"=> Kết thúc huấn luyện trong: {elapsed_time/60:.2f} phút.")
+    model.load_state_dict(best_model_wts)
+    return history
+
+def evaluate_detailed(model, loader, classes, dataset_name, model_name, device):
+    model.eval()
+    all_preds = []
+    all_targets = []
+    with torch.no_grad():
+        for images, labels in loader:
+            images = images.to(device)
+            with torch.amp.autocast('cuda', enabled=(device.type == 'cuda')):
+                outputs = model(images)
+                _, preds = outputs.max(1)
+            all_preds.extend(preds.cpu().numpy())
+            all_targets.extend(labels.numpy())
+            
+    preds = np.array(all_preds)
+    targets = np.array(all_targets)
+    
+    print(f"\\n================ {model_name} trên {dataset_name} ================")
+    print(classification_report(targets, preds, target_names=classes, digits=4))
+    
+    precision, recall, f1, _ = precision_recall_fscore_support(targets, preds, average='macro')
+    acc = 100.0 * np.sum(preds == targets) / len(targets)
+    
+    return acc, precision * 100, recall * 100, f1 * 100"""
+
+# Code Cell xuất kết quả tự động cho Classification
+EXPORT_CELL_CLASSIFICATION = """##############################################################################
+# CELL XUẤT KẾT QUẢ TỰ ĐỘNG — CIFAR-10 & Fashion-MNIST
 ##############################################################################
+import json, csv, os
+import numpy as np
+import matplotlib; matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+import seaborn as sns
+import torch, gc
+import pandas as pd
+from sklearn.metrics import classification_report, confusion_matrix
+from PIL import Image
+
+OUTPUT_DIR = '/kaggle/working/ticknet_results_classification'
+for d in ['', '/plots', '/models', '/gradcam', '/reports']:
+    os.makedirs(OUTPUT_DIR + d, exist_ok=True)
+
+print("=" * 60)
+print("BẮT ĐẦU XUẤT KẾT QUẢ — CIFAR-10 & Fashion-MNIST (CBAM-Hook Cải Tiến)")
+print("=" * 60)
+
+# ─── 1. Metrics JSON ───
+all_metrics = {}
+for ds_name, res_dict in [('CIFAR-10', results_cifar), ('Fashion-MNIST', results_fmnist)]:
+    all_metrics[ds_name] = {}
+    for mode, res in res_dict.items():
+        all_metrics[ds_name][mode] = {
+            'accuracy': round(res['acc'], 4),
+            'precision': round(res['prec'], 4),
+            'recall': round(res['rec'], 4),
+            'f1_score': round(res['f1'], 4),
+        }
+with open(f'{OUTPUT_DIR}/metrics_summary.json', 'w', encoding='utf-8') as f:
+    json.dump(all_metrics, f, indent=2, ensure_ascii=False)
+print("[✓] metrics_summary.json")
+
+# ─── 2. Training history CSV ───
+for ds_tag, res_dict in [('cifar10', results_cifar), ('fmnist', results_fmnist)]:
+    for mode, res in res_dict.items():
+        if 'history' not in res:
+            continue
+        h = res['history']
+        path = f'{OUTPUT_DIR}/{ds_tag}_{mode}_history.csv'
+        with open(path, 'w', newline='') as f:
+            w = csv.writer(f)
+            w.writerow(['epoch', 'train_loss', 'train_acc', 'val_loss', 'val_acc'])
+            for i in range(len(h['train_loss'])):
+                w.writerow([i+1, round(h['train_loss'][i],6), round(h['train_acc'][i],4),
+                            round(h['val_loss'][i],6), round(h['val_acc'][i],4)])
+        print(f"[✓] {os.path.basename(path)}")
+
+# ─── 3. Training curves plot ───
+def plot_curves(histories, names, ds_name, out_dir):
+    fig, axes = plt.subplots(1, 2, figsize=(16, 6))
+    colors = ['#2196F3', '#FF9800', '#4CAF50']
+    for i, (h, n) in enumerate(zip(histories, names)):
+        ep = range(1, len(h['train_loss'])+1)
+        axes[0].plot(ep, h['train_loss'], c=colors[i], ls='-', lw=1.5, label=f'{n} (Train)')
+        axes[0].plot(ep, h['val_loss'],   c=colors[i], ls='--', lw=1.5, label=f'{n} (Val)')
+        axes[1].plot(ep, h['train_acc'],  c=colors[i], ls='-', lw=1.5, label=f'{n} (Train)')
+        axes[1].plot(ep, h['val_acc'],    c=colors[i], ls='--', lw=1.5, label=f'{n} (Val)')
+    for ax, ylabel, title in [(axes[0], 'Loss', 'Loss'), (axes[1], 'Accuracy (%)', 'Accuracy')]:
+        ax.set_title(f'{ds_name} — {title} theo Epoch', fontsize=14)
+        ax.set_xlabel('Epoch'); ax.set_ylabel(ylabel)
+        ax.legend(fontsize=8); ax.grid(True, alpha=0.3)
+    plt.tight_layout()
+    p = f'{out_dir}/plots/{ds_name.lower().replace("-","_")}_training_curves.png'
+    plt.savefig(p, dpi=150, bbox_inches='tight'); plt.close()
+    print(f"[✓] {os.path.basename(p)}")
+
+name_map = {'se_only':'SE Baseline', 'cbam_local':'CBAM-Local', 'cbam_hook':'CBAM-Hook (Đề xuất)'}
+for ds_name, res_dict in [('CIFAR-10', results_cifar), ('Fashion-MNIST', results_fmnist)]:
+    hists = [(res_dict[m]['history'], name_map[m]) for m in ['se_only','cbam_local','cbam_hook'] if 'history' in res_dict[m]]
+    if hists:
+        plot_curves([h for h,_ in hists], [n for _,n in hists], ds_name, OUTPUT_DIR)
+
+# ─── 4. Comparison bar chart + CSV ───
+rows = []
+for ds_name, res_dict in [('CIFAR-10', results_cifar), ('Fashion-MNIST', results_fmnist)]:
+    for mode in ['se_only','cbam_local','cbam_hook']:
+        r = res_dict[mode]
+        rows.append({'Dataset': ds_name, 'Model': name_map[mode],
+                     'Accuracy': r['acc'], 'Precision': r['prec'], 'Recall': r['rec'], 'F1': r['f1']})
+df = pd.DataFrame(rows)
+df.to_csv(f'{OUTPUT_DIR}/comparison_table.csv', index=False, encoding='utf-8-sig')
+print("[✓] comparison_table.csv")
+
+fig, ax = plt.subplots(figsize=(14, 7))
+bar = sns.barplot(data=df, x='Dataset', y='Accuracy', hue='Model', palette=["#2196F3","#FF9800","#4CAF50"], ax=ax)
+plt.title("So sánh Accuracy — 3 mô hình TickNet trên ảnh nhỏ (32×32)", fontsize=14)
+plt.ylim(max(df['Accuracy'].min()-3, 85), min(df['Accuracy'].max()+2, 100))
+for p in bar.patches:
+    if p.get_height() > 0:
+        bar.annotate(f"{p.get_height():.2f}%", (p.get_x()+p.get_width()/2., p.get_height()),
+                     ha='center', va='bottom', fontsize=9, xytext=(0,3), textcoords='offset points')
+plt.tight_layout()
+plt.savefig(f'{OUTPUT_DIR}/plots/accuracy_comparison.png', dpi=150, bbox_inches='tight'); plt.close()
+print("[✓] accuracy_comparison.png")
+
+# ─── 5. Model info & Config ───
+mi = {}
+for mode in ['se_only','cbam_local','cbam_hook']:
+    m = TickNetSmall(10, mode, CONFIG['cbam_reduction'], CONFIG['cbam_spatial_kernel'], cifar=True)
+    mi[mode] = {'params': count_parameters(m)}; del m
+with open(f'{OUTPUT_DIR}/model_info.json', 'w') as f: json.dump(mi, f, indent=2)
+with open(f'{OUTPUT_DIR}/config.json', 'w') as f: json.dump(dict(CONFIG), f, indent=2)
+
+print("\\n" + "=" * 60)
+print(f"HOÀN TẤT XUẤT FILE! Tải thư mục: {OUTPUT_DIR}/")
+print("=" * 60)
+"""
+
+# Code Cell xuất kết quả tự động cho PlantVillage
+EXPORT_CELL_PLANTVILLAGE = """##############################################################################
 # CELL XUẤT KẾT QUẢ TỰ ĐỘNG — PlantVillage & Chest-Xray
 ##############################################################################
 import json, csv, os
@@ -421,7 +611,7 @@ plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/plots/accuracy_comparison.png', dpi=150, bbox_inches='tight'); plt.close()
 print("[✓] accuracy_comparison.png")
 
-# ─── 5. Export Model Info & Config ───
+# ─── 5. Model info & Config ───
 mi = {}
 for mode in ['se_only','cbam_local','cbam_hook']:
     m = TickNetSmall(10, mode, CONFIG['cbam_reduction'], CONFIG['cbam_spatial_kernel'], cifar=False)
@@ -429,7 +619,76 @@ for mode in ['se_only','cbam_local','cbam_hook']:
 with open(f'{OUTPUT_DIR}/model_info.json', 'w') as f: json.dump(mi, f, indent=2)
 with open(f'{OUTPUT_DIR}/config.json', 'w') as f: json.dump(dict(CONFIG), f, indent=2)
 
-print("\n" + "=" * 60)
+print("\\n" + "=" * 60)
 print(f"HOÀN TẤT XUẤT FILE! Tải thư mục: {OUTPUT_DIR}/")
 print("=" * 60)
-'''
+"""
+
+def update_notebook(nb_path, is_classification=True):
+    if not os.path.exists(nb_path):
+        print(f"File not found: {nb_path}")
+        return
+        
+    with open(nb_path, 'r', encoding='utf-8') as f:
+        nb_data = json.load(f)
+
+    # 1. Update CONFIG cell
+    for cell in nb_data['cells']:
+        if cell['cell_type'] == 'code' and 'CONFIG = {' in ''.join(cell['source']):
+            source_str = ''.join(cell['source'])
+            source_str = source_str.replace("'train_models': False", "'train_models': True")
+            if is_classification:
+                source_str = source_str.replace("'max_epochs': 50", "'max_epochs': 60")
+                source_str = source_str.replace("'patience': 8", "'patience': 10")
+                source_str = source_str.replace("'cbam_reduction': 16", "'cbam_reduction': 8")
+            else:
+                source_str = source_str.replace("'max_epochs': 30", "'max_epochs': 40")
+                source_str = source_str.replace("'patience': 6", "'patience': 8")
+            cell['source'] = [line + '\n' for line in source_str.split('\n')]
+            if cell['source'][-1] == '\n':
+                cell['source'].pop()
+
+    # 2. Update Model Architecture cells
+    for cell in nb_data['cells']:
+        if cell['cell_type'] == 'code' and 'class TickNetSmall' in ''.join(cell['source']):
+            cell['source'] = [line + '\n' for line in MODEL_CODE_CLASSIFICATION.split('\n')]
+            if cell['source'][-1] == '\n':
+                cell['source'].pop()
+
+    # 3. Update train_model cell (remove verbose=True)
+    for cell in nb_data['cells']:
+        if cell['cell_type'] == 'code' and 'def train_model(' in ''.join(cell['source']):
+            cell['source'] = [line + '\n' for line in TRAIN_MODEL_CODE.split('\n')]
+            if cell['source'][-1] == '\n':
+                cell['source'].pop()
+
+    # 4. Check if export cell exists at the end, if not add it, or replace if exists
+    export_code = EXPORT_CELL_CLASSIFICATION if is_classification else EXPORT_CELL_PLANTVILLAGE
+    has_export = False
+    for cell in nb_data['cells']:
+        if cell['cell_type'] == 'code' and 'CELL XUẤT KẾT QUẢ TỰ ĐỘNG' in ''.join(cell['source']):
+            cell['source'] = [line + '\n' for line in export_code.split('\n')]
+            if cell['source'][-1] == '\n':
+                cell['source'].pop()
+            has_export = True
+            break
+            
+    if not has_export:
+        new_cell = {
+            "cell_type": "code",
+            "execution_count": None,
+            "metadata": {},
+            "outputs": [],
+            "source": [line + '\n' for line in export_code.split('\n')]
+        }
+        if new_cell['source'][-1] == '\n':
+            new_cell['source'].pop()
+        nb_data['cells'].append(new_cell)
+
+    with open(nb_path, 'w', encoding='utf-8') as f:
+        json.dump(nb_data, f, indent=1, ensure_ascii=False)
+    print(f"[OK] Updated {os.path.basename(nb_path)} successfully!")
+
+if __name__ == '__main__':
+    update_notebook(r'd:\cu2\TickNets-CBAM\TickNets_CBAM_Classification.ipynb', is_classification=True)
+    update_notebook(r'd:\cu2\TickNets-CBAM\TickNets_CBAM_PlantVillage.ipynb', is_classification=False)

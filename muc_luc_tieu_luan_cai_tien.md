@@ -52,22 +52,18 @@
   * **3.2.3. Phân tích toán học giải quyết sự chồng chéo đặc trưng không gian giữa Depthwise Convolution và Spatial Attention Module (SAM)**
 * **3.3. HIỆN THỰC GIẢI PHÁP VÀ THỰC NGHIỆM:**
   * **3.3.1. Môi trường thực nghiệm và xây dựng mô hình:**
-    * *3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU T4, TensorFlow và Keras)*
-    * *3.3.1.2. Mô tả 4 bộ dữ liệu thực nghiệm:*
-      * 3.3.1.2.1. Nhóm dữ liệu chuẩn học thuật: Fashion-MNIST và CIFAR-10
-      * 3.3.1.2.2. Nhóm dữ liệu ứng dụng thực tiễn: PlantVillage (bệnh lá cây) và Chest-Xray-Pneumonia (viêm phổi)
+    * *3.3.1.1. Môi trường thực nghiệm (Nền tảng Kaggle, GPU T4, PyTorch)*
+    * *3.3.1.2. Mô tả 2 bộ dữ liệu thực nghiệm:*
     * *3.3.1.3. Các phương pháp Tiền xử lý dữ liệu và Tăng cường dữ liệu (Data Augmentation) cho từng nhóm ảnh*
     * *3.3.1.4. Hiện thực hóa 3 mô hình đối chứng thực nghiệm:*
       * 3.3.1.4.1. Mô hình 1 (SE Baseline): TickNet-small nguyên bản sử dụng chú ý SE trong khối
       * 3.3.1.4.2. Mô hình 2 (CBAM-Local): Chèn trực tiếp CBAM thay SE cục bộ trong khối FR-PDP
-      * 3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại các điểm nối và cuối mạng
+      * 3.3.1.4.3. Mô hình 3 (CBAM-Hook - Đề xuất cải tiến): Chèn CBAM phân cấp tại 3 điểm nối chiến lược
     * *3.3.1.5. Cấu hình quá trình huấn luyện và tối ưu hóa:*
-      * 3.3.1.5.1. Bộ tối ưu SGD và các hàm Loss tương ứng
-      * 3.3.1.5.2. Hàm gọi lại tự động giảm tốc độ học (ReduceLROnPlateau) và dừng sớm (EarlyStopping)
   * **3.3.2. Kết quả thực nghiệm, phân tích và đánh giá:**
     * *3.3.2.1. Các độ đo hiệu năng chuẩn mực (Accuracy, Precision, Recall, F1-score) và cấu trúc Confusion Matrix*
-    * *3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu chuẩn (Fashion-MNIST, CIFAR-10)*
-    * *3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu thực tiễn (PlantVillage, Chest-Xray-Pneumonia)*
+    * *3.3.2.2. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu CIFAR-10 (ảnh nhỏ 32×32)*
+    * *3.3.2.3. Kết quả thực nghiệm và biểu đồ Loss/Accuracy trên tập dữ liệu PlantVillage (ảnh lớn 224×224)*
     * *3.3.2.4. Phân tích hiện tượng suy giảm hiệu năng cục bộ (CBAM-Local) và ưu thế của giải pháp đề xuất (CBAM-Hook)*
     * *3.3.2.5. Giải thích mô hình bằng trực quan hóa bản đồ nhiệt Grad-CAM (Sự tập trung vùng không gian đặc trưng thực tế)*
 
