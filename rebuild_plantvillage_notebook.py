@@ -79,8 +79,8 @@ def set_seed(seed=42):
     np.random.seed(seed)
     import random
     random.seed(seed)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
+    # [TỐI ƯU TỐC ĐỘ] benchmark=True tăng tốc 2-3x cho ảnh kích thước cố định 224x224
+    torch.backends.cudnn.benchmark = True
 
 set_seed(42)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -88,23 +88,23 @@ print(f"Thiết bị: {device}")""")
 
     # ========== CELL 3: CONFIG (ĐÃ SỬA) ==========
     add_code("""# Cấu hình các siêu tham số tối ưu cho ảnh phân giải lớn (224x224)
-# [CẢI TIẾN] Giảm LR, tăng epochs, tăng patience để CBAM-Hook hội tụ tốt hơn
+# [CẢI TIẾN] Tối ưu để vừa đủ chạy trong giới hạn 12 giờ Kaggle
 CONFIG = {
-    'batch_size': 32,           # Tránh lỗi OOM trên GPU khi chạy ảnh lớn
-    'max_epochs': 60,           # [CẢI TIẾN] Tăng từ 40 → 60 để mô hình hội tụ đầy đủ
+    'batch_size': 64,           # [TỐI ƯU] Tăng từ 32 → 64, T4 16GB xử lý được ảnh 224x224
+    'max_epochs': 35,           # [TỐI ƯU] Giảm từ 60 → 35, mô hình hội tụ tốt ở epoch 20-25
     'learning_rate': 0.005,     # [CẢI TIẾN] Giảm từ 0.01 → 0.005 cho ổn định hơn với augmentation mạnh
     'weight_decay': 1e-4,
     'se_reduction': 16,
     'cbam_reduction': 8,        # Tăng dung lượng học kênh cho ảnh lớn
     'cbam_spatial_kernel': 7,   # Thiết lập đảo ngược tối ưu: Sử dụng kernel 7x7 cho ảnh lớn
-    'patience': 12,             # [CẢI TIẾN] Tăng từ 8 → 12 để tránh dừng sớm quá
-    'lr_patience': 5,           # [CẢI TIẾN] Tăng từ 3 → 5
+    'patience': 7,              # [TỐI ƯU] Giảm từ 12 → 7, đủ để phát hiện bão hòa
+    'lr_patience': 3,           # [TỐI ƯU] Giảm từ 5 → 3, giảm LR nhanh hơn khi bão hòa
     'lr_factor': 0.5,
     'label_smoothing': 0.1,     # [CẢI TIẾN] Label smoothing giúp regularize, tránh overconfident
     'seed': 42,
     'train_models': True        # Chọn False để dùng kết quả chuẩn lưu trữ, True để train lại
 }
-print("Cấu hình thực nghiệm y tế & nông nghiệp (CẢI TIẾN):")
+print("Cấu hình thực nghiệm y tế & nông nghiệp (CẢI TIẾN + TỐI ƯU TỐC ĐỘ):")
 for k, v in CONFIG.items():
     print(f"  - {k}: {v}")""")
 
@@ -209,8 +209,8 @@ else:
     train_size = int(0.8 * len(full_dataset))
     test_size = len(full_dataset) - train_size
     train_sub, test_sub = random_split(full_dataset, [train_size, test_size], generator=torch.Generator().manual_seed(42))
-    plant_train_loader = DataLoader(MapDataset(train_sub, large_train_transform), batch_size=CONFIG['batch_size'], shuffle=True, num_workers=2)
-    plant_test_loader = DataLoader(MapDataset(test_sub, large_test_transform), batch_size=CONFIG['batch_size'], shuffle=False, num_workers=2)
+    plant_train_loader = DataLoader(MapDataset(train_sub, large_train_transform), batch_size=CONFIG['batch_size'], shuffle=True, num_workers=4, pin_memory=True, persistent_workers=True)
+    plant_test_loader = DataLoader(MapDataset(test_sub, large_test_transform), batch_size=CONFIG['batch_size'], shuffle=False, num_workers=4, pin_memory=True, persistent_workers=True)
     print(f"PlantVillage: {len(train_sub)} train, {len(test_sub)} val. Lớp: {num_plant_classes}")
 
 # 2. Quét tìm Chest X-Ray
@@ -257,8 +257,8 @@ else:
     xray_test_dataset = torchvision.datasets.ImageFolder(root=os.path.join(xray_dir, 'test'), transform=large_test_transform)
     xray_classes = xray_train_dataset.classes
     num_xray_classes = len(xray_classes)
-    xray_train_loader = DataLoader(xray_train_dataset, batch_size=CONFIG['batch_size'], shuffle=True, num_workers=2)
-    xray_test_loader = DataLoader(xray_test_dataset, batch_size=CONFIG['batch_size'], shuffle=False, num_workers=2)
+    xray_train_loader = DataLoader(xray_train_dataset, batch_size=CONFIG['batch_size'], shuffle=True, num_workers=4, pin_memory=True, persistent_workers=True)
+    xray_test_loader = DataLoader(xray_test_dataset, batch_size=CONFIG['batch_size'], shuffle=False, num_workers=4, pin_memory=True, persistent_workers=True)
     print(f"Chest X-Ray: {len(xray_train_dataset)} train, {len(xray_test_dataset)} test")""")
 
     # ========== CELL 6: MD - Section 3 ==========
@@ -766,17 +766,21 @@ def evaluate_detailed(model, loader, classes, dataset_name, model_name, device):
     model.eval()
     all_preds = []
     all_targets = []
+    all_probs = []
     with torch.no_grad():
         for images, labels in loader:
             images = images.to(device)
             with torch.amp.autocast('cuda', enabled=(device.type == 'cuda')):
                 outputs = model(images)
+                probs = torch.softmax(outputs.float(), dim=1)
                 _, preds = outputs.max(1)
             all_preds.extend(preds.cpu().numpy())
             all_targets.extend(labels.numpy())
+            all_probs.append(probs.cpu().numpy())
             
     preds = np.array(all_preds)
     targets = np.array(all_targets)
+    probs = np.concatenate(all_probs, axis=0)
     
     print(f"\\n================ {model_name} trên {dataset_name} ================")
     print(classification_report(targets, preds, target_names=classes, digits=4))
@@ -784,7 +788,7 @@ def evaluate_detailed(model, loader, classes, dataset_name, model_name, device):
     precision, recall, f1, _ = precision_recall_fscore_support(targets, preds, average='macro')
     acc = 100.0 * np.sum(preds == targets) / len(targets)
     
-    return acc, precision * 100, recall * 100, f1 * 100""")
+    return acc, precision * 100, recall * 100, f1 * 100, preds, targets, probs""")
 
     # ========== CELL 11: MD - Section 5 ==========
     add_md("""## 5. Thực nghiệm trên PlantVillage (Ảnh bệnh lá cây 224x224)""")
@@ -801,8 +805,8 @@ if CONFIG['train_models']:
                              cifar=False).to(device)
         
         history = train_model(model, plant_train_loader, plant_test_loader, CONFIG, device)
-        acc, prec, rec, f1 = evaluate_detailed(model, plant_test_loader, plant_classes, "PlantVillage", f"TickNet-{mode}", device)
-        results_plant[mode] = {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'history': history}
+        acc, prec, rec, f1, preds, targets, probs = evaluate_detailed(model, plant_test_loader, plant_classes, "PlantVillage", f"TickNet-{mode}", device)
+        results_plant[mode] = {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'history': history, 'preds': preds, 'targets': targets, 'probs': probs}
         
         del model
         gc.collect()
@@ -828,8 +832,8 @@ if CONFIG['train_models']:
                              cifar=False).to(device)
         
         history = train_model(model, xray_train_loader, xray_test_loader, CONFIG, device)
-        acc, prec, rec, f1 = evaluate_detailed(model, xray_test_loader, xray_classes, "Chest X-Ray", f"TickNet-{mode}", device)
-        results_xray[mode] = {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'history': history}
+        acc, prec, rec, f1, preds, targets, probs = evaluate_detailed(model, xray_test_loader, xray_classes, "Chest X-Ray", f"TickNet-{mode}", device)
+        results_xray[mode] = {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'history': history, 'preds': preds, 'targets': targets, 'probs': probs}
         
         del model
         gc.collect()
@@ -964,7 +968,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import torch, gc
 import pandas as pd
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, roc_curve, auc
+from sklearn.preprocessing import label_binarize
 from PIL import Image
 
 OUTPUT_DIR = '/kaggle/working/ticknet_results_practical'
@@ -988,7 +993,7 @@ for ds_name, res_dict in [('PlantVillage', results_plant), ('Chest-Xray', result
         }
 with open(f'{OUTPUT_DIR}/metrics_summary.json', 'w', encoding='utf-8') as f:
     json.dump(all_metrics, f, indent=2, ensure_ascii=False)
-print("[✓] metrics_summary.json")
+print("[OK] metrics_summary.json")
 
 # ─── 2. Training history CSV ───
 for ds_tag, res_dict in [('plantvillage', results_plant), ('chestxray', results_xray)]:
@@ -1003,7 +1008,7 @@ for ds_tag, res_dict in [('plantvillage', results_plant), ('chestxray', results_
             for i in range(len(h['train_loss'])):
                 w.writerow([i+1, round(h['train_loss'][i],6), round(h['train_acc'][i],4),
                             round(h['val_loss'][i],6), round(h['val_acc'][i],4)])
-        print(f"[✓] {os.path.basename(path)}")
+        print(f"[OK] {os.path.basename(path)}")
 
 # ─── 3. Training curves plot ───
 def plot_curves(histories, names, ds_name, out_dir):
@@ -1016,15 +1021,15 @@ def plot_curves(histories, names, ds_name, out_dir):
         axes[1].plot(ep, h['train_acc'],  c=colors[i], ls='-', lw=1.5, label=f'{n} (Train)')
         axes[1].plot(ep, h['val_acc'],    c=colors[i], ls='--', lw=1.5, label=f'{n} (Val)')
     for ax, ylabel, title in [(axes[0], 'Loss', 'Loss'), (axes[1], 'Accuracy (%)', 'Accuracy')]:
-        ax.set_title(f'{ds_name} — {title} theo Epoch', fontsize=14)
+        ax.set_title(f'{ds_name} -- {title} theo Epoch', fontsize=14)
         ax.set_xlabel('Epoch'); ax.set_ylabel(ylabel)
         ax.legend(fontsize=8); ax.grid(True, alpha=0.3)
     plt.tight_layout()
     p = f'{out_dir}/plots/{ds_name.lower().replace("-","_")}_training_curves.png'
     plt.savefig(p, dpi=150, bbox_inches='tight'); plt.close()
-    print(f"[✓] {os.path.basename(p)}")
+    print(f"[OK] {os.path.basename(p)}")
 
-name_map = {'se_only':'SE Baseline', 'cbam_local':'CBAM-Local', 'cbam_hook':'CBAM-Hook (Đề xuất)'}
+name_map = {'se_only':'SE Baseline', 'cbam_local':'CBAM-Local', 'cbam_hook':'CBAM-Hook (De xuat)'}
 for ds_name, res_dict in [('PlantVillage', results_plant), ('Chest-Xray', results_xray)]:
     hists = [(res_dict[m]['history'], name_map[m]) for m in ['se_only','cbam_local','cbam_hook'] if 'history' in res_dict[m]]
     if hists:
@@ -1039,11 +1044,11 @@ for ds_name, res_dict in [('PlantVillage', results_plant), ('Chest-Xray', result
                      'Accuracy': r['acc'], 'Precision': r['prec'], 'Recall': r['rec'], 'F1': r['f1']})
 df = pd.DataFrame(rows)
 df.to_csv(f'{OUTPUT_DIR}/comparison_table.csv', index=False, encoding='utf-8-sig')
-print("[✓] comparison_table.csv")
+print("[OK] comparison_table.csv")
 
 fig, ax = plt.subplots(figsize=(14, 7))
 bar = sns.barplot(data=df, x='Dataset', y='Accuracy', hue='Model', palette=["#2196F3","#FF9800","#4CAF50"], ax=ax)
-plt.title("So sánh Accuracy — 3 mô hình TickNet trên dữ liệu thực tiễn (224×224)", fontsize=14)
+plt.title("So sanh Accuracy -- 3 mo hinh TickNet tren du lieu thuc tien (224x224)", fontsize=14)
 plt.ylim(max(df['Accuracy'].min()-5, 80), min(df['Accuracy'].max()+3, 100))
 for p in bar.patches:
     if p.get_height() > 0:
@@ -1051,9 +1056,118 @@ for p in bar.patches:
                      ha='center', va='bottom', fontsize=9, xytext=(0,3), textcoords='offset points')
 plt.tight_layout()
 plt.savefig(f'{OUTPUT_DIR}/plots/accuracy_comparison.png', dpi=150, bbox_inches='tight'); plt.close()
-print("[✓] accuracy_comparison.png")
+print("[OK] accuracy_comparison.png")
 
-# ─── 5. Model info & Config ───
+# ─── 5. CONFUSION MATRIX ───
+print("\\n--- Confusion Matrix ---")
+for ds_tag, ds_name, res_dict, classes in [
+    ('plantvillage', 'PlantVillage', results_plant, plant_classes),
+    ('chestxray', 'Chest-Xray', results_xray, xray_classes)
+]:
+    for mode in ['se_only', 'cbam_local', 'cbam_hook']:
+        res = res_dict[mode]
+        if 'preds' not in res or 'targets' not in res:
+            continue
+        cm = confusion_matrix(res['targets'], res['preds'])
+        n_classes = len(classes)
+        
+        if n_classes <= 10:
+            fig_size = (8, 6)
+            font_size = 10
+            fmt_str = 'd'
+            annot = True
+            tick_labels = classes
+        else:
+            fig_size = (16, 14)
+            font_size = 5
+            fmt_str = 'd'
+            annot = False
+            tick_labels = classes
+        
+        fig, ax = plt.subplots(figsize=fig_size)
+        sns.heatmap(cm, annot=annot, fmt=fmt_str, cmap='Blues', ax=ax,
+                    xticklabels=tick_labels, yticklabels=tick_labels,
+                    annot_kws={'size': font_size})
+        ax.set_xlabel('Du doan', fontsize=12)
+        ax.set_ylabel('Nhan that', fontsize=12)
+        ax.set_title(f'Confusion Matrix - {name_map[mode]} tren {ds_name}', fontsize=14)
+        if n_classes > 10:
+            ax.tick_params(axis='both', which='major', labelsize=5)
+            plt.xticks(rotation=90)
+            plt.yticks(rotation=0)
+        plt.tight_layout()
+        p = f'{OUTPUT_DIR}/plots/{ds_tag}_{mode}_confusion_matrix.png'
+        plt.savefig(p, dpi=150, bbox_inches='tight'); plt.close()
+        print(f"[OK] {os.path.basename(p)}")
+
+# ─── 6. ROC CURVES ───
+print("\\n--- ROC Curves ---")
+for ds_tag, ds_name, res_dict, classes in [
+    ('plantvillage', 'PlantVillage', results_plant, plant_classes),
+    ('chestxray', 'Chest-Xray', results_xray, xray_classes)
+]:
+    n_classes = len(classes)
+    has_probs = all('probs' in res_dict[m] for m in ['se_only','cbam_local','cbam_hook'])
+    if not has_probs:
+        print(f"  Bo qua ROC cho {ds_name} (khong co du lieu xac suat)")
+        continue
+    
+    colors_roc = ['#2196F3', '#FF9800', '#4CAF50']
+    line_styles = ['-', '--', '-.']
+    
+    if n_classes == 2:
+        # Binary ROC - ve truc tiep
+        fig, ax = plt.subplots(figsize=(8, 7))
+        for idx, mode in enumerate(['se_only', 'cbam_local', 'cbam_hook']):
+            res = res_dict[mode]
+            fpr, tpr, _ = roc_curve(res['targets'], res['probs'][:, 1])
+            roc_auc = auc(fpr, tpr)
+            ax.plot(fpr, tpr, color=colors_roc[idx], lw=2, ls=line_styles[idx],
+                    label=f"{name_map[mode]} (AUC = {roc_auc:.4f})")
+        ax.plot([0, 1], [0, 1], 'k--', lw=1, alpha=0.5)
+        ax.set_xlim([0.0, 1.0])
+        ax.set_ylim([0.0, 1.05])
+        ax.set_xlabel('False Positive Rate', fontsize=12)
+        ax.set_ylabel('True Positive Rate', fontsize=12)
+        ax.set_title(f'ROC Curve - {ds_name} (Binary)', fontsize=14)
+        ax.legend(loc='lower right', fontsize=10)
+        ax.grid(True, alpha=0.3)
+        plt.tight_layout()
+        p = f'{OUTPUT_DIR}/plots/{ds_tag}_roc_curve.png'
+        plt.savefig(p, dpi=150, bbox_inches='tight'); plt.close()
+        print(f"[OK] {os.path.basename(p)}")
+    else:
+        # Multi-class ROC - macro-average OvR
+        fig, ax = plt.subplots(figsize=(8, 7))
+        for idx, mode in enumerate(['se_only', 'cbam_local', 'cbam_hook']):
+            res = res_dict[mode]
+            targets_bin = label_binarize(res['targets'], classes=list(range(n_classes)))
+            
+            # Tinh macro-average ROC
+            all_fpr = np.linspace(0, 1, 200)
+            mean_tpr = np.zeros_like(all_fpr)
+            for c in range(n_classes):
+                fpr_c, tpr_c, _ = roc_curve(targets_bin[:, c], res['probs'][:, c])
+                mean_tpr += np.interp(all_fpr, fpr_c, tpr_c)
+            mean_tpr /= n_classes
+            macro_auc = auc(all_fpr, mean_tpr)
+            
+            ax.plot(all_fpr, mean_tpr, color=colors_roc[idx], lw=2, ls=line_styles[idx],
+                    label=f"{name_map[mode]} (macro AUC = {macro_auc:.4f})")
+        ax.plot([0, 1], [0, 1], 'k--', lw=1, alpha=0.5)
+        ax.set_xlim([0.0, 1.0])
+        ax.set_ylim([0.0, 1.05])
+        ax.set_xlabel('False Positive Rate', fontsize=12)
+        ax.set_ylabel('True Positive Rate', fontsize=12)
+        ax.set_title(f'ROC Curve (Macro-Average) - {ds_name} ({n_classes} lop)', fontsize=14)
+        ax.legend(loc='lower right', fontsize=10)
+        ax.grid(True, alpha=0.3)
+        plt.tight_layout()
+        p = f'{OUTPUT_DIR}/plots/{ds_tag}_roc_curve_macro.png'
+        plt.savefig(p, dpi=150, bbox_inches='tight'); plt.close()
+        print(f"[OK] {os.path.basename(p)}")
+
+# ─── 7. Model info & Config ───
 mi = {}
 for mode in ['se_only','cbam_local','cbam_hook']:
     m = TickNetSmall(10, mode, CONFIG['cbam_reduction'], CONFIG['cbam_spatial_kernel'], cifar=False)
@@ -1062,7 +1176,7 @@ with open(f'{OUTPUT_DIR}/model_info.json', 'w') as f: json.dump(mi, f, indent=2)
 with open(f'{OUTPUT_DIR}/config.json', 'w') as f: json.dump(dict(CONFIG), f, indent=2)
 
 print("\\n" + "=" * 60)
-print(f"HOÀN TẤT XUẤT FILE! Tải thư mục: {OUTPUT_DIR}/")
+print(f"HOAN TAT XUAT FILE! Tai thu muc: {OUTPUT_DIR}/")
 print("=" * 60)""")
 
     # ========== Assemble notebook ==========
