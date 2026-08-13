@@ -1452,19 +1452,18 @@ hẹp kênh. Điểm chuyển tiếp nơi đặc trưng đạt mức trừu tư�
 được lựa chọn làm vị trí ứng viên để khảo sát để CBAM tinh lọc toàn cục
 trước khi đặc trưng bước vào pha nén.
 
-Ba điểm chèn chiến lược. Kiến trúc CBAM-Hook chèn CBAM tại ba hooking
+Hai điểm chèn chiến lược. Kiến trúc CBAM-Hook chèn CBAM tại hai hooking
 points:
 
 Hooking Point 1 - Sau FR-PDP-5\textbf{:} Tại điểm nối giữa backbone hình
-dấu tích thứ nhất và backbone hình dấu tích thứ hai.
+dấu tích thứ nhất và backbone hình dấu tích thứ hai. Đặc trưng tại đây
+đạt 512 kênh, vùng tiếp nhận tích lũy đủ lớn để SAM phân biệt vùng đối
+tượng và vùng nền.
 
-Hooking Point 2 - Cuối pha thu hẹp: ``Cổng kiểm soát cuối
-cùng\textquotesingle'' tinh chỉnh kênh và không gian của bản đồ đặc
-trưng đã nén trước khi truyền tới lớp phân loại.
-
-Hooking Point 3 - Trước GAP\textbf{:} Lọc không gian lần cuối, đảm bảo
-GAP chỉ tính trung bình trên vùng chứa đối tượng, không bị pha loãng bởi
-nền.
+Hooking Point 2 - Sau FR-PDP-10\textbf{:} ``Cổng kiểm soát cuối
+cùng\textquotesingle'' tại cuối backbone thứ hai, tinh chỉnh kênh và không
+gian của bản đồ đặc trưng 512 kênh trước khi truyền tới lớp Final Conv
+và lớp phân loại.
 \end{quote}
 
 \phantomsection\label{_Toc236751527}{}\includegraphics[width=4.2197in,height=4.2197in]{22130047_ChuToanDuc_BCTL_media/media/image9.jpeg}Hình
@@ -1492,7 +1491,6 @@ CBAM-Hook
 Attention nội khối FR-PDP & SE & CBAM & SE giữ nguyên \\
 Attention tại Hooking Point 1 & Không & Không & CBAM \\
 Attention tại Hooking Point 2 & Không & Không & CBAM \\
-Attention trước GAP & Không & Không & CBAM \\
 Lọc kênh cục bộ & Có SE & Có CAM & Có SE \\
 Lọc không gian cục bộ & Không & Có SAM & Không \\
 Lọc không gian toàn cục & Không & Không & Có SAM \\
@@ -1545,34 +1543,33 @@ Luồng xử lý đặc trưng. Hình 3.2.2 minh hoa 3 chiến lược chèn cơ
 Baseline, CBAM-Local, CBAM-Hook
 
 \begin{quote}
-Luồng xử lý CBAM-Hook gồm 7 bước:
+Luồng xử lý CBAM-Hook gồm 6 bước:
 
 Bước 1-2: ~Ảnh đầu vào
 \(\mathbf{X}_{0} \in \mathbb{R}^{H \times W \times 3}\) qua stem
-convolution, sau đó qua các khối FR-PDP pha mở rộng kênh với SE nội khối
+convolution, sau đó qua các khối FR-PDP 1--5 pha mở rộng kênh với SE nội khối
 và full-residual skip connection:
 
 \(\mathbf{F}_{i} = \text{FR-PDP}_{i}\left( \mathbf{F}_{i - 1} \right) = \mathbf{F}_{i - 1} + \text{SE}\left( \text{PW}_{2}\left( \text{DW}\left( \text{PW}_{1}\left( \mathbf{F}_{i - 1} \right) \right) \right) \right.\ \)
 (1)
 
-Bước 3: Tại Hooking Point 1, CBAM toàn cục được áp dụng:
+Bước 3: Tại Hooking Point 1 (sau FR-PDP-5), CBAM toàn cục được áp dụng:
 
-\(\mathbf{F}'_{\text{hook1}} = \text{CBAM}\left( \mathbf{F}_{N} \right) = M_{s}\left( M_{c}\left( \mathbf{F}_{N} \right) \otimes \mathbf{F}_{N} \right) \otimes \left( M_{c}\left( \mathbf{F}_{N} \right) \otimes \mathbf{F}_{N} \right.\ \)
+\(\mathbf{F}'_{\text{hook1}} = \text{CBAM}\left( \mathbf{F}_{5} \right) = M_{s}\left( M_{c}\left( \mathbf{F}_{5} \right) \otimes \mathbf{F}_{5} \right) \otimes \left( M_{c}\left( \mathbf{F}_{5} \right) \otimes \mathbf{F}_{5} \right.\ \)
 (2)
 
 Trong đó, \(M_{c}\) \(M_{s}\) lần lượt là bản đồ chú ý kênh và không
 gian, \(\otimes \ \)là phép nhân theo phần tử.
 
-Bước 4-5: Đặc trưng qua các khối FR-PDP pha thu hẹp, rồi CBAM toàn cục
-thứ hai tại Hooking Point 2.
+Bước 4: Đặc trưng qua các khối FR-PDP 6--10 pha thu hẹp với SE nội khối.
 
-Bước 6: CBAM cuối cùng tại Hooking Point 3 (trước GAP) đảm bảo GAP chỉ
-tổng hợp từ vùng không gian mang tính phân biệt cao.
+Bước 5: CBAM toàn cục thứ hai tại Hooking Point 2 (sau FR-PDP-10) tinh
+chỉnh đặc trưng lần cuối trước Final Conv.
 
-Bước 7: GAP nén bản đồ đặc trưng 3D thành vector 1D, lớp phân loại tạo
+Bước 6: Final Conv \(1 \times 1\), GAP nén bản đồ đặc trưng 3D thành vector 1D, lớp phân loại tạo
 logits cho từng lớp, lớp có logits lớn nhất được chọn làm kết quả dự
 đoán. Softmax chỉ được sử dụng khi cần biểu diễn kết quả dưới dạng xác
-suất..
+suất.
 
 Ưu thế kỳ vọng:
 
@@ -1833,7 +1830,7 @@ chéo vùng tiếp nhận như đã phân tích ở mục 3.2.3. Tổng số tha
 luyện: khoảng 1.985.348 tham số.
 
 \textbf{Mô hình 3 - CBAM-Hook (Đề xuất cải tiến):} Giữ nguyên SE nội
-khối FR-PDP, chèn CBAM toàn cục có kết nối tàn dư tại 3 điểm nối chiến
+khối FR-PDP, chèn CBAM toàn cục có kết nối tàn dư tại 2 điểm nối chiến
 lược:
 
 Hooking Point 1: Sau khối FR-PDP thứ 5 (512 kênh), giữa hai backbone co
@@ -1842,14 +1839,12 @@ giãn.
 Hooking Point 2: Sau khối FR-PDP thứ 10 (512 kênh), cuối backbone thứ
 hai.
 
-Hooking Point 3: Sau lớp Final Conv \(1 \times 1\)(1024 kênh), trước lớp
-Global Average Pooling.
-
-Mỗi mô-đun CBAM tại các điểm nối sử dụng tỷ lệ giảm kênh \(r = 8\ \)và
-kích thước kernel SAM \(7 \times 7\ \)để tận dụng vùng tiếp nhận tích
-lũy lớn. Tổng số tham số huấn luyện: khoảng 2.379.966 tham số (tăng
-khoảng 19,8\% so với baseline, vẫn giữ ở mức siêu nhẹ dưới 2,5 triệu
-tham số).
+Mỗi mô-đun CBAM tại các điểm nối sử dụng tỷ lệ giảm kênh \(r = 8\ \).
+Kernel SAM được cấu hình theo kích thước ảnh: \(3 \times 3\) đối với CIFAR-10
+(\(32 \times 32\)) và \(7 \times 7\) đối với PlantVillage (\(224 \times 224\)).
+Tổng số tham số huấn luyện: khoảng 2.117.564 tham số trên CIFAR-10 và
+2.117.724 tham số trên PlantVillage (tăng khoảng 6,6\% so với baseline,
+vẫn giữ ở mức siêu nhẹ khoảng 2,12M tham số).
 \end{quote}
 
 \begin{longtable}[]{@{}
@@ -1874,8 +1869,8 @@ CBAM-Hook
 Attention nội khối FR-PDP & SE & CBAM & SE giữ nguyên \\
 CBAM tại Hooking point 1 & Không & Không & Có \\
 CBAM tại Hooking point 2 & Không & Không & Có \\
-CBAM tại Hooking point 3 & Không & Không & Có \\
-Tổng số tham số & \(\sim 1,99M\) & \(\sim 1,99M\) & \(\sim 2,38M\) \\
+Tổng số tham số (CIFAR-10) & \(1.986.456\) & \(1.985.348\) & \(2.117.564\) \\
+Tổng số tham số (PlantVillage) & \(1.986.456\) & \(1.986.148\) & \(2.117.724\) \\
 \end{longtable}
 
 \phantomsection\label{_Toc236751808}{}Bảng 3.3 So sánh cấu trúc 3 mô
@@ -1912,14 +1907,15 @@ PlantVillage
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Kích thước batch & 128 & 32 \\
-Số epoch tối đa & 60 & 40 \\
-Tốc độ học khởi tạo & 0.05 & 0.01 \\
+Kích thước batch & 128 & 64 \\
+Số epoch tối đa & 60 & 35 \\
+Tốc độ học khởi tạo & 0.05 & 0.005 \\
 Trọng số suy giảm & \(5 \times 10^{- 4}\) & \(1 \times 10^{- 4}\) \\
 Tỷ lệ giảm SE nội khối & 16 & 16 \\
 Tỷ lệ giảm CBAM Hook & 8 & 8 \\
-Kernel SAM tại Hooking Points & \(7 \times 7\) & \(7 \times 7\) \\
-Patience Early Stopping & 10 & 8 \\
+Kernel SAM tại Hooking Points & \(3 \times 3\) & \(7 \times 7\) \\
+Label Smoothing & -- & 0.1 \\
+Patience Early Stopping & 10 & 7 \\
 Patience ReduceLROnPlateau & 4 & 3 \\
 Hệ số giảm LR & 0.5 & 0.5 \\
 Seed ngẫu nhiên & 42 & 42 \\
