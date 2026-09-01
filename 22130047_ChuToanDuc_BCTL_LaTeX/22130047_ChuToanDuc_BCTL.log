@@ -1,9 +1,12 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  13 AUG 2026 13:54
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex 2026.7.13)  24 AUG 2026 14:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**./22130047_ChuToanDuc_BCTL.tex
-(22130047_ChuToanDuc_BCTL.tex
+**d:/cu2/TickNets-CBAM/22130047_ChuToanDuc_BCTL_LaTeX/22130047_ChuToanDuc_BCTL.
+tex
+
+(d:/cu2/TickNets-CBAM/22130047_ChuToanDuc_BCTL_LaTeX/22130047_ChuToanDuc_BCTL.t
+ex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Program Files\MiKTeX\tex/latex/base\report.cls
@@ -1533,47 +1536,51 @@ File: 22130047_ChuToanDuc_BCTL_media/media/image10.jpeg Graphic file (type bmp)
 
 <22130047_ChuToanDuc_BCTL_media/media/image10.jpeg>
  [30]
-Overfull \hbox (45.80632pt too wide) detected at line 1626
+Overfull \hbox (45.80632pt too wide) detected at line 1623
 [][][][][] [][] [] [] []
  []
 
 [31] [32] [33]
+File: architecture_diagrams/architecture_comparison_3_models.png Graphic file (
+type bmp)
+<architecture_diagrams/architecture_comparison_3_models.png>
+
 ignored error: Infinite glue shrinkage found in box being split [34]
-Underfull \hbox (badness 10000) in paragraph at lines 1885--1886
+Underfull \hbox (badness 10000) in paragraph at lines 1887--1888
 
  []
 
-[35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 2052--2053
+[35] [36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 2055--2056
 
- []
-
-[37]
-File: 22130047_ChuToanDuc_BCTL_media/media/image11.png Graphic file (type bmp)
-<22130047_ChuToanDuc_BCTL_media/media/image11.png>
-
-Overfull \hbox (73.76286pt too wide) in paragraph at lines 2192--2194
-[][]\TU/TimesNewRoman(0)/m/n/12 Kết
  []
 
 [38]
+File: 22130047_ChuToanDuc_BCTL_media/media/image11.png Graphic file (type bmp)
+<22130047_ChuToanDuc_BCTL_media/media/image11.png>
+
+Overfull \hbox (73.76286pt too wide) in paragraph at lines 2195--2197
+[][]\TU/TimesNewRoman(0)/m/n/12 Kết
+ []
+
+[39]
 File: 22130047_ChuToanDuc_BCTL_media/media/image12.png Graphic file (type bmp)
 <22130047_ChuToanDuc_BCTL_media/media/image12.png>
 
-Overfull \hbox (80.42787pt too wide) in paragraph at lines 2224--2227
+Overfull \hbox (80.42787pt too wide) in paragraph at lines 2227--2230
 [][][][]\TU/TimesNewRoman(0)/m/n/12 Hình
  []
 
-[39] [40
+[40] [41
 
-] [41
+] [42
 
-] [42] [43] [44
+] [43] [44] [45
 
 ]
-ignored error: Infinite glue shrinkage found in box being split [45
+ignored error: Infinite glue shrinkage found in box being split [46
 
-] [46]
+] [47]
 (22130047_ChuToanDuc_BCTL.aux)
  ***********
 LaTeX2e <2025-11-01>
@@ -1583,14 +1590,18 @@ L3 programming layer <2025-12-24>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 19736 strings out of 402986
- 360564 string characters out of 5452850
- 977976 words of memory out of 5000000
- 48195 multiletter control sequences out of 15000+600000
+ 19758 strings out of 402986
+ 361667 string characters out of 5452850
+ 979412 words of memory out of 5000000
+ 48213 multiletter control sequences out of 15000+600000
  631478 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 90i,9n,116p,1023b,499s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,9n,116p,1073b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on 22130047_ChuToanDuc_BCTL.pdf (46 pages).
+Output written on d:\cu2\TickNets-CBAM\22130047_ChuToanDuc_BCTL_LaTeX\22130047_
+ChuToanDuc_BCTL.pdf (47 pages).
