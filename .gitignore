@@ -1,1 +1,5 @@
 .agents
+media/*
+results_classification/*
+results_plantvillage/*
+TieuLuan_LaTeX/*
